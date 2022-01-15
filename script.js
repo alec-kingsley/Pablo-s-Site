@@ -8,7 +8,13 @@ function openFunc(langSet) {
   easterEgg();
 }
 function daySelect() {
-  var day = new Date().getDay();
+  var today = new Date();
+
+  //runs on pablos birthday
+  if (today.getMonth() == 0 && today.getDate() == 17) birthday();
+
+  var day = today.getDay();
+
   if (day == 0) {
     document.getElementById("sun").style.textDecoration = "underline";
   } else if (day == 6) {
@@ -41,7 +47,27 @@ function untilClose() {
 }
 
 
+//Pablos Birthday
+function birthday() {
+  var body = document.getElementsByTagName("body")[0];
+  var canvas = document.createElement("canvas");
+  var js = document.createElement("script");
 
+  canvas.id = "canvas";
+  js.type = "text/javascript";
+  js.src = "bday.js";
+
+  body.appendChild(canvas);
+  body.appendChild(js);
+
+  var topItems = document.getElementById("topItems");
+  var splashText = document.createElement("div");
+  splashText.id = "birthday";
+  topItems.appendChild(splashText);
+  splashText.innerHTML = "Wish our business owner, Pablo Taura, a happy birthday today!";
+  var mainImg = document.getElementById("mainImg");
+  mainImg.src = "./images/birthday.jpg";
+}
 
 
 

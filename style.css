@@ -1,3 +1,10 @@
+canvas {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 /* UNIVERSAL */
 /* fonts */
 @font-face {
@@ -92,6 +99,47 @@ body {
 	width: 100px;
 	height: auto;
 }
+
+/* Birthdays/Holidays */
+#birthday {
+	color: red;
+	transform: rotate(10deg);
+	position: absolute;
+	right: 3%;
+	top: 25%;
+	font-size: 24px;
+}
+
+@media only screen and (max-width: 1000px) {
+	#birthday {
+		width: 25%;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	#welcome h1 {
+		margin-top: 18%;
+	}
+
+	#birthday {
+		top: 19%;
+		width: 75%;
+		font-size: 20px;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	#welcome h1 {
+		margin-top: 20%;
+	}
+
+	#birthday {
+		top: 15%;
+		width: 60%;
+		font-size: 14px;
+	}
+}
+
 
 /* for both home page and menu */
 #topItems {
