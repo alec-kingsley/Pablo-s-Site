@@ -73,30 +73,6 @@ function loopSlide(n) {
 }
 
 
-/*function food() {
-  selectMenu("food");
-}
-function drink() {
-  selectMenu("drink");
-}
-function dessert() {
-  selectMenu("dessert");
-}
-function selectMenu(menu) {
-  clear();
-  document.getElementById(menu).style.display = "block";
-  document.getElementById(menu+"Butt").style.color = "#d92332";
-  // or red #d92332
-}
-function deselectMenu(menu) {
-  document.getElementById(menu).style.display = "none";
-  document.getElementById(menu+"Butt").style.color = "#2a438c";
-}
-function clear() {
-  deselectMenu("food");
-  deselectMenu("drink");
-  deselectMenu("dessert");
-}*/ // get rid of these
 function setMenu(menu) {
   var menuButtons = document.getElementsByClassName("menuName");
   var menus = document.getElementsByClassName("category");
