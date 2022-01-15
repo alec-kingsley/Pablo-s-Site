@@ -8,7 +8,13 @@ function openFunc(langSet) {
   easterEgg();
 }
 function daySelect() {
-  var day = new Date().getDay();
+  var todaysDate = new Date();
+  var pablosBday = new Date();
+  pablosBday.setDate(17);
+  if (todaysDate.getDate() == pablosBday.getDate()) birthday();
+
+  var day = todaysDate.getDay();
+
   if (day == 0) {
     document.getElementById("sun").style.textDecoration = "underline";
   } else if (day == 6) {
@@ -41,7 +47,19 @@ function untilClose() {
 }
 
 
+//Pablos Birthday
+function birthday() {
+  var body = document.getElementsByTagName('body')[0];
+  var canvas = document.createElement("canvas");
+  var js = document.createElement("script");
 
+  canvas.id = "canvas";
+  js.type = "text/javascript";
+  js.src = "bday.js";
+
+  body.appendChild(canvas);
+  body.appendChild(js);
+}
 
 
 
