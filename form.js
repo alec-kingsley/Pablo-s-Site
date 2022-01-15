@@ -19,7 +19,7 @@ function validate() {
     }
   }
   if (r != "") {
-    msg = [r+"must be filled out","Debe llenar"+r];
+    msg = [r+" must be filled out","Debe llenar "+r];
     alert(msg[lang]);
     return false;
   }
