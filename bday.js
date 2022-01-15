@@ -1,4 +1,4 @@
-
+//code from codemyui.com/confetti-falling-background-using-canvas
 const canvasEl = document.querySelector('#canvas');
 
 const w = canvasEl.width = window.innerWidth;
@@ -16,7 +16,6 @@ function loop() {
 
 function Confetti () {
   //construct confetti
-  //const colours = ['#fde132', '#009bde', '#ff6b00'];
   const colours = ['#2a438c', '#d92332', '#f2f2f2'];
 
   this.x = Math.round(Math.random() * w);
