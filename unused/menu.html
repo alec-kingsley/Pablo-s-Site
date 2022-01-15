@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Food and Beverages</title>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta>
+	<script src="prohibitionScript.js"></script>
+	<link rel="stylesheet" href="prohibition.css">
+  <script src="prohibitionScript.js"></script>
+</head>
+
+<body onload="food()" id="menuBody">
+	<div id="navbar">
+		<nav>
+			<ul id="navigation">
+				<li class="links">Home</li>
+				<li class="links" id="currentPage">Food and Beverages</li>
+				<li class="links">DORA Lot</li>
+			</ul>
+		</nav>
+	</div>
+
+	<div id="everythingButNav">
+		<div id="menu">
+			<h1 class="title">Menus</h1>
+			<h2 class="title">Our menu is constantly evolving to provide fresh ideas and ingredients.</h2>
+		</div>
+
+		<div>
+			<ul id="menuButtons">
+				<li><button type="button" onclick="cocktails()" id="cocktailsButt">Cocktails</button></li>
+				<li><button type="button" onclick="food()" id = "foodButt">Food</button></li>
+				<li><button type="button" onclick="whiskey()" id = "whiskeyButt">Whiskey</button></li>
+				<li><button type="button" onclick="wine()" id = "wineButt">Wine</button></li>
+				<li><button type="button" onclick="beer()" id = "beerButt">Beer</button></li>
+			</ul>
+		</div>
+
+		<div id="cocktails" class="category">
+			<div class="menuTitle">House
+			</div>
+			<div class="menuItems">
+				<div class="itemHolder">
+							<h4 class="foodItem">Prohibition Old Fashioned</h4>
+							<h5 class="foodDescription">Old Forester • Sweet Vermouth • Agave Nectar • Black Walnut • Cinnamon • Bitters • Orange</h5>
+				</div>
+				<div class="itemHolder">
+							<h4 class="foodItem">Prohibition Manhattan</h4>
+							<h5 class="foodDescription">Rye • Sweet Vermouth • Bitters • Cherry</h5>
+				</div>
+				<div class="itemHolder">
+							<h4 class="foodItem">What Grows Together</h4>
+							<h5 class="foodDescription">Rum • Pineapple • Coconut • Coffee • Bitters • Orgeat • Citric Acid</h5>
+				</div>
+				<div class="itemHolder">
+							<h4 class="foodItem">Looks can be Deceiving</h4>
+							<h5 class="foodDescription">Tanqueray Sevilla Orange · Aperol · CastelGreve Vermut</h5>
+				</div>
+			</div>
+			
+			<div class="menuTitle">Classic</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Paper Plane</h4>
+							<h5 class="foodDescription">Old Forester • Amaro • Aperol • Citric Acid</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Vieux Carre</h4>
+							<h5 class="foodDescription">Cognac • Rye • Benedictine • Sweet Vermouth • Bitters</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Sazarec</h4>
+							<h5 class="foodDescription">Rye • Cognac • Sugar • Bitters • Absinthe</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Aviation</h4>
+							<h5 class="foodDescription">Gin • Violet • Luxardo • Sugar • Citric Acid</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Last Word</h4>
+							<h5 class="foodDescription">Gin • Luxardo • Green Chartreuse • Lime Acid</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Ginger Mule</h4>
+							<h5 class="foodDescription">Vodka • Ginger Syrup • Lime Acid • Ginger Beer</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">French 75</h4>
+							<h5 class="foodDescription">Gin • Prosecco • Sugar • Citric Acid • Bitters • Lemon</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Aperol Spritz</h4>
+							<h5 class="foodDescription">Aperol • Prosecco • Soda • Orange</h5>
+					</div>
+			</div>
+		</div>
+
+
+		<div id="food" class="category">
+			<div class="menuTitle">Snacks & Shares</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Lobster Toast</h4>
+							<h5 class="foodDescription">"More like an open-faced lobster roll than toast", chilled Maine lobster tossed with cherry tomatoes, green onion, and our creole mayo. Served on top of thick cut toasted focaccia. Garnished with lemon and chive.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Old Fashioned Meatloaf Meatballs</h4>
+							<h5 class="foodDescription">5 Hand-Formed Black Hawk Farms (KY) ground beef meatballs topped with tomato ketchup and brown sugar. Garnished with toasted pecans.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Brussel Sprouts</h4>
+							<h5 class="foodDescription">Charred brussels sprouts tossed in a maple-sweet soy-ginger sauce. Served with bourbon-miso aioli.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Rabbit Nachos</h4>
+							<h5 class="foodDescription">House-made Spanish rabbit chorizo layered with cheese sauce, jalapenos, tomato, escabeche, salsa de fuego, and tortilla chips. Garnished with lime, cilantro, and green onion.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Warmed Castelvetrano Olives & Feta</h4>
+							<h5 class="foodDescription">Castelvetrano olives warmed with orange zest, rosemary, pink peppercorns and pistachios served over Noble Farms Feta (Minford, Ohio). Garnished with olive oil and toasted focaccia</h5>
+					</div>
+			</div>
+
+			<div class="menuTitle">Frito</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Fried Jumbo Shrimp</h4>
+							<h5 class="foodDescription">8 jumbo shrimp tossed in our creole breading and fried. Served with our spicy chili cocktail sauce, creole aioli and lemon wedges</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Louisiana Hot Frog Legs</h4>
+							<h5 class="foodDescription">Lightly breaded and fried frog legs. Served with Louisiana hot sauce, creole aioli and lemon.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Korean Fried Chicken</h4>
+							<h5 class="foodDescription">Hand-cut chicken tenders lightly breaded and tossed in our Gochujang sauce (Sweet, Spicy, Savory) and topped with crispy garlic, sesame seed, and green onion</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Truffle Fries</h4>
+							<h5 class="foodDescription">Hand-cut fries tossed in white truffle oil and seasoned with truffle salt. Served with black summer truffle aioli and ketchup</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Creole Pub Fries</h4>
+							<h5 class="foodDescription">Hand-Cut wedge fries seasoned with creole seasonings and served with creole aioli</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Smokehouse Pub Fries</h4>
+							<h5 class="foodDescription">Hand-cut wedge fries seasoned with our smokehouse seasoning (smoked sea salt, smoked pepper, smoked sugar...) Served with “Carolina style barbecue sauce.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Oysters</h4>
+							<h5 class="foodDescription">A dozen lightly breaded and fried shucked oysters served with lemon wedges creole aioli and spicy chili cocktail sauce.</h5>
+					</div>
+			</div>
+
+			<div class="menuTitle">Smothered Pub Fries</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Lobster Fries</h4>
+							<h5 class="foodDescription">Hand-Cut wedge fries seasoned with garlic salt and smothered with cheese sauce, Maine lobster, bacon, cherry tomatoes, and green onion and chives. Served with creole sauce and lemon.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">BBQ Brisket Fries</h4>
+							<h5 class="foodDescription">Hand-cut wedge fries seasoned with our smokehouse seasoning and smothered with cheese sauce, brisket, smoked bacon, sweet onion, sweet pickles and Carolina style barbecue sauce.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Crab Fries</h4>
+							<h5 class="foodDescription">Hand-cut wedge fries seasoned with Old Bay and smothered with cheese sauce, smoked bacon, crab, jalapeno, cherry tomato, green onions and served with creole sauce.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Cajun Shrimp Fries</h4>
+							<h5 class="foodDescription">Hand-Cut wedge fries seasoned with creole seasonings and smothered with cheese sauce, shrimp, house-cured Tasso ham, roasted red pepper, and jalapeño. Garnished with green onion and served with creole aioli.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Tokyo BBQ Fries</h4>
+							<h5 class="foodDescription">Hand-Cut wedge fries seasoned with Japanese Togarashi spice and smothered with cheese sauce, maple-soy-ginger sauce glazed pork belly, sweet onion, pickled ginger, and wasabi sauce. Served with bourbon-miso aioli</h5>
+					</div>
+			</div>
+
+			<div class="menuTitle">Mac and Cheese</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Steak Frites Mac & Cheese</h4>
+							<h5 class="foodDescription">Grilled ribeye & NY strip tossed with pasta and gruyere cheese sauce then baked with parmesan-panko crust and topped with hand-cut fries and gorgonzola cheese.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Creole Crawfish Mac and Cheese</h4>
+							<h5 class="foodDescription">Louisiana crawfish, house-cured Tasso ham, pasta, and creole spices tossed in our house gruyere cheese sauce and topped with toasted panko crust.
+	</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">BBQ Brisket Mac and Cheese</h4>
+							<h5 class="foodDescription">Black Hawk Farms (KY) brisket and smoked bacon tossed with pasta and gruyere cheese sauce then baked with a parmesan-panko crust and drizzled with barbecue sauce.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Crab & Bacon Mac and Cheese</h4>
+							<h5 class="foodDescription">Crabmeat, smoked bacon, green onion and roasted red pepper tossed with gruyere cheese sauce, Old Bay seasoning and baked with parmesan-panko crust.</h5>
+					</div>
+			</div>
+
+			<div class="menuTitle">Salads</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Roasted Beet Salad</h4>
+							<h5 class="foodDescription">Roasted Chioggia, red, and golden beets served on top of a bed of mixed greens, sweet onion, and Capriole (IN) fresh goat cheese. Served with our house lemon-honey vinaigrette</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Prohibition Salad</h4>
+							<h5 class="foodDescription">Hand-cut chicken tenderloins lightly breaded and fried, tossed with our Carolina hot chile sauce. Served over a bed of mixed greens, smoked bacon, English cucumber, sweet onion, roasted sweet corn, cherry tomato, and smoked blue cheese. Served with our cucumber ranch dressing.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class = "foodItem">Sunburst Salad</h4>
+							<h5 class="foodDescription">Mixed greens topped with Port soaked cherries, smoked blue cheese, toasted pepitas, sweet onion and raspberry & wine vinaigrette.</h5>
+					</div>
+			</div>
+
+			<div class="menuTitle">Sandwiches</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Black Hawk Farms Burger</h4>
+							<h5 class="foodDescription">A half pound Black Hawk Farms (KY) beef burger topped with lettuce, heirloom tomato, red onion, and American cheese. Served on a brioche bun.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Vegetarian Bacon Cheddar Burger</h4>
+							<h5 class="foodDescription">A grilled quarter pound Impossible burger, topped with Vevan vegan cheddar, Funny Girl Vegan Maple Buckwheat Bean Bacon. Garnished with lettuce, heirloom tomato, red onion, and house-brined pickles.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Beef Tongue Cheesesteak</h4>
+							<h5 class="foodDescription">Braised beef tongue thinly sliced and topped with sautéed sweet onion and cheese sauce on a baguette</h5>
+					</div>
+			</div>
+
+			<div class="menuTitle">Off The Grill</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Berkshire Bone-in Frenched Pork Chop</h4>
+							<h5 class="foodDescription">A 8oz Berkshire Bone-in Frenched Pork Chop grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Verlasso Salmon</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Lamb Lollipop Chops</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Fischer Farms Flank Steak</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Chicken Breasts</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+			</div>
+
+			<div class="menuTitle">Kids</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Cheeseburger</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Grilled Chicken Sandwich</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">Mac and Cheese</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+					<div class="itemHolder">
+							<h4 class="foodItem">8" Cheese Pizza</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+			</div>
+
+			<div class="menuTitle">Desserts</div>
+			<div class="menuItems">
+					<div class="itemHolder">
+							<h4 class="foodItem">Turtle Cheesecake</h4>
+							<h5 class="foodDescription">An 8oz filet of Verlasso Salmon grilled and served with your choice of preparation and side salad.</h5>
+					</div>
+			</div>
+		</div>
+		
+		<div id="whiskey" class="category">
+			<div class="menuTitle">American</div>
+			<div class="menuItems">
+
+			</div>
+			<div class="menuTitle">Scottish</div>
+			<div class="menuItems">
+
+			</div>
+			<div class="menuTitle">Irish</div>
+			<div class="menuItems">
+
+			</div>
+			<div class="menuTitle">Japanese</div>
+			<div class="menuItems">
+
+			</div>
+			<div class="menuTitle">Canadian</div>
+			<div class="menuItems">
+
+			</div>
+		</div>
+
+		<div id="wine" class="category">
+			<div class="menuTitle">Reds</div>
+			<div class="menuItems">
+
+			</div>
+			<div class="menuTitle">Whites</div>
+			<div class="menuItems">
+
+			</div>
+			<div class="menuTitle">Sparkling</div>
+			<div class="menuItems">
+
+			</div>
+		</div>
+		<div id="beer" class="category">
+			<div class="menuTitle">Draft Beer</div>
+			<div class="menuItems">
+
+			</div>
+			<div class="menuTitle">Bottled Beer</div>
+			<div class="menuItems">
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

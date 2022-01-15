@@ -1,0 +1,150 @@
+/*
+MENU COLORS
+#06101b Background
+#656b72 Unselected menu names
+#bdc0c3 Selected menu names + menu item titles
+#585643 Descriptions + menu title
+*/
+#menuBody {
+  margin-top: 0;
+  background-color: #06101b;
+	margin: 0;
+}
+
+#everythingButNav {
+	margin-left: 11%;
+	margin-right: 11%;
+}
+
+#navbar {
+
+}
+
+/* id for unordered list holding main nav bar items*/
+#navigation {
+  background-color: #06101b;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  list-style-type: none;
+  font-size: 26px;
+
+  padding-top: 23px;
+  padding-left:0;
+  margin-top:0;
+}
+
+/*class for each item on main nav bar*/
+.links {
+  text-align: center;
+	color: #beac74;
+	width: 33%;
+}
+
+#currentPage {
+	color: #bdc0c3;
+}
+
+/*class for both  headers making up menu and description*/
+.title {
+  text-align: center;
+  margin: 0;
+}
+
+/*id for div holding menu headers*/
+#menu {
+  margin-top: 0;
+  padding-top: 10%;
+  color: #beac74;
+}
+#menu h2 {
+  color: #585643;
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+/*unordered list holding buttons to switch menu categories*/
+#menuButtons {
+  list-style-type: none;
+  display: flex;
+  padding-inline-start: 0px;
+  padding-top: 55px;
+  padding-bottom: 60px;
+}
+
+/*each list item making category buttons*/
+#menuButtons button {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  padding-left: 0px;
+  padding-right: 15px;
+}
+#menuButtons button:hover {
+  cursor: pointer;
+}
+
+
+
+/*this part down is styling for each category*/
+
+.category {
+	width: 100%;
+}
+
+.menuTitle {
+	color: #bdc0c3;
+  font-size: 32px;
+  display: inherit;
+	margin: auto;
+  text-align: center;
+
+  padding-bottom: 30px;
+	border-bottom: 2px solid #bdc0c3;
+
+}
+
+.foodItem {
+	color: #bdc0c3;
+	margin: 0;
+	padding-top: 10%;
+  font-size: 16px;
+
+}
+
+.foodDescription {
+	color: #beac74;
+	padding: 0;
+	margin: 0;
+	padding-top: 5%;
+  padding-right: 2%;
+  font-size: 16px;
+
+}
+
+.itemHolder {
+	width: 33.33%;
+	height: 100px;
+  padding-bottom: 50px;
+}
+
+.menuItems {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+  padding-bottom: 50px;
+}
+
+
+
+
+/* media queries */
+
+@media screen and (max-width: 920px) { 
+	body {
+		background-color: blue;
+	}
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5F3SN9X');</script>
+<!-- End Google Tag Manager -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BFC5PZHYJS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BFC5PZHYJS');
+</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Homemade Cuban Cuisine.
+Pablo's Havana Café in Powell">
+	<meta name="author" content="Pablo's Havana Café">
+	<meta property="og:url" content="https://pabloshavanacafe.com/">
+	<meta property="og:site_name" content="Pablo's Havana Café">
+	<meta property="og:title" content="Pablo's Havana Café - Home">
+	<meta property="og:description" content="(614) 389-4302
+Homemade Cuban Cuisine
+Order Online at:
+pabloshavanacafe.smartonlineorder.com
+">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="./images/Cubano.jpg">
+	<meta property="og:locale" content="en_US">
+	<title>Pablo's Havana Cafe</title>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+  <link href="./font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="./images/icon.png">
+  <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+	<script src="script.js"></script>
+</head>
+
+<!-- left/right navs for either side of Pablo's logo -->
+
+<body onload="openFunc(0);" id="home">
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5F3SN9X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	<div id="mobileBackground">
+	<div id="margin">
+		<div id="navbar">
+			<nav id="left">
+				<a href="#">Home</a>
+				<a href="./about_us/">About Us</a>
+			</nav>
+			<img src="./images/icon.png" id = "navIcon">
+				<nav id = "right">
+					<a href="menu" target="_self">Menu</a>
+          <a href="./es" id="transIcon"><img src="./images/EngToEsp.png"></a>
+				</nav>
+			</div>
+			<div id="mobileBar">
+				<img src="./images/icon.png" id = "navIconMobile" onclick="switchDisp()">
+				<a href="#" id="navtitle">Home</a>
+				<div id="mobileNav">
+					<a href="./menu/" class="dropdown">Menu</a>
+					<a href="./about_us/" class="dropdown">About Us</a>
+				</div>
+				<a href="javascript:void(0);" class="icon" onclick="switchDisp()">
+				<i class="fa fa-bars"></i>
+				</a>
+        <a href="./es" id="transIcon" class="dropdown"><img src="./images/EngToEsp.png"></a>
+			</div>
+
+			
+			<div id = "topItems">
+				<div id = "mainImgDiv">
+          <div id ="redDiv" style = "background-color: #d92332;">
+					<img src="./images/CubanoAbove.png" id = "mainImg">
+					</div>
+				</div>
+
+				<div id="welcome">
+					<h1>Welcome To<br>Pablo's Havana Café</h1>
+					<a href="https://pabloshavanacafe.smartonlineorder.com/" id="orderButton">Order Online</a>
+					<h2>Homemade Cuban Cuisine
+					<br>(614) 389 4302 <br>
+					9685 Sawmill Rd, Powell, OH 43065</h2>
+				</div> 
+			</div>
+
+	</div>
+	</div>
+		<div id="slideshow">
+			<div id="pics">
+				<div id="margin" class="slideshow-margin">
+				<div class="mySlides">
+					<img class="slidePic" id="lSlide" width = "100%">
+				</div>
+				<div class="mySlides">
+					<img class="slidePic" id="mSlide" width = "100%">
+					<div class="caption-container">
+					<p id="caption"></p></div>
+				</div>
+				<div class="mySlides">
+					<img class="slidePic" id="rSlide" width = "100%"> 
+	
+				</div>
+				
+
+				<a class="prev" onclick="addSlides(-1)">&#10094;</a>
+ 				<a class="next" onclick="addSlides(1)">&#10095;</a>
+
+				
+
+				<div class="row">
+					<div class="resizeimg">
+					<div class="column">
+						<img src="images/Cubano.jpg" alt="Our Signature Cuban Sandwich, El Cubano" class="demo cursor" onclick="setSlide(1)" width="100%">
+					</div>
+					<div class="column">
+						<img src="images/Cubanaso.jpeg" alt="El Cubanaso sampler" class="demo cursor" onclick="setSlide(2)" width="100%">
+					</div>
+					<div class="column">
+						<img src="images/Soups.jpeg" alt="Our four soups. Chicken soup, black bean soup, red bean soup, and Cuban chili " class="demo cursor" onclick="setSlide(3)" width="100%">
+					</div>
+          <div class="column">
+						<img src="images/TresLeches1.jpg" alt="Tres Leches Cake" class="demo cursor" onclick="setSlide(4)" width="100%">
+					</div>
+					<div class="column">
+						<img src="images/RopaVieja.jpeg" alt="Ropa Vieja with Maduros" class="demo cursor" onclick="setSlide(5)" width="100%">
+					</div>
+					<div class="column">
+						<img src="images/Picadillo+TostonesYelp.jpg" alt="Picadillo with Tostones" class="demo cursor" onclick="setSlide(6)" width="100%">
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="margin2">
+		<div class="footer"></div>
+			<div id="hours">
+				<h1>Hours (<mark id="isOpen">Closed</mark>)</h1>
+				<h2 id="mon-fri">Monday-Friday: 11am-2pm, 4pm-8pm</h2>
+				<h2 id="sat">Saturday: 11am-8pm</h2>
+				<h2 id="sun">Sunday: 11am-5pm</h2>
+
+				<div id="mediaLinks">
+          <a href="https://www.facebook.com/pabloshavanacafe/"><img src="./images/FacebookLogo.png" alt="Facebook"></a>
+          <a href="https://www.instagram.com/pabloshavanacafe/" ><img src="./images/InstagramLogo.png" alt="Instagram"></a>
+				</div>
+			</div>
+
+			<div id="form">
+				<div>Contact Us</div>
+        
+				<form name="contactUs" class="contact1-form" autocomplete="on">
+
+					<input type="text" name="Name" id="name" class="text" placeholder="Name...">
+
+					<input type="text" name="Email" id="email" class="text" placeholder="E-Mail...">
+
+					<input type="text" name="Subject" id="subject" class="text" placeholder="Subject...">
+
+					<textarea name="Message" class="question" placeholder="Message..."></textarea>
+
+					<br>
+          
+          <button class="submit">
+            Send
+          </button>
+          <script src="jquery-3.2.1.js"></script>
+          <script src="form.js"></script>
+				</form>
+			
+        
+			</div>
+	  </div>
+  </body>
+</html>
+<!-- Developed by Alec Kingsley and Kyle Berkey -->
+<!-- Discord: https://discord.gg/QtunQKrUFB -->
