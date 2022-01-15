@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link type="text/css" href="./style.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet">
     <title>Pablo's Havana Café - 404</title>
     <meta charset="utf-8">
     <meta name="author" content="Pablo's Havana Café">
@@ -11,18 +11,34 @@
     <meta property="og:description" content="Page not found">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
-    <link rel="shortcut icon" href="./images/icon.png">
+    <link rel="shortcut icon">
   </head>
   <body>
     <div id="errText">
       <div id="errTitle">404</div>
       <div id="errDesc">file not found<br>archivo no encontrado</div>
       <div id="retButtons">
-        <div class="retButton"><a href="./">Home</a></div>
-        <div class="retButton"><a href="./es">Inicio</a></div>
+        <div class="retButton"><a>Home</a></div>
+        <div class="retButton"><a>Inicio</a></div>
       </div>
     </div>
+    <script>
+      function pathFix(link) {
+        if (link.charAt(0) == "/") {
+          const homeDist = window.location.pathname.split("/").length;
+          for (let i = 1; i < homeDist; i++) link = "/.." + link;
+        } else console.log("Error: Link must start with /");
+        return link;
+      }
+
+      var links = document.getElementsByTagName("Link");
+      links[0].href=pathFix("/style.css");
+      links[1].href=pathFix("/images/icon.png");
+
+      var as = document.getElementsByTagName("a");
+      as[0].href = pathFix("/");
+      as[1].href = pathFix("/es");
+    </script>
 		<!-- http://places.singleplatform.com/pablos-havana-cafe/menu?ref=google -->
   </body>
 </html>
-

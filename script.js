@@ -1,3 +1,12 @@
+function pathFix(link) {
+  if (link.charAt(0) == "/") {
+    const homeDist = window.location.pathname.split("/").length;
+    for (let i = 1; i < homeDist; i++) link = "/.." + link;
+  } else console.log("Error: Link must start with /");
+  return link;
+}
+
+
 let lang = 0; // 0 is English, 1 is Spanish, 2 is Old English
 let randSplash = [];
 
@@ -55,7 +64,7 @@ function birthday() {
 
   canvas.id = "canvas";
   js.type = "text/javascript";
-  js.src = "bday.js";
+  js.src = pathFix("/bday.js");
 
   body.appendChild(canvas);
   body.appendChild(js);
@@ -64,9 +73,10 @@ function birthday() {
   var splashText = document.createElement("div");
   splashText.id = "birthday";
   topItems.appendChild(splashText);
-  splashText.innerHTML = "Wish our business owner, Pablo Taura, a happy birthday today!";
+  if (lang == 0) splashText.innerHTML = "Wish our business owner, Pablo Taura, a happy birthday today!";
+  else if (lang == 1) splashText.innerHTML = "Deséale a nuestro jefe, Pablo Taura, un felíz cumpeaños hoy!";
   var mainImg = document.getElementById("mainImg");
-  mainImg.src = "./images/birthday.jpg";
+  mainImg.src = pathFix("/images/birthday.jpg");
 }
 
 
