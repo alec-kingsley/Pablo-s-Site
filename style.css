@@ -1,10 +1,3 @@
-canvas {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
 /* UNIVERSAL */
 /* fonts */
 @font-face {
@@ -101,6 +94,13 @@ body {
 }
 
 /* Birthdays/Holidays */
+canvas {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
 #birthday {
 	color: red;
 	transform: rotate(10deg);
@@ -181,6 +181,7 @@ body {
 
 /* welcome area */
 #welcome {
+  z-index: 2;
   margin-left: 4%;
   width: 40%;
   float: left;
@@ -214,6 +215,7 @@ body {
 
 /* slideshow */
 #slideshow {
+  z-index: 2;
   margin-top: 5%;
   position: relative;
 	background-color: #3554b1;
@@ -354,6 +356,7 @@ body {
   color: #2a438c;
   font-size: 32px;
   font-weight: bold;
+  z-index: 2;
 }
 #mediaLinks {
   display: flex;
@@ -395,10 +398,13 @@ body {
 }
 
 .submit {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'architects_daughterregular', Arial, sans-serif;
 	width: 100%;
 	cursor: pointer;
-	background-color: red;
+	background-color: #d92332;
+  color: #f2f2f2;
+  font-size: 18px;
+  font-weight: bold;
 	margin: 15px 0;
 	height: 50px;
 	box-sizing: border-box;
