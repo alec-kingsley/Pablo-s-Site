@@ -48,7 +48,7 @@ $('.contact1-form').on('submit',function(e){
     const errorEng = "Something went wrong. Please try again";
     const errorEsp = "Había error. Por favor trate de nuevo";
     var mailUrl;
-    if (lang != 2) mailUrl = ownerMail; // change this to ownerMail when released
+    if (lang < 2) mailUrl = ownerMail; // change this to ownerMail when released
     else mailUrl = devMail;
     $.ajax({
       url: mailUrl,
