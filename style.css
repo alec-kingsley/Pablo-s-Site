@@ -14,6 +14,13 @@
     src: local('Trebuchet MS'), url('./fonts/trebuc.woff') format('woff');
 }
 @font-face {
+  font-family: 'Klingon';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Klingon'), url('./fonts/klingon.woff') format('woff');
+     unicode-range: U+27,U+30-39,U+41-5A,U+61-7A;
+}
+@font-face {
   font-family: 'architects_daughterregular';
     src: url('./fonts/architectsdaughter.woff2') format('woff2'),
          url('./fonts/architectsdaughter.woff') format('woff');
@@ -92,7 +99,6 @@ body {
 	width: 100px;
 	height: auto;
 }
-
 /* Birthdays/Holidays */
 canvas {
   position: fixed;
@@ -198,7 +204,6 @@ canvas {
   font-size: 35px;
 }
 #orderButton {
-  font-family: 'architects_daughterregular', Arial, sans-serif;
   font-size: 25px;
   white-space: nowrap;
   text-decoration: none;
@@ -210,6 +215,9 @@ canvas {
   color: #f2f2f2;
   border-color: transparent;
   padding: 8px 15px;
+}
+#orderButton:not(.kli) {
+  font-family: 'architects_daughterregular', Arial, sans-serif;
 }
 
 
@@ -400,7 +408,6 @@ canvas {
 }
 
 .submit {
-  font-family: 'architects_daughterregular', Arial, sans-serif;
 	width: 100%;
 	cursor: pointer;
 	background-color: #d92332;
@@ -414,6 +421,9 @@ canvas {
 	border: 0;
 	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
 	vertical-align: middle;
+}
+.sumbit:not(.kli) {
+  font-family: 'architects_daughterregular', Arial, sans-serif;
 }
 
 .text:focus  {
@@ -685,7 +695,6 @@ canvas {
 #menuButtons button {
   background-color: transparent;
   border: none;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 34px;
   padding-left: 4%;
   padding-right: 15px;
@@ -693,6 +702,10 @@ canvas {
 
 #menuButtons button:hover {
   cursor: pointer;
+}
+
+#menuButtons button:not(.kli) {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* pablos ad text */
@@ -719,9 +732,12 @@ canvas {
 }
 .menuTitle {
   width: 100%;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 40px;
 }
+.menuTitle:not(.kli) {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .menuDesc {
   border-top: 2px solid #d92332;
   padding-top: 1px;
@@ -1073,4 +1089,13 @@ canvas {
   white-space: nowrap;
   text-decoration: none;
   color: #f2f2f2;
+}
+
+/* Klingon (Keep at bottom for override) */
+/* note that for Klingon font, f represents ng and z represents tlh. c and g represent ch and gh respectively. k represents Q */
+.kli {
+  font-family: 'Klingon',serif;
+}
+.lat {
+  font-family: 'Times New Roman', Times, serif;
 }
