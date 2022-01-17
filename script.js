@@ -73,7 +73,7 @@ function birthday() {
   var splashText = document.createElement("div");
   splashText.id = "birthday";
   topItems.appendChild(splashText);
-  if (lang == 0) splashText.innerHTML = "Wish our business owner, Pablo Taura, a happy birthday today!";
+  if (lang == 0) splashText.innerHTML = "Wish our boss, Pablo Taura, a happy birthday today!";
   else if (lang == 1) splashText.innerHTML = "Deséale a nuestro jefe, Pablo Taura, un felíz cumpeaños hoy!";
   var mainImg = document.getElementById("mainImg");
   mainImg.src = pathFix("/images/birthday.jpg");

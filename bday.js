@@ -1,8 +1,7 @@
-//code mostly from codemyui.com/confetti-falling-background-using-canvas
-const canvasEl = document.querySelector('#canvas');
+const canvas = document.querySelector('#canvas');
 
-const w = canvasEl.width = window.innerWidth;
-const h = canvasEl.height = window.innerHeight * 2;
+const w = canvas.width = window.innerWidth;
+const h = canvas.height = window.innerHeight * 2;
 
 function loop() {
   requestAnimationFrame(loop);
@@ -53,7 +52,7 @@ Confetti.prototype.draw = function() {
   ctx.fill();
 };
 
-const ctx = canvasEl.getContext('2d');
+const ctx = canvas.getContext('2d');
 const confNum = Math.floor(w / 4);
 const confs = new Array(confNum).fill().map(_ => new Confetti());
 
@@ -68,6 +67,6 @@ function fadeOut() {
     conf.opacity *= 0.995;
   })
   if (vis) requestAnimationFrame(fadeOut);
-  else canvasEl.remove();
+  else canvas.remove();
 }
 setTimeout(() => {fadeOut();}, 12*h);
