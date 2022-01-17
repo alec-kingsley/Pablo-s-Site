@@ -77,7 +77,6 @@ function birthday() {
   if (lang == 0) splashText.innerHTML = "Wish our boss, Pablo Taura, a happy birthday today!";
   else if (lang == 1) splashText.innerHTML = "Deséale a nuestro jefe, Pablo Taura, un felíz cumpleaños!";
   else if (lang == 3) splashText.innerHTML = "pinma'daq qoslij dativjaj yijaz!"
-
   var mainImg = document.getElementById("mainImg");
   mainImg.src = pathFix("/images/birthday.jpg");
 }
