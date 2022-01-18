@@ -134,12 +134,15 @@ function itemCreate(name,desc,price) { // add item name with description and pri
   itemHolder.setAttribute("class","itemHolder");
   var menuItem = document.createElement("div");
   menuItem.setAttribute("class","menuItem");
+  if (lang == 3) menuItem.setAttribute("class","menuItem kli");
   menuItem.innerHTML = name;
   var itemDesc = document.createElement("div");
   itemDesc.setAttribute("class","itemDesc");
+  if (lang == 3) itemDesc.setAttribute("class","itemDesc kli");
   itemDesc.innerHTML = desc;
   var priceDiv = document.createElement("div");
   priceDiv.setAttribute("class","price");
+  if (lang == 3) priceDiv.setAttribute("class","price kli");
   priceDiv.innerHTML = price;
 
   var catDivs = document.getElementsByClassName("menuItems");
@@ -161,6 +164,7 @@ function addImg(link,desc) {
   var img = document.createElement("img");
   img.setAttribute("src",link);
   var imgDesc = document.createElement("p");
+  if (lang == 3) imgDesc.setAttribute("class","kli");
   imgDesc.innerHTML = desc;
 
   var catDivs = document.getElementsByClassName("menuItems");

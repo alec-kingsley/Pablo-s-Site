@@ -1094,7 +1094,7 @@ canvas {
 /* Klingon (Keep at bottom for override) */
 /* note that for Klingon font, f represents ng and z represents tlh. c and g represent ch and gh respectively. k represents Q */
 .kli {
-  font-family: 'Klingon',serif;
+  font-family: 'Klingon','Times New Roman', Times, serif;
 }
 .lat {
   font-family: 'Times New Roman', Times, serif;
