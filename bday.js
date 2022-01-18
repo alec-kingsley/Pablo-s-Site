@@ -1,8 +1,7 @@
-//code from codemyui.com/confetti-falling-background-using-canvas
-const canvasEl = document.querySelector('#canvas');
+const canvas = document.querySelector('#canvas');
 
-const w = canvasEl.width = window.innerWidth;
-const h = canvasEl.height = window.innerHeight * 2;
+const w = canvas.width = window.innerWidth;
+const h = canvas.height = window.innerHeight * 2;
 
 function loop() {
   requestAnimationFrame(loop);
@@ -15,29 +14,21 @@ function loop() {
 }
 
 function Confetti () {
-  //construct confetti
-  const colours = ['#2a438c', '#d92332', '#f2f2f2'];
-
   this.x = Math.round(Math.random() * w);
   this.y = Math.round(Math.random() * h)-(h/2);
   this.rotation = Math.random()*360;
 
   const size = Math.random()*(w/60);
-  this.size = size < 15 ? 15 : size;
+  if (size < 15) this.size = 15;
 
-  this.color = colours[Math.floor(colours.length * Math.random())];
+  const colors = ['#2a438c', '#d92332', '#f2f2f2'];
+  this.color = colors[Math.floor(colors.length * Math.random())];
 
   this.speed = this.size/7;
   
-  this.opacity = Math.random();
+  this.opacity = Math.random()/2+0.4;
 
   this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
-}
-
-Confetti.prototype.border = function() {
-  if (this.y >= h) {
-    this.y = h;
-  }
 }
 
 Confetti.prototype.update = function() {
@@ -46,9 +37,7 @@ Confetti.prototype.update = function() {
   if (this.y <= h) {
     this.x += this.shiftDirection/3;
     this.rotation += this.shiftDirection*this.speed/100;
-  }
-
-  if (this.y > h) this.border();
+  } else this.y = h;
 };
 
 Confetti.prototype.draw = function() {
@@ -61,8 +50,24 @@ Confetti.prototype.draw = function() {
   ctx.fill();
 };
 
-const ctx = canvasEl.getContext('2d');
+const ctx = canvas.getContext('2d');
 const confNum = Math.floor(w / 4);
 const confs = new Array(confNum).fill().map(_ => new Confetti());
 
 loop();
+
+function fadeOut() {
+
+  let vis = false;
+  confs.forEach((conf) => {
+    vis = false;
+    if (conf.opacity > 0.03) vis = true;
+    conf.opacity *= 0.995;
+  })
+  if (vis) requestAnimationFrame(fadeOut);
+  else canvas.remove();
+}
+setTimeout(() => {fadeOut();}, 12*h);
+
+
+//code from codemyui.com/confetti-falling-background-using-canvas

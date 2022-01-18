@@ -1,4 +1,13 @@
-let lang = 0; // 0 is English, 1 is Spanish, 2 is Old English
+function pathFix(link) {
+  if (link.charAt(0) == "/") {
+    const homeDist = window.location.pathname.split("/").length;
+    for (let i = 1; i < homeDist; i++) link = "/.." + link;
+  } else console.log("Error: Link must start with /");
+  return link;
+}
+
+
+let lang = 0; // 0 is English, 1 is Spanish, 2 is Old English, 3 is Klingon
 let randSplash = [];
 
 function openFunc(langSet) {
@@ -41,7 +50,7 @@ function untilClose() {
     }
   }
   if (isOpen) {
-    const langOpen = ["Open","Abierto","Openede"];
+    const langOpen = ["Open","Abierto","Openede","poSmoHta'"];
     document.getElementById("isOpen").innerHTML = langOpen[lang];
   }
 }
@@ -55,7 +64,7 @@ function birthday() {
 
   canvas.id = "canvas";
   js.type = "text/javascript";
-  js.src = "bday.js";
+  js.src = pathFix("/bday.js");
 
   body.appendChild(canvas);
   body.appendChild(js);
@@ -63,10 +72,13 @@ function birthday() {
   var topItems = document.getElementById("topItems");
   var splashText = document.createElement("div");
   splashText.id = "birthday";
+  if (lang == 3) splashText.className = "kli";
   topItems.appendChild(splashText);
-  splashText.innerHTML = "Wish our business owner, Pablo Taura, a happy birthday today!";
+  if (lang == 0) splashText.innerHTML = "Wish our boss, Pablo Taura, a happy birthday today!";
+  else if (lang == 1) splashText.innerHTML = "Deséale a nuestro jefe, Pablo Taura, un felíz cumpleaños!";
+  else if (lang == 3) splashText.innerHTML = "pinma'daq qoslij dativjaj yijaz!"
   var mainImg = document.getElementById("mainImg");
-  mainImg.src = "./images/birthday.jpg";
+  mainImg.src = pathFix("/images/birthday.jpg");
 }
 
 
@@ -152,7 +164,7 @@ function easterEgg() {
 }
 
 function randomSplash() {
-  let splashText = ["Try pabloshavanacafe.com/ang ! Anglo-Saxon approved","Since December 2018","S t r e s s z i l l a","Be careful not to inhale the restaurant-grade chemispray","Born in Cuba, raised in Jersey","Billions and billions served! Wait no that's not right","https://discord.gg/QtunQKrUFB","Bring a friend!","Vaca Frita sounds so much better in English","Add a description about this category"];
+  let splashText = ["Rachael is a B","Brittany is a B","Try pabloshavanacafe.com/ang ! Anglo-Saxon approved","Try pabloshavanacafe.com/tlh ! Klingon approved","Since December 2018","S t r e s s z i l l a","Be careful not to inhale the restaurant-grade chemispray","Born in Cuba, raised in Jersey","Billions and billions served! Wait no that's not right","https://discord.gg/QtunQKrUFB","Bring a friend!","Vaca Frita sounds so much better in English","Add a description about this category"];
   let retText = [];
   while (splashText.length > 0) {
     var randIdx = Math.floor(Math.random()*splashText.length)

@@ -27,11 +27,16 @@ function showInfo(results) {
       nameDesc = data[row].nameDesc_es;
       cat = data[row].cat_es;
       catDesc = data[row].catDesc_es;
-    } else {
+    } else if (lang == 2) {
       name = data[row].name_ang;
       nameDesc = data[row].nameDesc_ang;
       cat = data[row].cat_ang;
       catDesc = data[row].catDesc_ang;
+    } else if (lang == 3) {
+      name = data[row].name_tlh;
+      nameDesc = data[row].nameDesc_tlh;
+      cat = data[row].cat_tlh;
+      catDesc = data[row].catDesc_tlh;
     }
     if (data[row].hidden == "yes" || (name == "" && cat == "")) {
       row++;
@@ -59,7 +64,8 @@ function showInfo(results) {
         row++;
         if (lang == 0) priceName = data[row].name_en;
         else if (lang == 1) priceName = data[row].name_es;
-        else priceName = data[row].name_ang;
+        else if (lang == 2) priceName = data[row].name_ang;
+        else if (lang == 3) priceName = data[row].name_tlh;
         price += " " + priceName.substr(1) + " " + data[row].price;
       }
       price = price.substr(1);
@@ -79,6 +85,7 @@ function menuCreate(name) { // food, drink, dessert
   button.setAttribute("onclick","setMenu("+menuCt+")");
   menuCt++;
   button.setAttribute("class","menuName");
+  if (lang == 3) button.setAttribute("class","menuName kli");
   button.innerHTML = name;
 
   document.getElementById("menuButtons").appendChild(li);
@@ -90,9 +97,11 @@ function catCreate(name,desc) { // add category name with description to latest 
   titleHolder.setAttribute("class","titleHolder");
   var menuTitle = document.createElement("div");
   menuTitle.setAttribute("class","menuTitle");
+  if (lang == 3) menuTitle.setAttribute("class","menuTitle kli");
   menuTitle.innerHTML = name;
   var menuDesc = document.createElement("div");
   menuDesc.setAttribute("class","menuDesc");
+  if (lang == 3) menuDesc.setAttribute("class","menuDesc kli");
   menuDesc.innerHTML = desc;
   var menuItems = document.createElement("div");
   menuItems.setAttribute("class","menuItems");
@@ -108,9 +117,11 @@ function catCreate(name,desc) { // add category name with description to latest 
 function addNote(name,desc) { // add a note between categories
   var noteTitle = document.createElement("div");
   noteTitle.setAttribute("class","noteTitle");
+  if (lang == 3) noteTitle.setAttribute("class","noteTitle kli");
   noteTitle.innerHTML = name;
   var noteDesc = document.createElement("div");
   noteDesc.setAttribute("class","noteDesc");
+  if (lang == 3) noteDesc.setAttribute("class","noteDesc kli");
   noteDesc.innerHTML = desc;
 
   var menuDivs = document.getElementsByClassName("category");
@@ -123,12 +134,15 @@ function itemCreate(name,desc,price) { // add item name with description and pri
   itemHolder.setAttribute("class","itemHolder");
   var menuItem = document.createElement("div");
   menuItem.setAttribute("class","menuItem");
+  if (lang == 3) menuItem.setAttribute("class","menuItem kli");
   menuItem.innerHTML = name;
   var itemDesc = document.createElement("div");
   itemDesc.setAttribute("class","itemDesc");
+  if (lang == 3) itemDesc.setAttribute("class","itemDesc kli");
   itemDesc.innerHTML = desc;
   var priceDiv = document.createElement("div");
   priceDiv.setAttribute("class","price");
+  if (lang == 3) priceDiv.setAttribute("class","price kli");
   priceDiv.innerHTML = price;
 
   var catDivs = document.getElementsByClassName("menuItems");
@@ -150,6 +164,7 @@ function addImg(link,desc) {
   var img = document.createElement("img");
   img.setAttribute("src",link);
   var imgDesc = document.createElement("p");
+  if (lang == 3) imgDesc.setAttribute("class","kli");
   imgDesc.innerHTML = desc;
 
   var catDivs = document.getElementsByClassName("menuItems");
