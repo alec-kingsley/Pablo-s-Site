@@ -14,8 +14,6 @@ function loop() {
 }
 
 function Confetti () {
-  //construct confetti
-
   this.x = Math.round(Math.random() * w);
   this.y = Math.round(Math.random() * h)-(h/2);
   this.rotation = Math.random()*360;
@@ -70,3 +68,6 @@ function fadeOut() {
   else canvas.remove();
 }
 setTimeout(() => {fadeOut();}, 12*h);
+
+
+//code from codemyui.com/confetti-falling-background-using-canvas
