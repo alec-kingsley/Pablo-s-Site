@@ -164,7 +164,7 @@ function easterEgg() {
 }
 
 function randomSplash() {
-  let splashText = ["Rachael is a B","Try pabloshavanacafe.com/ang ! Anglo-Saxon approved","Try pabloshavanacafe.com/tlh ! Klingon approved","Since December 2018","S t r e s s z i l l a","Be careful not to inhale the restaurant-grade chemispray","Born in Cuba, raised in Jersey","Billions and billions served! Wait no that's not right","https://discord.gg/QtunQKrUFB","Bring a friend!","Vaca Frita sounds so much better in English","Add a description about this category"];
+  let splashText = ["Rachael is a B","Brittany is a B","Try pabloshavanacafe.com/ang ! Anglo-Saxon approved","Try pabloshavanacafe.com/tlh ! Klingon approved","Since December 2018","S t r e s s z i l l a","Be careful not to inhale the restaurant-grade chemispray","Born in Cuba, raised in Jersey","Billions and billions served! Wait no that's not right","https://discord.gg/QtunQKrUFB","Bring a friend!","Vaca Frita sounds so much better in English","Add a description about this category"];
   let retText = [];
   while (splashText.length > 0) {
     var randIdx = Math.floor(Math.random()*splashText.length)
