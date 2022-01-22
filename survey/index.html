@@ -14,92 +14,96 @@
     <meta property="og:image" content="./images/Cubano.jpg">
     <meta property="og:locale" content="en_US">
     <title>Survey</title>
-    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
     <link href="../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../images/icon.png">
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
   </head>
-  <body>
-    <div id="surveyTitle">Thank you for choosing us!</div>
+  <body id="survey">
+    <div id="surveyMargin">
+    <div id="surveyTitle">Thank you for choosing Pablo's Havana Café!</div>
     <div class="surveySect">Quality & Service Survey</div>
+    <div class="surveyDesc">*all questions are optional</div>
     <div class="surveyQ">Did you dine in or take out?</div>
     <div class="resps">
-      <button onclick="setResp(0,0)">Dine In</button>
-      <button onclick="setResp(0,1)">Take Out</button>
+      <button class="resp" onclick="setResp(0,0)">Dine In</button>
+      <button class="resp" onclick="setResp(0,1)">Take Out</button>
     </div>
     <div class="surveySect">Restaurant Ambience</div>
     <div class="surveyQ">Cleanliness of restaurant</div>
     <div class="resps">
-      <button onclick="setResp(1,0)">1</button>
-      <button onclick="setResp(1,1)">2</button>
-      <button onclick="setResp(1,2)">3</button>
-      <button onclick="setResp(1,3)">4</button>
-      <button onclick="setResp(1,4)">5</button>
+      <button class="resp" onclick="setResp(1,0)">1</button>
+      <button class="resp" onclick="setResp(1,1)">2</button>
+      <button class="resp" onclick="setResp(1,2)">3</button>
+      <button class="resp" onclick="setResp(1,3)">4</button>
+      <button class="resp" onclick="setResp(1,4)">5</button>
     </div>
     <div class="surveyQ">Appropriate lighting and music</div>
     <div class="resps">
-      <button onclick="setResp(2,0)">1</button>
-      <button onclick="setResp(2,1)">2</button>
-      <button onclick="setResp(2,2)">3</button>
-      <button onclick="setResp(2,3)">4</button>
-      <button onclick="setResp(2,4)">5</button>
+      <button class="resp" onclick="setResp(2,0)">1</button>
+      <button class="resp" onclick="setResp(2,1)">2</button>
+      <button class="resp" onclick="setResp(2,2)">3</button>
+      <button class="resp" onclick="setResp(2,3)">4</button>
+      <button class="resp" onclick="setResp(2,4)">5</button>
     </div>
     <div class="surveySect">Quality of Service</div>
     <div class="surveyQ">Reasonable wait time</div>
     <div class="resps">
-      <button onclick="setResp(3,0)">1</button>
-      <button onclick="setResp(3,1)">2</button>
-      <button onclick="setResp(3,2)">3</button>
-      <button onclick="setResp(3,3)">4</button>
-      <button onclick="setResp(3,4)">5</button>
+      <button class="resp" onclick="setResp(3,0)">1</button>
+      <button class="resp" onclick="setResp(3,1)">2</button>
+      <button class="resp" onclick="setResp(3,2)">3</button>
+      <button class="resp" onclick="setResp(3,3)">4</button>
+      <button class="resp" onclick="setResp(3,4)">5</button>
     </div>
     <div class="surveyQ">Knowledgeable and attentive service</div>
     <div class="resps">
-      <button onclick="setResp(4,0)">1</button>
-      <button onclick="setResp(4,1)">2</button>
-      <button onclick="setResp(4,2)">3</button>
-      <button onclick="setResp(4,3)">4</button>
-      <button onclick="setResp(4,4)">5</button>
+      <button class="resp" onclick="setResp(4,0)">1</button>
+      <button class="resp" onclick="setResp(4,1)">2</button>
+      <button class="resp" onclick="setResp(4,2)">3</button>
+      <button class="resp" onclick="setResp(4,3)">4</button>
+      <button class="resp" onclick="setResp(4,4)">5</button>
     </div>
     <div class="surveySect">Food Quality</div>
     <div class="surveyQ">Fresh food that arrived hot</div>
     <div class="resps">
-      <button onclick="setResp(5,0)">1</button>
-      <button onclick="setResp(5,1)">2</button>
-      <button onclick="setResp(5,2)">3</button>
-      <button onclick="setResp(5,3)">4</button>
-      <button onclick="setResp(5,4)">5</button>
+      <button class="resp" onclick="setResp(5,0)">1</button>
+      <button class="resp" onclick="setResp(5,1)">2</button>
+      <button class="resp" onclick="setResp(5,2)">3</button>
+      <button class="resp" onclick="setResp(5,3)">4</button>
+      <button class="resp" onclick="setResp(5,4)">5</button>
     </div>
     <div class="surveyQ">Good value for price</div>
     <div class="resps">
-      <button onclick="setResp(6,0)">1</button>
-      <button onclick="setResp(6,1)">2</button>
-      <button onclick="setResp(6,2)">3</button>
-      <button onclick="setResp(6,3)">4</button>
-      <button onclick="setResp(6,4)">5</button>
+      <button class="resp" onclick="setResp(6,0)">1</button>
+      <button class="resp" onclick="setResp(6,1)">2</button>
+      <button class="resp" onclick="setResp(6,2)">3</button>
+      <button class="resp" onclick="setResp(6,3)">4</button>
+      <button class="resp" onclick="setResp(6,4)">5</button>
     </div>
     <div class="surveySect">Background Questions</div>
     <div class="surveyQ">How likely are you to recommend us?</div>
     <div class="resps">
-      <button onclick="setResp(7,0)">1</button>
-      <button onclick="setResp(7,1)">2</button>
-      <button onclick="setResp(7,2)">3</button>
-      <button onclick="setResp(7,3)">4</button>
-      <button onclick="setResp(7,4)">5</button>
+      <button class="resp" onclick="setResp(7,0)">1</button>
+      <button class="resp" onclick="setResp(7,1)">2</button>
+      <button class="resp" onclick="setResp(7,2)">3</button>
+      <button class="resp" onclick="setResp(7,3)">4</button>
+      <button class="resp" onclick="setResp(7,4)">5</button>
     </div>
     <div class="surveyQ">How often do you eat with us?</div>
     <div class="resps">
-      <button onclick="setResp(8,0)">First time</button>
-      <button onclick="setResp(8,1)">Occasionally</button>
-      <button onclick="setResp(8,2)">Regularly</button>
+      <button class="resp" onclick="setResp(8,0)">First time</button>
+      <button class="resp" onclick="setResp(8,1)">Occasionally</button>
+      <button class="resp" onclick="setResp(8,2)">Regularly</button>
     </div>
     <div class="surveySect">Additional Comments (optional)</div>
-    <form name="comments" autocomplete="off">
-			<textarea name="Message" class="question" placeholder="Tell us about your experience..."></textarea>
-        <input type="submit"></input>
+    <form name="comments" autocomplete="off" onsubmit="return false">
+			<textarea name="Message" class="question surveyBoxes" placeholder="Tell us about your experience..."></textarea>
+        <button id="surveySubmit">Submit</button>
+        <script src="../jquery-3.2.1.js"></script>
+
 		</form>
-
-
+    </div>
+    <script src="../surveyBuilder.js"></script>
   </body>
 </html>
 <!-- Developed by Alec Kingsley and Kyle Berkey -->
