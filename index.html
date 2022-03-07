@@ -2,24 +2,6 @@
 <html lang="en">
 
 <head>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1430079810009893"
-     crossorigin="anonymous"></script>
-	<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5F3SN9X');</script>
-<!-- End Google Tag Manager -->
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BFC5PZHYJS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BFC5PZHYJS');
-</script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<meta name="description" content="Homemade Cuban Cuisine.
@@ -42,47 +24,45 @@ pabloshavanacafe.smartonlineorder.com
 	<link rel="shortcut icon" href="./images/icon.png">
   <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
 	<script src="script.js"></script>
+	<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' ;">
 </head>
 
 <!-- left/right navs for either side of Pablo's logo -->
 
 <body onload="openFunc(0);" id="home">
-	<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5F3SN9X"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 	<div id="mobileBackground">
-	<div id="margin">
+	<div class="margin">
 		<div id="navbar">
 			<nav id="left">
 				<a href="#">Home</a>
 				<a href="./about_us/">About Us</a>
 			</nav>
-			<img src="./images/icon.png" id = "navIcon">
+			<img src="images\icon.webp" id = "navIcon" alt="Logo for Pablo's Havana Cafe">
 				<nav id = "right">
 					<a href="menu" target="_self">Menu</a>
-          <a href="./es" id="transIcon"><img src="./images/EngToEsp.png"></a>
+          <a href="./es" class="transIcon"><img src="./images/EngToEsp.png" alt="English to Spanish"></a>
 				</nav>
 			</div>
 			<div id="mobileBar">
-				<img src="./images/icon.png" id = "navIconMobile" onclick="switchDisp()">
+				<img src="./images/icon.webp" id = "navIconMobile" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
 				<a href="#" id="navtitle">Home</a>
 				<div id="mobileNav">
 					<a href="./menu/" class="dropdown">Menu</a>
 					<a href="./about_us/" class="dropdown">About Us</a>
 				</div>
-				<a href="javascript:void(0);" class="icon" onclick="switchDisp()">
+				<a href="javascript:void(0);" class="icon" onclick="switchDisp()" title="Mobile Nav">
 				<i class="fa fa-bars"></i>
 				</a>
-        <a href="./es" id="transIcon" class="dropdown"><img src="./images/EngToEsp.png"></a>
+        <a href="./es" id="transIcon" class="dropdown"><img src="./images/EngToEsp.png" alt="English to Spanish"></a>
 			</div>
 
 			
 			<div id = "topItems">
 
 				<div id = "mainImgDiv">
-          <div id ="redDiv" style = "background-color: #d92332;">
-					<img src="./images/CubanoAbove.png" id = "mainImg">
+          <div id ="redDiv">
+					<img src="./images/CubanoAbove.png" id = "mainImg" alt="Cuban Sandwich">
 					</div>
 				</div>
 
@@ -101,15 +81,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div id="pics">
 				<div id="margin" class="slideshow-margin">
 				<div class="mySlides">
-					<img class="slidePic" id="lSlide" width = "100%">
+					<img class="slidePic" id="lSlide" width = "100%" alt="Left Slide">
 				</div>
 				<div class="mySlides">
-					<img class="slidePic" id="mSlide" width = "100%">
+					<img class="slidePic" id="mSlide" width = "100%" alt="Middle Slide">
 					<div class="caption-container">
 					<p id="caption"></p></div>
 				</div>
 				<div class="mySlides">
-					<img class="slidePic" id="rSlide" width = "100%"> 
+					<img class="slidePic" id="rSlide" width = "100%" alt="Right Slide"> 
 	
 				</div>
 				
@@ -162,7 +142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div id="form">
 				<div>Contact Us</div>
         
-				<form name="contactUs" class="contact1-form" autocomplete="on" onsubmit="return false">
+				<form name="contactUs" class="contact1-form" autocomplete="on" onsubmit="false">
 
 					<input type="text" name="Name" id="name" class="text" placeholder="Name...">
 
@@ -174,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 					<br>
           
-          <button class="submit">
+          <button class="submit" type="button">
             Send
           </button>
           <script src="jquery-3.2.1.js"></script>
@@ -184,6 +164,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
 			</div>
 	  </div>
+
+
+
+
+	  <!-- Google Tag Manager -->
+ <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+ 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+ })(window,document,'script','dataLayer','GTM-5F3SN9X');</script>
+ <!-- End Google Tag Manager -->
+	 <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async integrity="sha384-9F62VHpF63aKQ7Rkd2yzGb6n9nvzqS9NgkrU8gQd7p89c3oGFalOFc1IEqSa+Msi" crossorigin="anonymous"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+ 
+   gtag('config', 'G-BFC5PZHYJS');
+ </script>
+ 	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5F3SN9X"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
 <!-- Developed by Alec Kingsley and Kyle Berkey -->
