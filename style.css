@@ -247,6 +247,7 @@ canvas {
 	height: inherit;
 	object-fit: cover;
 }
+
 .mySlides {
   float: left;
   width: 33.33%;
@@ -266,8 +267,10 @@ canvas {
 	cursor: pointer;
 	position: absolute;
 
-  user-select: none;
+
+  -ms-user-select: none;
   -webkit-user-select: none;
+  user-select: none;
 
 	width: auto;
 	padding: 25px;
