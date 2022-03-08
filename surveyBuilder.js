@@ -29,7 +29,6 @@ function setResp(q,resp) {
     if (i == resp) qResps[i].className = "resp respSelect";
     else qResps[i].className = "resp";
   }
-  
 }
 
 function parseForm() { 

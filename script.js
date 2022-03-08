@@ -78,7 +78,7 @@ function birthday() {
   else if (lang == 1) splashText.innerHTML = "Deséale a nuestro jefe, Pablo Taura, un felíz cumpleaños!";
   else if (lang == 3) splashText.innerHTML = "pinma'daq qoslij dativjaj yijaz!"
   var mainImg = document.getElementById("mainImg");
-  mainImg.src = pathFix("/images/birthday.jpg");
+  mainImg.src = pathFix("/images/birthday.webp");
 }
 
 

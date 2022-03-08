@@ -2,24 +2,6 @@
 <html lang="en">
 
 <head>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1430079810009893"
-     crossorigin="anonymous"></script>
-		<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5F3SN9X');</script>
-<!-- End Google Tag Manager -->
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BFC5PZHYJS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BFC5PZHYJS');
-</script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<meta name="description" content="Cocina Cubana Hecha en Casa.
@@ -34,51 +16,50 @@ Comprar Online en:
 pabloshavanacafe.smartonlineorder.com
 ">
 	<meta property="og:type" content="website">
-	<meta property="og:image" content="../images/Cubano.jpg">
+	<meta property="og:image" content="../images/Cubano.webp">
 	<meta property="og:locale" content="es_CU">
 	<title>Pablo's Havana Cafe</title>
 	<link href="../style.css" rel="stylesheet" type="text/css" />
   <link href="../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-	<link rel="shortcut icon" href="../images/icon.png">
-  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-	<script src="../script.js"></script>
+	<link rel="shortcut icon" href="../images/icon.webp">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.webp">
 </head>
 
 <!-- left/right navs for either side of Pablo's logo -->
 
 <body onload="openFunc(1);" id="home">
 	<div id="mobileBackground">
-	<div id="margin">
+	<div class="margin">
 		<div id="navbar">
 			<nav id="left">
 				<a href="#">Inicio</a>
 				<a href="./quienes_somos/">Quienes Somos</a>
 			</nav>
-			<img src="../images/icon.png" id = "navIcon" onclick="switchDisp()">
+			<img src="../images/icon.webp" id = "navIcon" onclick="switchDisp()"  alt="Logo for Pablo's Havana Cafe">
 				<nav id = "right">
 					<a href="menu" target="_self">Menú</a>
 					<!--<a href="./events/">Events</a>-->
-          <a href="../" id="transIcon"><img src="../images/EspToEng.png"></a>
+          <a href="../" class="transIcon"><img src="../images/EspToEng.webp" alt="Español a ingles"></a>
 				</nav>
 			</div>
 			<div id="mobileBar">
-        <img src="../images/icon.png" id = "navIconMobile" onclick="switchDisp()">
+        <img src="../images/icon.webp" id = "navIconMobile" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
 				<a href="#" id="navtitle">Inicio</a>
 				<div id="mobileNav">
 					<a href="./menu/" class="dropdown">Menú</a>
 					<a href="./quienes_somos/" class="dropdown">Quienes Somos</a>
 				</div>
-				<a href="javascript:void(0);" class="icon" onclick="switchDisp()">
+				<a href="javascript:void(0);" class="icon" onclick="switchDisp()" title="navegación móvil">
 				<i class="fa fa-bars"></i>
 				</a>
-        <a href="../../" id="transIcon" class="dropdown"><img src="../../images/EspToEng.png"></a>
+        <a href="../../" class="transIcon" class="dropdown"><img src="../../images/EspToEng.webp" alt="Español a ingles"></a>
 			</div>
 
 			
 			<div id = "topItems">
 				<div id = "mainImgDiv">
-          <div id ="redDiv" style = "background-color: #d92332;">
-					<img src="../images/CubanoAbove.png" id = "mainImg">
+          <div id ="redDiv">
+					<img src="../images/CubanoAbove.webp" id = "mainImg" alt="sándwich cubano">
 					</div>
 				</div>
 
@@ -95,17 +76,17 @@ pabloshavanacafe.smartonlineorder.com
 	</div>
 		<div id="slideshow">
 			<div id="pics">
-				<div id="margin" class="slideshow-margin">
+				<div class="margin" class="slideshow-margin">
 				<div class="mySlides">
-					<img class="slidePic" id="lSlide" width = "100%">
+					<img class="slidePic" id="lSlide" width = "100%" alt="diapositiva izquierda">
 				</div>
 				<div class="mySlides">
-					<img id="mSlide" width = "100%">
+					<img id="mSlide" width = "100%" alt="diapositiva media">
 					<div class="caption-container">
 					<p id="caption"></p></div>
 				</div>
 				<div class="mySlides">
-					<img class="slidePic" id="rSlide" width = "100%"> 
+					<img class="slidePic" id="rSlide" width = "100%" alt="diapositiva derecha">
 	
 				</div>
 
@@ -115,22 +96,22 @@ pabloshavanacafe.smartonlineorder.com
 				<div class="row">
 					<div class="resizeimg">
 					<div class="column">
-						<img src="../images/Cubano.jpg" alt="Nuestro Sándwich Estrella, El Cubano" class="demo cursor" onclick="setSlide(1)" width="100%">
+						<img src="../images/Cubano.webp" alt="Nuestro Sándwich Estrella, El Cubano" class="demo cursor" onclick="setSlide(1)" width="100%">
 					</div>
 					<div class="column">
-						<img src="../images/Cubanaso.jpeg" alt="El Cubanaso" class="demo cursor" onclick="setSlide(2)" width="100%">
+						<img src="../images/Cubanaso.webp" alt="El Cubanaso" class="demo cursor" onclick="setSlide(2)" width="100%">
 					</div>
 					<div class="column">
-						<img src="../images/Soups.jpeg" alt="Nuestras sopas. Sopa de pollo, frijoles negros, frijoles colorados, y chili cubano" class="demo cursor" onclick="setSlide(3)" width="100%">
+						<img src="../images/Soups.webp" alt="Nuestras sopas. Sopa de pollo, frijoles negros, frijoles colorados, y chili cubano" class="demo cursor" onclick="setSlide(3)" width="100%">
 					</div>
           <div class="column">
-						<img src="../images/TresLeches1.jpg" alt="Pastel de Tres Leches" class="demo cursor" onclick="setSlide(4)" width="100%">
+						<img src="../images/TresLeches1.webp" alt="Pastel de Tres Leches" class="demo cursor" onclick="setSlide(4)" width="100%">
 					</div>
 					<div class="column">
-						<img src="../images/RopaVieja.jpeg" alt="Ropa Vieja con Maduros" class="demo cursor" onclick="setSlide(5)" width="100%">
+						<img src="../images/RopaVieja.webp" alt="Ropa Vieja con Maduros" class="demo cursor" onclick="setSlide(5)" width="100%">
 					</div>
 					<div class="column">
-						<img src="../images/Picadillo+TostonesYelp.jpg" alt="Picadillo con Tostones" class="demo cursor" onclick="setSlide(6)" width="100%">
+						<img src="../images/Picadillo+TostonesYelp.webp" alt="Picadillo con Tostones" class="demo cursor" onclick="setSlide(6)" width="100%">
 					</div>
 					</div>
 				</div>
@@ -138,7 +119,7 @@ pabloshavanacafe.smartonlineorder.com
 		</div>
 	</div>
 	
-	<div id="margin2">
+	<div class="margin">
 		<div class="footer"></div>
 			<div id="hours">
 				<h1>Horas (<mark id="isOpen">Cerrado</mark>)</h1>
@@ -147,15 +128,15 @@ pabloshavanacafe.smartonlineorder.com
 				<h2 id="sun">Domingo: 11-17</h2>
 
         <div id="mediaLinks">
-          <a href="https://www.facebook.com/pabloshavanacafe/"><img src="../images/FacebookLogo.png" alt="Facebook"></a>
-          <a href="https://www.instagram.com/pabloshavanacafe/" ><img src="../images/InstagramLogo.png" alt="Instagram"></a>
+          <a href="https://www.facebook.com/pabloshavanacafe/"><img src="../images/FacebookLogo.webp" alt="Facebook"></a>
+          <a href="https://www.instagram.com/pabloshavanacafe/" ><img src="../images/InstagramLogo.webp" alt="Instagram"></a>
 				</div>
 			</div>
 
 			<div id="form">
 				<div>Contáctenos</div>
         
-				<form name="contactUs" class="contact1-form" autocomplete="on" onsubmit="return false">
+				<form name="contactUs" class="contact1-form" autocomplete="on" onsubmit="false">
 
 					<input type="text" name="Name" id="name" class="text" placeholder="Nombre/Apellido...">
 
@@ -167,15 +148,45 @@ pabloshavanacafe.smartonlineorder.com
 
 					<br>
           
-          <button class="submit">
+          <button class="submit" type="button">
             Enviar
           </button>
-          <script src="../jquery-3.2.1.js"></script>
-          <script src="../form.js"></script>
 				</form>
 			
         
 			</div>
 	  </div>
+
+
+
+
+
+
+
+
+
+	  <!-- Google Tag Manager -->
+	  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-5F3SN9X');</script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-BFC5PZHYJS"></script>
+		<!-- End Google Tag Manager -->
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'G-BFC5PZHYJS');
+		</script>>
+			<!-- Google Tag Manager (noscript) -->
+	   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5F3SN9X"
+		   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		   <!-- End Google Tag Manager (noscript) -->
+		   <script src="../script.js"></script>
+		   <script src="../jquery-3.2.1.js"></script>
+		   <script src="../form.js"></script>
+	   
   </body>
 </html>

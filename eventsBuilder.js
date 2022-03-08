@@ -1,7 +1,7 @@
 function testItems() {
-  eventCreate("Food Truck","When: Wednesday, June 23<br>Where: 2047 Bridge Place Blvd.","../images/FoodTruck2.jpg");
-  eventCreate("Wine Tasting","When: Tuesday, June 29<br>Where: Pablo's Havana Café","../images/WinesCrop.jpeg");
-  eventCreate("Hispanic Restaurant Week","When: July 5 through July 12<br>Where: Pablo's Havana Café","../images/HispanicRestaurantWeek.png");
+  eventCreate("Food Truck","When: Wednesday, June 23<br>Where: 2047 Bridge Place Blvd.","../images/FoodTruck2.webp");
+  eventCreate("Wine Tasting","When: Tuesday, June 29<br>Where: Pablo's Havana Café","../images/WinesCrop.webp");
+  eventCreate("Hispanic Restaurant Week","When: July 5 through July 12<br>Where: Pablo's Havana Café","../images/HispanicRestaurantWeek.webp");
 }
 
 function insert(arr,val,idx) { //insert val into arr at index index
