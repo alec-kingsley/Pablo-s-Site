@@ -90,7 +90,7 @@ function menuCreate(name) { // food, drink, dessert
 
   document.getElementById("menuButtons").appendChild(li);
   li.appendChild(button);
-  document.getElementById("margin").appendChild(div);
+  document.getElementById("loadMenu").appendChild(div);
 }
 function catCreate(name,desc) { // add category name with description to latest menu
   var titleHolder = document.createElement("div");
