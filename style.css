@@ -162,7 +162,7 @@ canvas {
 
 /* HOME */
 #home {
-  background-image: url('./images/BackgroundACrop.png');
+  background-image: url('./images/BackgroundACrop.webp');
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -475,7 +475,7 @@ canvas {
   }
 
   #mobileBackground {
-    background-image: url('./images/BackgroundACrop.png');
+    background-image: url('./images/BackgroundACrop.webp');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -861,7 +861,7 @@ canvas {
 /*About Us*/
 
 #about_us {
-	background-image: url("./images/BackgroundB.png");
+	background-image: url("./images/BackgroundB.webp");
   background-repeat: no-repeat;
   background-size: cover;
 }
