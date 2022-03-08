@@ -11,54 +11,54 @@ function init() {
 window.addEventListener('DOMContentLoaded', init);
 
 function showInfo(results) {
-  let price = name = nameDesc = cat = catDesc = "";
+  let price = Name = nameDesc = cat = catDesc = "";
   var data = results.data
   console.log(data);
   let row = 1;
   while (row < data.length) {
     price = data[row].price;
     if (lang == 0) {
-      name = data[row].name_en;
+      Name = data[row].name_en;
       nameDesc = data[row].nameDesc_en;
       cat = data[row].cat_en;
       catDesc = data[row].catDesc_en;
     } else if (lang == 1) {
-      name = data[row].name_es;
+      Name = data[row].name_es;
       nameDesc = data[row].nameDesc_es;
       cat = data[row].cat_es;
       catDesc = data[row].catDesc_es;
     } else if (lang == 2) {
-      name = data[row].name_ang;
+      Name = data[row].name_ang;
       nameDesc = data[row].nameDesc_ang;
       cat = data[row].cat_ang;
       catDesc = data[row].catDesc_ang;
     } else if (lang == 3) {
-      name = data[row].name_tlh;
+      Name = data[row].name_tlh;
       nameDesc = data[row].nameDesc_tlh;
       cat = data[row].cat_tlh;
       catDesc = data[row].catDesc_tlh;
     }
-    if (data[row].hidden == "yes" || (name == "" && cat == "")) {
+    if (data[row].hidden == "yes" || (Name == "" && cat == "")) {
       row++;
       continue;
     }
     if (price == "menu") {
-      menuCreate(name);
+      menuCreate(Name);
     }
     if (cat != "") {
       catCreate(cat,catDesc);
     }
     if (price != "") {
       if (price == "note") {
-        addNote(name,nameDesc);
+        addNote(Name,nameDesc);
         row++;
         continue;
       } else if (price == "image") {
-        addImg(name,nameDesc);
+        addImg(Name,nameDesc);
         row++;
         continue;
-      } else  if (price != "menu") {itemCreate(name,nameDesc,price);}
-    } else if (name != "") {
+      } else  if (price != "menu") {itemCreate(Name,nameDesc,price);}
+    } else if (Name != "") {
       let priceName = "";
       while(row < data.length-1 && data[row+1].name_en.charAt(0) == ':') {
         row++;
@@ -69,7 +69,7 @@ function showInfo(results) {
         price += " " + priceName.substr(1) + " " + data[row].price;
       }
       price = price.substr(1);
-      itemCreate(name,nameDesc,price);
+      itemCreate(Name,nameDesc,price);
     }
     row++;
   }
@@ -163,6 +163,7 @@ function addImg(link,desc) {
   itemHolder.setAttribute("class","itemHolder photo");
   var img = document.createElement("img");
   img.setAttribute("src",link);
+  img.setAttribute("alt",desc);
   var imgDesc = document.createElement("p");
   if (lang == 3) imgDesc.setAttribute("class","kli");
   imgDesc.innerHTML = desc;
