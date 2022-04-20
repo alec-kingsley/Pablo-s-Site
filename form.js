@@ -43,8 +43,8 @@ function validate() {
   return true;
 }
 $('.contact1-form').on('submit',function(e){
+  e.preventDefault();
   if (validate()) {
-    e.preventDefault();
     const errorEng = "Something went wrong. Please try again";
     const errorEsp = "Había error. Por favor trate de nuevo";
     var mailUrl;
