@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Clicker</title>
+    <meta name="description" content="Pablo's Clicker">
+	  <meta name="author" content="Pablo's Havana Café">
+	  <meta property="og:url" content="https://pabloshavanacafe.com/clicker">
+	  <meta property="og:site_name" content="Pablo's Clicker">
+	  <meta property="og:title" content="Pablo's Clicker">
+	  <meta property="og:description" content="Compete to reach the top of the leaderboard!">
+		<link href="Cubano.png" rel="icon">
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<script src="papa-parse.js"></script>
+		<script src="jquery-3.2.1.js"></script>
+		<script src="script.js" defer></script>
+		<meta name="robots" content="noindex">
+	</head>
+	<body>
+		<div id="header">
+			<div id="companyName">User's Havana Café</div>
+			<div id="settings">
+				<div>Settings</div>
+				<div id="settingsDropdown">
+					<ul>
+						<li onclick="popupDisplay(1)">Login/Create Account</li>
+						<li onclick="popupDisplay(0)">Leaderboard</li>
+						<li><a href="https://discord.gg/QtunQKrUFB" target="_blank" rel="noopener noreferrer">Discord</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="game">
+			<div id="shopItems"></div>
+			<div id="cubano">
+				<div id="cubanoCt">Cubanos: 0</div>
+				<div id="cubanoSpeed">0 Cubanos/second</div>
+				<div id="clicker"><img src="Cubano.png" alt="Click Me!" onclick="cubanoClick()"></div>
+			</div>
+		</div>
+		<div id="hideScreen" onClick="popupDisplay(0)"></div>
+		<div id="popup">
+			<div id="popupTitle"></div>
+			<div id="popupClose" onclick="popupDisplay(0)">Close</div>
+			<div id="playerList"></div>
+			<div id="loginForm">
+				<input type="text" placeholder="Username">
+				<input type="password" placeholder="Password">
+				<div id="passwordWarning">Warning: This site is not secure. Your password may be subject to theft.</div>
+				<div id="loginFormSubmit">
+					<div id="login" onclick="loginAttempt()">Login</div>
+					<div id="createAcc" onclick="createAccAttempt()">Create Account</div>
+				</div>
+				<div id="loginErr"></div>
+			</div>
+		</div>
+		<form id="sendData"><!--Just for JS--></form>
+	</body>
+
+
+</html>

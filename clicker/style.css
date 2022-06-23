@@ -1,0 +1,238 @@
+body {
+	font-family: "Trebuchet MS", sans-serif;
+	background: #2a438c;
+	height: 100vh;
+	margin: 0;
+	overflow-y: hidden;
+	
+}
+#header {
+	display: flex;
+	width: 100%;
+	height: 58px;
+	padding-top: 12px;
+	background-color: #f2f2f2;
+	color: #d92534;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+	border-bottom: 4px solid #d92534;
+	
+}
+#companyName, #settings {
+	position: absolute;
+	white-space: nowrap;
+}
+#companyName {
+	left: 7%;
+	width: 30%;
+}
+#settings {
+	cursor: pointer;
+	right: 12%;
+	text-align: right;
+	width: 15%;
+	display: flex;
+	justify-content: right;
+}
+#settingsDropdown {
+	margin-top: 35px;
+	font-size: 24px;
+	display: none;
+	background-color: #f2f2f2;
+	position: absolute;
+	width: 250px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	z-index: 1;
+}
+#settingsDropdown ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#settingsDropdown li {
+	padding: 2px;
+	border: 1px solid black;
+}
+#settingsDropdown a {
+	color: inherit;
+	text-decoration: none;
+}
+#settingsDropdown li:hover {
+	background-color: #e0e0e0;
+}
+#settings:hover #settingsDropdown{
+	display: block;
+}
+#game {
+	display: flex;
+	height: calc(100% - 70px);
+}
+#shopItems {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 30%;
+	height: 100%;
+	
+}
+.shopItem {
+	padding: 3px;
+	display: flex;
+	flex-wrap: wrap;
+	flex: 50%;
+	background: #f2f2f2;
+	width: 100%;
+	height: 150px;
+	border-bottom: 2px solid black;
+	white-space: nowrap;
+	
+}
+.shopItem:hover {
+	background: #e0e0e0;
+	cursor: pointer;
+}
+.itemInfo {
+	width: 60%;
+}
+.itemName {
+	font-size: 28px;
+	font-weight: bold;
+}
+.itemPic {
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	
+}
+.itemPic img {
+	padding: 8px;
+	height: 100px;
+}
+.itemPrice, .itemSpeed, .itemCt {
+	font-size: 20px;
+}
+#cubano {
+	align-content: center;
+	width: 70%;
+	color: white;
+	margin-top: 3%;
+	height: 90%;
+}
+#cubanoCt {
+	font-size: 45px;
+	text-align: center;
+	
+}
+#cubanoSpeed {
+	font-size: 25px;
+	text-align: center;
+}
+#clicker {
+	margin-top: 5%;
+	display: flex;
+	justify-content: center;
+}
+#clicker img {
+	border-radius: 50%;
+	cursor: pointer;
+	width: 360px;
+	padding: 5px;
+}
+#hideScreen {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.5);
+	z-index: 1;
+	display: none;
+	
+}
+#popup {
+	position: fixed;
+	width: 34%;
+	padding: 2%;
+	left: 31%;
+	top: 15%;
+	height: 60%;
+	border: 3px solid black;
+	background: #f2f2f2;
+	z-index: 2;
+	display: none;
+	
+}
+#popupTitle {
+	font-size: 35px;
+}
+#popupClose {
+	width: auto;
+	font-size: 30px;
+	color: #d92534;
+}
+#popupClose:hover {
+	background-color: #e0e0e0;
+	cursor: pointer;
+}
+#playerList {
+	border: 2px solid black;
+	height: 70%;
+	overflow: auto;
+	display: none;
+	
+}
+.player {
+	border-bottom: 2px solid black;
+	padding: 4px;
+	display: flex;
+	font-size: 28px;
+}
+.rank {
+	font-size: 60px;
+}
+.userInfo {
+	margin-left: 4%;	
+}
+#loginForm {
+	border: 2px solid black;
+	height: 64%;
+	width: 94%;
+	padding: 3%;
+	display: none;
+}
+#loginForm input {
+	font-size: 28px;
+	margin-top: 1%;
+	margin-bottom: 2.5%;
+	width: 70%;
+}
+#passwordWarning {
+	font-size: 14px;
+	font-style: italic;
+	color: #d92534;
+}
+#loginFormSubmit {
+	margin-top: 5%;
+	display: flex;
+	font-size: 24px;
+	justify-content: space-between;
+	width: 70%;
+	
+}
+#login, #createAcc {
+	border: 1px solid #101010;
+	padding: 2px;
+	border-radius: 15%;
+}
+#login:hover, #createAcc:hover {
+	background: #e0e0e0;
+	cursor: pointer;
+}
+#loginErr {
+	margin-top: 4%;
+	font-size: 17px;
+	color: #d92534;
+}
+#sendData {
+	display: none;
+}
