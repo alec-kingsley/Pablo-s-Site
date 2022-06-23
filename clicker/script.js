@@ -87,7 +87,7 @@ let lastSaveTime = 0;
 const updateIntervalSave = 60*5; //seconds between updates
 function saveLoop(currentTime) {
 	window.requestAnimationFrame(saveLoop);
-	if (accName == "User" || (currentTime - lastRenderTimeMain)/1000 < updateIntervalSave) return;
+	if (accName == "User" || (currentTime - lastSaveTime)/1000 < updateIntervalSave) return;
 	lastSaveTime = currentTime;
 	saveAcc(accName,accPassword);
 }
