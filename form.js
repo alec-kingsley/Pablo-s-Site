@@ -20,23 +20,25 @@ function validate() {
   let r = "";
   const formNames = ["Name","Email","Subject","Message"];
   const formNombres = ["Nombre/Apellido","Correo Electrónico","Tema","Mensaje"];
+  const formNaman = ["Náma","Spearcǽrend","Ymb","Gewrit"];
   formNames.forEach(checkEmpty);
   function checkEmpty(value,idx) {
     if (document.forms["contactUs"][value].value == "") {
       if (r != "") r += ", ";
       if (lang == 0) r += value;
       else if (lang == 1) r+= formNombres[idx];
+      else if (lang == 2) r+= formNaman[idx];
     }
   }
   if (r != "") {
-    msg = [r+" must be filled out","Debe llenar "+r];
+    msg = [r+" must be filled out","Debe llenar "+r,r+" wesan gewriten scealt"];
     popUpGen("Error",msg[lang]);
     return false;
   }
   const email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   let f = document.forms["contactUs"]["Email"].value;
   if (!email.test(f)) {
-    msg = ["Invalid e-mail address.","Dirección de correo electrónico inválida"];
+    msg = ["Invalid e-mail address.","Dirección de correo electrónico inválida", "Spearcǽrend nis riht"];
     popUpGen("Error",msg[lang]);
     return false;
   } 
