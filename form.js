@@ -38,7 +38,7 @@ function validate() {
   const email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   let f = document.forms["contactUs"]["Email"].value;
   if (!email.test(f)) {
-    msg = ["Invalid e-mail address.","Dirección de correo electrónico inválida", "Spearcǽrend nis riht"];
+    msg = ["Invalid e-mail address","Dirección de correo electrónico inválida", "Spearcǽrend nis riht"];
     popUpGen("Error",msg[lang]);
     return false;
   } 
