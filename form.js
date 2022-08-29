@@ -70,8 +70,9 @@ $('.contact1-form').on('submit',function(e){
           console.log(response.error);
         }
       },
-      error: function() {
+      error: function(jqXHR, textStatus, errorThrown) {
         msg = [errorEng,errorEsp];
+        console.log("jqXHR: "+jqXHR+"\ntextStatus: "+textStatus+"\nerrorThrown: "+errorThrown);
         popUpGen(msg[lang],"");
       }
     })
