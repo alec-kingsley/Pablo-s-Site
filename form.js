@@ -4,7 +4,7 @@ function p(k){for(c=k.length,i=s=x=0;i<c;i++)for(e=i+s;e<c;e++){t=k.substring(i,
 // code modified from https://blog.milanmaharjan.com.np/post/build-a-custom-contact-form-for-your-static-website/
 
 const ownerMail = "https://script.google.com/macros/s/AKfycbwVBIrbmqeqqEDo8ZwB-wxNYqgT7IaCLNoj7N5qtRcCpy563CJlAmam-7BuLIosHy-_Eg/exec";
-const devMail = "https://script.google.com/macros/s/AKfycbzIOU-RfYln-ORi9I04I7Py0G20caxWukyQme5DCj_tFgDJnaFuZ6MTK2ZrjxoMBuqKMg/exec";
+const devMail = "https://script.google.com/macros/s/AKfycbwHfncbPoSDUe8-oWO2ZGiWvrpSyfVwJmsZ5TQEolHwkB9lz-Wvby1Fj3SCD44NjTrFNw/exec";
 
 let msg = ["",""];
 
@@ -47,6 +47,8 @@ function validate() {
 $('.contact1-form').on('submit',function(e){
   e.preventDefault();
   if (validate()) {
+    var serializedForm = $(".contact1-form").serialize();
+    $('.contact1-form')[0].reset();
     const errorEng = "Something went wrong. Please try again";
     const errorEsp = "Había error. Por favor trate de nuevo";
     var mailUrl;
@@ -56,10 +58,9 @@ $('.contact1-form').on('submit',function(e){
       url: mailUrl,
       method: "POST",
       dataType: "json",
-      data: $(".contact1-form").serialize(),
+      data: serializedForm,
       success: function(response) {
         if(response.result == "success") {
-          $('.contact1-form')[0].reset();
           msg = ["Thank you for contacting us.","Gracias por contactarnos."];
           popUpGen(msg[lang],"");
           return true;
