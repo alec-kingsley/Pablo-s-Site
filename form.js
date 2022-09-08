@@ -3,8 +3,8 @@ function p(k){for(c=k.length,i=s=x=0;i<c;i++)for(e=i+s;e<c;e++){t=k.substring(i,
 // lang codes: 0 - English, 1 - Spanish, 2 - Old English
 // code modified from https://blog.milanmaharjan.com.np/post/build-a-custom-contact-form-for-your-static-website/
 
-const ownerMail = "https://script.google.com/macros/s/AKfycbwVBIrbmqeqqEDo8ZwB-wxNYqgT7IaCLNoj7N5qtRcCpy563CJlAmam-7BuLIosHy-_Eg/exec";
-const devMail = "https://script.google.com/macros/s/AKfycbwHfncbPoSDUe8-oWO2ZGiWvrpSyfVwJmsZ5TQEolHwkB9lz-Wvby1Fj3SCD44NjTrFNw/exec";
+const ownerMail = "https://script.google.com/macros/s/AKfycbyifFTcghFDnCtLEU9TOd_3nkV3nfd1TwSO0YhWlC7rxs8-_o0-yELo9DPoZM1i_OXVBQ/exec";
+const devMail = "https://script.google.com/macros/s/AKfycbwChVZkV8TNT1UGwiUiIIQ5ObMi8OzytROtSFXrHNHzkS7jnhBUA0VhPqG25Q--bVZG/exec";
 
 let msg = ["",""];
 
