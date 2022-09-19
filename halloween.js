@@ -25,7 +25,8 @@ function pickPage(page) {
 				],
 				backgroundRed : [
 					document.getElementById('orderButton'),
-					document.getElementsByClassName('submit')[0]
+					document.getElementsByClassName('submit')[0],
+					document.getElementById('redDiv')
 				],
 				blue : [
 					document.getElementsByClassName('icon')[0],
@@ -34,15 +35,29 @@ function pickPage(page) {
 					document.getElementById('mon-fri'),
 					document.getElementById('sat'),
 					document.getElementById('sun'),
-					document.getElementById('form').querySelector('div')
+					document.getElementById('form').querySelector('div'),
+					document.getElementById('left').getElementsByTagName('a')[1],
+					document.getElementById('right').getElementsByTagName('a')[0]
 					],
 				backgroundBlue : [
+				],
+				borderBlue : [
+					document.getElementById('left'),
+					document.getElementById('right')
 				],
 				darkblue : [
 					
 				],
 				backgroundDarkblue : [
 					document.getElementById('slideshow')
+				],
+				backgroundWhite : [
+					document.getElementById('navbar'),
+					document.getElementById('caption'),
+					document.getElementById('name'),
+					document.getElementById('email'),
+					document.getElementById('subject'),
+					document.getElementsByClassName('question')[0]
 				]
 			}
 			break;
@@ -65,10 +80,13 @@ function pickPage(page) {
 				],
 				backgroundDarkblue : [
 					
+				],
+				backgroundWhite : [
+					
 				]
 			}
 			break;
-		case 'home':
+		case 'about-us':
 			return {
 				red : [
 
@@ -87,6 +105,9 @@ function pickPage(page) {
 				],
 				backgroundDarkblue : [
 					
+				],
+				backgroundWhite : [
+				
 				]
 			}
 	}
@@ -104,7 +125,7 @@ let black = 'black';
 function changeColor(page) {
 	let pageElements = pickPage(page);
 
-	document.getElementById('home').style.background = 'rgba(255, 255, 255, 0)';
+	document.getElementById('home').style.background = 'grey';
 	
 	pageElements.red.forEach((element) => 
 						 element.style.color = orange);
@@ -114,17 +135,30 @@ function changeColor(page) {
 						 element.style.color = black);
 	pageElements.backgroundBlue.forEach((element) => 
 						 element.style.background = black);
+	pageElements.borderBlue.forEach((element) => 
+						 element.style.borderBottom = "2px solid black");
 	pageElements.darkblue.forEach((element) => 
 						 element.style.color = black);
 	pageElements.backgroundDarkblue.forEach((element) => 
 						 element.style.background = black);
+	pageElements.backgroundWhite.forEach((element) => 
+						 element.style.background = grey);
 }
 
 // Update background pictures to new pictures
-
+function changeBackground(page) {
+	switch(page) {
+		case '':
+			document.getElementById('home-background').style.backgroundImage = 'url("./images/HalloweenBackground.png")';
+			break;
+		default:
+			break;
+	}
+}
 
 
 
 
 
 changeColor(page);
+changeBackground(page);
