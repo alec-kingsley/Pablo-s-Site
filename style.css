@@ -155,16 +155,18 @@ canvas {
   flex-direction: row;
   justify-content: space-around;
   padding-top: 230px;
+	padding-bottom: 50px;
 }
 
 
 
 
 /* HOME */
-#home {
+#home-background {
   background-image: url('./images/BackgroundACrop.webp');
   background-repeat: no-repeat;
   background-size: 100%;
+	height: 100%;
 }
 /* Intro Image */
 #mainImgDiv {
@@ -232,9 +234,8 @@ canvas {
 /* slideshow */
 #slideshow {
   z-index: 2;
-  margin-top: 5%;
-  position: relative;
 	background-color: #3554b1;
+	position: relative;
   /* This is the blue #2a438c with lightness adjusted via https://www.w3schools.com/colors/colors_picker.asp to 45% */
 	width: 100%;
 
@@ -464,7 +465,6 @@ canvas {
   #navbar {
 		font-size: 12px;
 	}
-
 	
   #mainImgDiv {
     display: none;
@@ -475,7 +475,7 @@ canvas {
 		margin: 0;
   }
 
-  #home {
+  #home-background {
     background-image: none;
   }
 
@@ -659,8 +659,8 @@ canvas {
 }
 
 @media only screen and (min-width: 1700px) {
-	#slideshow {
-		top: 110px;
+	#top-items {
+		padding-bottom: 50px;
 	}
 
 	#hours, #form {
