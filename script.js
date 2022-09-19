@@ -22,6 +22,9 @@ function daySelect() {
   //runs on pablos birthday
   if (today.getMonth() == 0 && today.getDate() == 17) birthday();
 
+  //runs on halloween
+  if (today.getMonth() == 8) halloween(); 
+    
   var day = today.getDay();
 
   if (day == 0) {
@@ -81,8 +84,18 @@ function birthday() {
   mainImg.src = pathFix("/images/birthday.webp");
 }
 
+//Halloween
+function halloween() {
+	var body = document.getElementsByTagName("body")[0];
+	// Sets logo to pumpkin logo
+  document.getElementById("navIcon").setAttribute("src","images/HalloweenLogo.png");
 
-
+	// Appends halloween.js to body
+	var js = document.createElement("script");
+	js.type = "text/javascript";
+	js.src = pathFix("/halloween.js");
+	body.appendChild(js);
+}
 
 
 
