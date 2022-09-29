@@ -10,16 +10,18 @@ function pathFix(link) {
 let lang = 0; // 0 is English, 1 is Spanish, 2 is Old English, 3 is Klingon
 let randSplash = [];
 
+daySelect();
+easterEgg();
+// should probably fix
 function openFunc(langSet) {
   lang = langSet;
-  daySelect();
   setSlide(1);
-  easterEgg();
 }
 function daySelect() {
   var today = new Date();
 
   //runs on pablos birthday
+	// might be broken
   if (today.getMonth() == 0 && today.getDate() == 17) birthday();
 
   //runs on halloween
@@ -84,11 +86,20 @@ function birthday() {
   mainImg.src = pathFix("/images/birthday.webp");
 }
 
+
+
 //Halloween
 function halloween() {
+
+	
+	
+	let path = window.location.pathname;
+	let page = path.split('/').pop();
+	
 	var body = document.getElementsByTagName("body")[0];
 	// Sets logo to pumpkin logo
-  document.getElementById("navIcon").setAttribute("src","images/HalloweenLogo.png");
+  document.getElementById("navIcon").setAttribute("src", pathFix('/images/HalloweenLogo.png'));
+	document.getElementById("navIconMobile").setAttribute("src", pathFix('/images/HalloweenLogo.png'))
 
 	// Appends halloween.js to body
 	var js = document.createElement("script");
@@ -177,7 +188,14 @@ function easterEgg() {
 }
 
 function randomSplash() {
+	var today = new Date();
+	
   let splashText = ["Visit us February 18th at 6:00 PM!","Cure your boredom with pabloshavanacafe.com/clicker !","Try pabloshavanacafe.com/ang ! Anglo-Saxon approved","Try pabloshavanacafe.com/tlh ! Klingon approved","Since December 2018","S t r e s s z i l l a","Be careful not to inhale the restaurant-grade chemispray","Born in Cuba, raised in Jersey","Billions and billions served! Wait no that's not right","https://discord.gg/QtunQKrUFB","Bring a friend!","Vaca Frita sounds so much better in English","Add a description about this category"];
+
+	let halloween = ["LUKAS SERENKO IS THE OG THUG HUNTER!!!", "Living near Alec Kingsley is real spooky, protect your kids!", "Come to our restaurant for a special haunted house event! This month only!"];
+if (today.getMonth() == 8)
+		splashText = splashText.concat(halloween);
+	
   let retText = [];
   while (splashText.length > 0) {
     var randIdx = Math.floor(Math.random()*splashText.length)

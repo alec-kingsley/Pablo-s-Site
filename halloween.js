@@ -54,23 +54,26 @@ function pickPage(page) {
 				backgroundWhite : [
 					document.getElementById('navbar'),
 					document.getElementById('caption'),
+					document.getElementsByClassName('caption-container')[0],
 					document.getElementById('name'),
 					document.getElementById('email'),
 					document.getElementById('subject'),
-					document.getElementsByClassName('question')[0]
+					document.getElementsByClassName('question')[0],
+					document.getElementById('mobileBar')
 				]
 			}
-			break;
 		case 'menu':
 			return {
 				red : [
-
+					//document.getElementById('navtitle')
 				],
 				backgroundRed : [
-
+					//document.getElementById('orderButton')
 				],
 				blue : [
-
+					//document.getElementsByClassName('icon')[0],
+					//document.getElementById('left').getElementsByTagName('a')[1],
+					//document.getElementById('right').getElementsByTagName('a')[0]
 					],
 				backgroundBlue : [
 				
@@ -85,7 +88,6 @@ function pickPage(page) {
 					
 				]
 			}
-			break;
 		case 'about-us':
 			return {
 				red : [
@@ -146,15 +148,15 @@ function changeColor(page) {
 }
 
 // Update background pictures to new pictures
-function changeBackground(page) {
-	switch(page) {
-		case '':
-			document.getElementById('home-background').style.backgroundImage = 'url("./images/HalloweenBackground.png")';
-			break;
-		default:
-			break;
-	}
-}
+//function changeBackground(page) {
+//	switch(page) {
+//		case '':
+//			document.getElementById('home-background').style.backgroundImage = 'url("./images/HalloweenBackground.png")';
+//			break;
+//		default:
+//			break;
+//	}
+//}
 
 
 
