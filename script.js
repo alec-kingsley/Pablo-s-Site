@@ -25,7 +25,7 @@ function daySelect() {
   if (today.getMonth() == 0 && today.getDate() == 17) birthday();
 
   //runs on halloween
-  if (today.getMonth() == 8) halloween(); 
+  if (today.getMonth() == 9) halloween(); 
     
   var day = today.getDay();
 
@@ -90,9 +90,6 @@ function birthday() {
 
 //Halloween
 function halloween() {
-
-	
-	
 	let path = window.location.pathname;
 	let page = path.split('/').pop();
 	
