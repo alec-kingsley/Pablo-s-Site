@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css"/>
+        <title>Amazing AEP Thing!</title>
+    </head>
+    <body>
+        <!--<img src = "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" />-->
+        <div id="top-header">
+            <h1>Pablo's Havana CSV Analyzer</h1>
+            <div id="subheader">
+                <p>Upload a CSV file to graph various aspects of it: </p>
+                <input id="csv" type="file" accept=".csv"/>
+            </div>
+        </div>
+        <div id="header-rows">   
+            <p>Number of header rows</p>
+            <input id="header" type="number" min="0" placeholder="2">
+        </div>
+        <div id="graphData">
+            <div id="scatter"></div>
+            <div id="selections" style="display:none;">
+                <div id="selectBoxes">
+                    <div id="xSelectBox">X:
+                        <select id="xSelect">select x value</select>
+                    </div>
+                    <div id="ySelectBox">Y:
+                        <select id="ySelect" multiple="true">select y value</select>
+                    </div>
+                </div>
+                <p id="graphGen" onclick="graphGen();">Generate Graph</p>
+            </div>
+        </body>
+    
+        </canvas>
+
+        <!--JavaScript-->
+        <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,99 @@
+/* fonts */
+@font-face {
+  font-family: 'architects_daughter';
+    src: url('../fonts/architectsdaughter.woff2') format('woff2'),
+         url('../fonts/architectsdaughter.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input {
+    border-radius: 5px;
+    border: #2a438c;
+    border-style: solid;
+    border-width: 2px;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#top-header {
+    width: 90vw;
+    margin: auto;
+}
+#top-header h1 {
+    font-size: 34px;
+    width: 100%;
+    text-align: center;
+    color: #d92332;
+}
+
+#subheader {
+    display: flex;
+    width: 100%;
+    flex-direction: horizontal ;
+    align-items: center;
+    border-bottom: 2px solid #2a438c;
+    font-size: 22px;
+}
+
+
+#subheader p {
+    margin-left: 10%;
+    width: 70%;
+    font-size: 45;
+    text-align: left;
+    color: black;
+    font-family: 'architects_daughter';
+}
+
+#subheader input {
+    width: 20%;
+    margin-left: auto;
+}
+
+#header-rows {
+    margin-left: 10%;
+}
+#header-rows p {
+    font-size: 15px;
+}
+#header-rows input {
+    font-size: 12px
+}
+
+#graphData {
+    width: 80vw;
+    margin: auto;
+}
+#scatter {
+    width: 100%;
+    
+}
+#selections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+#selectBoxes {
+    display: flex;
+}
+#xSelectBox {
+    width: 50%;
+    display: flex;
+}
+#ySelectBox {
+    width: 50%;
+    display: flex;
+
+}
+#xSelect, #ySelect {
+    width: 80%;
+    height: 3.5em;
+    font-size: 12px;
+}
+#graphGen {
+    text-decoration: underline;
+    text-align: center;
+    width: 100%;
+}
