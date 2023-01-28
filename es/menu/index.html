@@ -53,14 +53,23 @@
             <div id="buttons">
                <ul id="menuButtons"></ul>
             </div>
-            <div id="topTxt"><a href="https://www.clover.com/online-ordering/PABLOS-HAVANA-CAFE" id="orderButton">Comprar Online</a></div>
+            <div id="orderOnline">
+              <button id="orderButton" onclick="buttonPopupGen()">Comprar Online</button>
+              <div id="buttonPopup" style="display:none;">
+                <ul>
+                  <li><a href="https://www.clover.com/online-ordering/PABLOS-HAVANA-CAFE">Powell</a></li>
+                  <li><a href="https://www.clover.com/online-ordering/pablos-havana-cafe-dublin">Dublin</a></li>
+                </ul>
+              </div>
+          </div>
          </div>
+        <div id="loading">Esperando...</div>
       </div>
 
       <script src="../../jquery-3.2.1.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js" crossorigin="anonymous"></script>
       <script src="../../menuBuilder.js"></script>
-      <script onload="lang = 0" src="../../script.js"></script>
+      <script onload="lang = 1" src="../../script.js"></script>
 
       	  <!-- Google Tag Manager -->
  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

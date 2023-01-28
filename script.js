@@ -10,12 +10,12 @@ function pathFix(link) {
 let lang = 0; // 0 is English, 1 is Spanish, 2 is Old English, 3 is Klingon
 let randSplash = [];
 
-daySelect();
 easterEgg();
 // should probably fix
 function openFunc(langSet) {
   lang = langSet;
   setSlide(1);
+  daySelect();
 }
 function daySelect() {
   var today = new Date();
@@ -157,6 +157,21 @@ function switchDisp() {
     x.style.display = "block";
   }
 }
+function buttonPopupGen() {
+  var x = document.getElementById("buttonPopup");
+	var y = document.getElementById('orderButton');
+  if (x.style.display == "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+
+	if (y.style.borderRadius == "0px") {
+    y.style.borderRadius = "16px";
+	} else {
+		y.style.borderRadius = "0";
+	}
+}
 
 window.onscroll = function() {scrollFunction();}
 
@@ -187,7 +202,7 @@ function easterEgg() {
 function randomSplash() {
 	var today = new Date();
 	
-  let splashText = ["Visit us February 18th at 6:00 PM!","Cure your boredom with pabloshavanacafe.com/clicker !","Try pabloshavanacafe.com/ang ! Anglo-Saxon approved","Try pabloshavanacafe.com/tlh ! Klingon approved","Since December 2018","S t r e s s z i l l a","Be careful not to inhale the restaurant-grade chemispray","Born in Cuba, raised in Jersey","Billions and billions served! Wait no that's not right","https://discord.gg/QtunQKrUFB","Bring a friend!","Vaca Frita sounds so much better in English","Add a description about this category"];
+  let splashText = ["Visit us February 18th at 6:00 PM!","Cure your boredom with pabloshavanacafe.com/clicker !","Try pabloshavanacafe.com/ang ! Anglo-Saxon approved","Try pabloshavanacafe.com/tlh ! Klingon approved","Since December 2018","S t r e s s z i l l a","Be careful not to inhale the restaurant-grade chemispray","Born in Cuba, raised in Jersey","Billions and billions served! Wait no that's not right","https://discord.gg/QtunQKrUFB","Bring a friend!","Vaca Frita sounds so much better in English","Add a description about this category","Trouble with windmills? Try pabloshavanacafe.com/csv-analyzer !"];
 
 	let halloween = ["LUKAS SERENKO IS THE OG THUG HUNTER!!!", "Living near Alec Kingsley is real spooky, protect your kids!", "Come to our restaurant for a special haunted house event! This month only!"];
 if (today.getMonth() == 8)
@@ -201,7 +216,10 @@ if (today.getMonth() == 8)
   }
   return retText;
 }
-
+/**
+  * @output NO
+  * @param title - the title of popup
+  */
 function popUpGen(title, desc) {
   if($('#popUp').length == 1) popUp.remove();
   

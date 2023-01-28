@@ -211,25 +211,46 @@ canvas {
   font-weight: inherit;
   margin-top: 0;
 }
+
+#orderOnline {
+  display: flex;
+	justify-content: center;
+}
 #orderButton {
   font-size: 25px;
   white-space: nowrap;
-  text-decoration: none;
+  text-align: center;
   border-radius: 16px;
-  width: 120px;
+  width: 8em;
   height: 40px;
   background-color: #d92332;
   font-weight: bold;
   color: #f2f2f2;
   border-color: transparent;
-  padding: 8px 15px;
+  cursor: pointer;
 }
 #orderButton:not(.kli) {
   font-family: 'architects_daughterregular', Arial, sans-serif;
 }
-
-
-
+#buttonPopup {
+  position: absolute;
+  margin-left: 206px;
+  margin-top: -21px;
+	margin-penis: 69px;
+}
+#buttonPopup ul {
+  list-style-type: none;
+  font-size: 20px;
+}
+#buttonPopup li {
+  border: 1px solid #f2f2f2;
+  background-color: #d92332;
+  padding: 2px;
+}
+#buttonPopup a {
+  text-decoration: none;
+  color: #f2f2f2;
+}
 
 /* slideshow */
 #slideshow {
@@ -359,6 +380,10 @@ canvas {
 	width: 50%;
 	float: left;
   color: #2a438c;
+}
+.disclaimer {
+  font-style: italic;
+  font-size: .95em;
 }
 
 #isOpen, #estabierto {
@@ -708,6 +733,11 @@ canvas {
 
 #menuButtons button:not(.kli) {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#loading {
+	font-size: 80px;
+	font-color: red;
 }
 
 /* pablos ad text */

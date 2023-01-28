@@ -162,5 +162,5 @@ function changeColor(page) {
 
 
 
-changeColor(page);
-changeBackground(page);
+//changeColor(page);
+//changeBackground(page);

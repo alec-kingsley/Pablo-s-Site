@@ -1,5 +1,6 @@
 var sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBhYTRQo8EsOF-TW7qw0IkLkg8hYozHsHujcs8TXx7CaUGCKZUtkhGLrAk8is_1INaKAQfHwJffZuy/pub?gid=0&single=true&output=csv';
 var menuCt = 0;
+let loading = document.getElementById('loading')
 function init() {
   Papa.parse(sheetUrl, {
     download: true,
@@ -91,6 +92,8 @@ function menuCreate(name) { // food, drink, dessert
   document.getElementById("menuButtons").appendChild(li);
   li.appendChild(button);
   document.getElementById("loadMenu").appendChild(div);
+	
+	loading.remove();
 }
 function catCreate(name,desc) { // add category name with description to latest menu
   var titleHolder = document.createElement("div");
