@@ -206,9 +206,9 @@ function easterEgg() {
 function randomSplash() {
   var today = new Date();
 
-  let splashText = ["Visit us February 18th at 6:00 PM!", "Cure your boredom with pabloshavanacafe.com/clicker !", "Try pabloshavanacafe.com/ang ! Anglo-Saxon approved", "Try pabloshavanacafe.com/tlh ! Klingon approved", "Since December 2018", "S t r e s s z i l l a", "Be careful not to inhale the restaurant-grade chemispray", "Born in Cuba, raised in Jersey", "Billions and billions served! Wait no that's not right", "https://discord.gg/QtunQKrUFB", "Bring a friend!", "Vaca Frita sounds so much better in English", "Add a description about this category", "Trouble with windmills? Try pabloshavanacafe.com/csv-analyzer !"];
+  let splashText = ["Visit us February 18th at 6:00 PM!", "Cure your boredom with pabloshavanacafe.com/clicker !", "Try pabloshavanacafe.com/ang ! Anglo-Saxon approved", "Try pabloshavanacafe.com/tlh ! Klingon approved", "Since December 2018", "Be careful not to inhale the restaurant-grade chemispray", "Born in Cuba, raised in Jersey", "Billions and billions served! Wait no that's not right", "Bring a friend!", "Vaca Frita sounds so much better in English", "Add a description about this category", "Trouble with windmills? Try pabloshavanacafe.com/csv-analyzer !"];
 
-  let halloween = ["LUKAS SERENKO IS THE OG THUG HUNTER!!!", "Living near Alec Kingsley is real spooky, protect your kids!", "Come to our restaurant for a special haunted house event! This month only!"];
+  let halloween = ["We may never be rid of the ghost of Domino's", "There is perhaps nothing spookier than the prospect of Pablo finding this", "If you're looking for a real scare this month, check out the code!", "Come to our restaurant for a special haunted house event! This month only!"];
   if (today.getMonth() == 8)
     splashText = splashText.concat(halloween);
 
