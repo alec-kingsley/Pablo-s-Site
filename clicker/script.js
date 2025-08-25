@@ -373,9 +373,10 @@ function popupDisplay(idx) {
 		}
 	}
 }
-var sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHbZmxhvbIP30qkIuO4O5KeQaVFtDMul1DRLMuT4fi_0Jlkxlh6jAoLATtIrXMrzJg4x4lq_8kIGZu/pub?gid=0&single=true&output=csv";
+var sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHbZmxhvbIP30qkIuO4O5KeQaVFtDMul1DRLMuT4fi_0Jlkxlh6jAoLATtIrXMrzJg4x4lq_8kIGZu/pub?output=csv";
 Papa.parse(sheetUrl, {
   download: true,
   header: true,
   complete: function(results) {data = results.data;}
+
 });
