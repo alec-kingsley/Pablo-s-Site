@@ -381,10 +381,6 @@ canvas {
 	float: left;
   color: #2a438c;
 }
-.disclaimer {
-  font-style: italic;
-  font-size: .95em;
-}
 
 #isOpen, #estabierto {
   color: #2a438c;

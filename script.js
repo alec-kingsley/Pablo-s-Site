@@ -29,16 +29,10 @@ function daySelect() {
 
   var day = today.getDay();
 
-  if (day == 0) {
-    document.getElementById("sun").style.textDecoration = "underline";
-  } else if (day == 6) {
-    document.getElementById("sat").style.textDecoration = "underline";
-  } else if (lang > 1) { // for if it's not English/Spanish. Old hours.
-    document.getElementById("mon-fri").style.textDecoration = "underline";
-  } else if (day == 5) {
-    document.getElementById("fri").style.textDecoration = "underline";
+  if (day >= 0 && day <= 3) {
+    document.getElementById("sun-wed").style.textDecoration = "underline";
   } else {
-    document.getElementById("mon-thurs").style.textDecoration = "underline";
+    document.getElementById("thurs-sat").style.textDecoration = "underline";
   }
   untilClose();
 }
@@ -49,15 +43,13 @@ function untilClose() {
   let min = d.getMinutes();
 
   var isOpen = false;
-  if (hr >= 11) {
-    if (day == 0 && hr < 17) {
-      isOpen = true;
-    } else if (day == 6 && hr < 20) {
-      isOpen = true;
-    } else if (hr < 20 && !(hr >= 14 && hr < 16)) {
-      isOpen = true;
-    }
+
+  if (day >= 0 && day <= 3) {
+  isOpen = hr >= 11 && hr <= 20;
+  } else {
+    isOpen = hr >= 11 && hr <= 21;
   }
+
   if (isOpen) {
     const langOpen = ["Open", "Abierto", "Openede", "poSmoHta'"];
     document.getElementById("isOpen").innerHTML = langOpen[lang];
