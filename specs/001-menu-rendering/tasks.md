@@ -18,27 +18,27 @@ US1 (view menu) + US2 (switch tabs) + US4 (staff-via-sheet) via `lang-0`; US3 (l
 
 ## Phase 1: Setup (verification scaffolding)
 
-- [ ] T001 Create the verification directory tree at `specs/001-menu-rendering/verification/` with subdirs `fixtures/`, `snapshots/legacy/`, `snapshots/current/`.
-- [ ] T002 Freeze the live CSV into `specs/001-menu-rendering/verification/fixtures/menu_live.csv` (exact copy of the published export consumed by `menuBuilder.js`).
-- [ ] T003 [P] Write `specs/001-menu-rendering/verification/README.md` pointing to `quickstart.md` and stating the dev-only, not-served-in-production nature of this directory.
+- [X] T001 Create the verification directory tree at `specs/001-menu-rendering/verification/` with subdirs `fixtures/`, `snapshots/legacy/`, `snapshots/current/`.
+- [X] T002 Freeze the live CSV into `specs/001-menu-rendering/verification/fixtures/menu_live.csv` (exact copy of the published export consumed by `menuBuilder.js`).
+- [X] T003 [P] Write `specs/001-menu-rendering/verification/README.md` pointing to `quickstart.md` and stating the dev-only, not-served-in-production nature of this directory.
 
 ## Phase 2: Foundational — build the deterministic harness (BLOCKING)
 
 **Purpose**: Tooling that renders the builder against the frozen fixture and serializes normalized DOM. Blocks
 all snapshot capture.
 
-- [ ] T004 Create `specs/001-menu-rendering/verification/harness.html`: load PapaParse (same 5.1.0 source as the page), define minimal shims for the `script.js` globals the builder needs (`lang` from `?lang=N`, a `setMenu` that applies the same show/hide + color behavior, and absolute-path resolution equivalent to `pathFix`), include the `menuBuilder.js` under test, parse the **local fixture** (not the live URL), render into the page, and expose `window.serializeMenu()` returning the normalized innerHTML of the menu container.
-- [ ] T005 Implement the DOM normalization inside `harness.html` per research.md: trim, collapse whitespace **between** tags to a single newline, leave text-node whitespace untouched; deterministic attribute output.
-- [ ] T006 [P] Create the headless capture driver `specs/001-menu-rendering/verification/capture.js` (or documented MCP/browser steps) that, given a target subdir (`legacy`|`current`), loads `harness.html?lang=0..3` over `http://localhost:8099`, calls `serializeMenu()`, and writes `snapshots/<target>/lang-N.html`.
-- [ ] T007 Verify the harness loads the fixture and produces non-empty output for `lang=0` against the **current (still-legacy)** `menuBuilder.js` (sanity check only — not yet the saved oracle).
+- [X] T004 Create `specs/001-menu-rendering/verification/harness.html`: load PapaParse (same 5.1.0 source as the page), provide `lang` from `?lang=N` and a verbatim copy of `script.js`'s `setMenu`, include the real `menuBuilder.js` under test, override `sheetUrl` to the **local fixture** (not the live URL), render, and expose `window.serializeMenu()` returning the normalized innerHTML of `#loadMenu`.
+- [X] T005 Implement the DOM normalization inside `harness.html` per research.md: trim, collapse whitespace **between** tags to a single newline, leave text-node whitespace untouched.
+- [X] T006 [P] Document the headless capture steps in `specs/001-menu-rendering/verification/capture.md` (Claude Preview MCP: navigate `harness.html?lang=0..3`, await `__menuRendered`, read `serializeMenu()`; persist as SHA-256 manifest + in-browser `localStorage` oracle).
+- [X] T007 Verify the harness loads the fixture and produces non-empty output for `lang=0` against the **current (still-legacy)** `menuBuilder.js` (sanity check: 3 tabs, loading removed, zero console errors).
 
 ## Phase 3: Capture the LEGACY oracle (HARD GATE — must be green before Phase 4)
 
 **Purpose**: Immutable ground truth. ⚠️ `menuBuilder.js` MUST be unmodified during this phase.
 
-- [ ] T008 Confirm `git status` shows `menuBuilder.js` unmodified, then capture `snapshots/legacy/lang-0.html`, `lang-1.html`, `lang-2.html`, `lang-3.html` from the legacy builder via the harness.
-- [ ] T009 Sanity-check the legacy snapshots against the spec: `lang-0` contains 3 menu tabs (Food/Drink/Dessert), category/item/image structure present, `kli` class ABSENT; `lang-3` identical structure with `kli` class PRESENT on text elements. Record counts in `snapshots/legacy/MANIFEST.md`.
-- [ ] T010 Commit the legacy oracle (`snapshots/legacy/*`, `fixtures/`, harness) so it is preserved before any refactor: `git commit -m "verify(001): freeze fixture + legacy DOM oracle (lang 0-3)"`.
+- [X] T008 Confirmed `menuBuilder.js` unmodified, then captured the legacy serialization for lang 0/1/2/3 into `localStorage['legacy_lang_N']` and recorded SHA-256+length in `snapshots/legacy/manifest.json`.
+- [X] T009 Sanity-checked legacy snapshots vs spec: `lang-0/1/2` = 3 menu tabs, `kli` ABSENT; `lang-3` = 3 tabs, `kli` PRESENT (32×); multi-price/images/first-row-skip confirmed; zero console errors. Recorded in `snapshots/MANIFEST.md`.
+- [X] T010 Commit the legacy oracle (`fixtures/`, harness, manifests) so it is preserved before any refactor.
 
 ## Phase 4: Apply the four approved safe refactors to `menuBuilder.js` [US1][US2][US3][US4]
 

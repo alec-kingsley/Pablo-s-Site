@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+  Deterministic parity harness for menuBuilder.js (dev-only, not served in production).
+  Loads the REAL menuBuilder.js unmodified, overrides only sheetUrl to point at the frozen
+  local fixture, and provides a verbatim copy of script.js's setMenu + the lang global.
+  Renders, then exposes window.serializeMenu() returning normalized menu DOM.
+  Usage: harness.html?lang=0|1|2|3  (served over http://localhost:8099)
+-->
+<html>
+<head><meta charset="utf-8"><title>menu parity harness</title></head>
+<body>
+  <!-- The DOM hooks menuBuilder.js depends on. #loading MUST exist before menuBuilder.js
+       is parsed (it reads it at top level). Both legacy and refactored runs use this same
+       scaffold, so any scaffold detail cancels out in the legacy-vs-current diff. -->
+  <div class="margin" id="loadMenu">
+    <div id="topItems">
+      <div id="buttons"><ul id="menuButtons"></ul></div>
+    </div>
+    <div id="loading">Loading...</div>
+  </div>
+
+  <!-- 1. lang global, from query param, declared BEFORE the builder (which reads it). -->
+  <script>
+    var lang = (function () {
+      var n = parseInt(new URLSearchParams(window.location.search).get('lang'), 10);
+      return (n === 0 || n === 1 || n === 2 || n === 3) ? n : 0;
+    })();
+  </script>
+
+  <!-- 2. setMenu: copied verbatim from script.js so its DOM mutations match production. -->
+  <script>
+    function setMenu(menu) {
+      var menuButtons = document.getElementsByClassName("menuName");
+      var menus = document.getElementsByClassName("category");
+      for (let i = 0; i < menus.length; i++) {
+        if (i == menu) {
+          menus[i].style.display = "block";
+          menuButtons[i].style.color = "#d92332";
+        } else {
+          menus[i].style.display = "none";
+          menuButtons[i].style.color = "#2a438c";
+        }
+      }
+    }
+  </script>
+
+  <!-- 3. PapaParse, same version/source as menu/index.html. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js" crossorigin="anonymous"></script>
+
+  <!-- 4. The real builder under test (unmodified). Registers DOMContentLoaded -> init.
+          Absolute path (served from repo root) avoids relative-depth ambiguity. -->
+  <script src="/menuBuilder.js"></script>
+
+  <!-- 5. Redirect the builder at the LOCAL fixture and signal render completion.
+          Runs synchronously after the builder is parsed but BEFORE DOMContentLoaded fires,
+          so init() picks up the overridden sheetUrl and the wrapped showInfo. -->
+  <script>
+    // Point at the frozen fixture instead of the live Google Sheet (deterministic).
+    sheetUrl = '/specs/001-menu-rendering/verification/fixtures/menu_live.csv';
+
+    // Wrap showInfo so we know when the (async) parse+render has completed.
+    window.__menuRendered = false;
+    var __origShowInfo = showInfo;
+    showInfo = function (results) {
+      __origShowInfo(results);
+      window.__menuRendered = true;
+    };
+
+    // Normalized serialization: collapse whitespace BETWEEN tags only; leave text nodes intact.
+    window.serializeMenu = function () {
+      var html = document.getElementById('loadMenu').innerHTML;
+      return html.replace(/>\s+</g, '>\n<').trim();
+    };
+  </script>
+</body>
+</html>
