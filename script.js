@@ -200,7 +200,7 @@ function randomSplash() {
   let splashText = ["Visit us February 18th at 6:00 PM!", "Cure your boredom with pabloshavanacafe.com/clicker !", "Try pabloshavanacafe.com/ang ! Anglo-Saxon approved", "Try pabloshavanacafe.com/tlh ! Klingon approved", "Since December 2018", "Be careful not to inhale the restaurant-grade chemispray", "Born in Cuba, raised in Jersey", "Billions and billions served! Wait no that's not right", "Bring a friend!", "Vaca Frita sounds so much better in English", "Add a description about this category", "Trouble with windmills? Try pabloshavanacafe.com/csv-analyzer !"];
 
   let halloween = ["We may never be rid of the ghost of Domino's", "There is perhaps nothing spookier than the prospect of Pablo finding this", "If you're looking for a real scare this month, check out the code!", "Come to our restaurant for a special haunted house event! This month only!"];
-  if (today.getMonth() == 8)
+  if (today.getMonth() == 9) // October — align Halloween splash texts with the October decorations (was 8 = September)
     splashText = splashText.concat(halloween);
 
   let retText = [];
