@@ -45,23 +45,23 @@ all snapshot capture.
 **Purpose**: Make the code express the spec while preserving exact output. Apply changes one at a time;
 re-diff after each (Phase 5) to localize any regression.
 
-- [ ] T011 [US1] In `menuBuilder.js` `showInfo`, remove the debug `console.log(data)` line.
-- [ ] T012 [US1] In `menuBuilder.js` `showInfo`, declare `Name`, `nameDesc`, `cat`, `catDesc` with `let` (replace the chained `let price = Name = nameDesc = ...` implicit-global assignment) — values unchanged because each is reassigned per row before use.
-- [ ] T013 [US3] In `menuBuilder.js`, introduce `const SUFFIX = ['_en','_es','_ang','_tlh'][lang]` and replace the repeated `if (lang==0/1/2/3)` field-selection chains in `showInfo` (and the colon-continuation loop) with `data[row]['name'+SUFFIX]` etc. Keep continuation **detection** on `name_en` exactly as before.
-- [ ] T014 [US3] In `menuBuilder.js`, add `function kli(base){ return lang==3 ? base + ' kli' : base }` and replace each `if (lang==3) el.setAttribute('class', base+' kli')` with `el.setAttribute('class', kli(base))`, emitting identical class strings for menu buttons, titles, descriptions, items, prices, notes, and image captions.
-- [ ] T015 [US1] Re-read the full refactored `menuBuilder.js` and confirm no DOM id/class/tag/order changed, the first-row skip (`row` starts at 1), hidden/empty skip, multi-price composition, `#loading` removal, and `setMenu(0)` default are all byte-for-byte intact.
+- [X] T011 [US1] Removed the debug `console.log(data)` line from `showInfo`.
+- [X] T012 [US1] Declared `Name`, `nameDesc`, `cat`, `catDesc` with `let` (replaced the implicit-global chained assignment); `price` scoped with `let` too.
+- [X] T013 [US3] Introduced `const suffix = LANG_SUFFIX[lang]` (`['_en','_es','_ang','_tlh']`) and replaced the `lang==0/1/2/3` field-selection chains in `showInfo` and the colon-continuation loop with `data[row]['name'+suffix]` etc. Continuation **detection** kept on `name_en`.
+- [X] T014 [US3] Added `function kli(base){ return lang==3 ? base+' kli' : base }` and applied it to menu buttons, titles, descriptions, items, prices, notes. `addImg`'s standalone `class="kli"` on `<p>` left UNCHANGED (different pattern — verified by snapshot).
+- [X] T015 [US1] Re-read full refactored `menuBuilder.js`: DOM ids/classes/tags/order, first-row skip, hidden/empty skip, multi-price composition, `#loading` removal, and `setMenu(0)` default all intact.
 
 ## Phase 5: Prove equivalence (empty-diff pass condition) [US1][US2][US3][US4]
 
-- [ ] T016 Capture refactored snapshots `snapshots/current/lang-0..3.html` from the harness against the modified `menuBuilder.js`.
-- [ ] T017 Diff `snapshots/legacy/lang-N.html` vs `snapshots/current/lang-N.html` for N=0,1,2,3. **PASS = all four diffs empty.** If any diff is non-empty, identify which refactor (T011–T014) caused it, revert/fix that change, and re-run from T016. Never edit the legacy oracle.
-- [ ] T018 Record the parity result (all-empty diffs) in `snapshots/MANIFEST.md` referencing SC-002.
+- [X] T016 Captured refactored render for lang 0/1/2/3 via the harness (cache-busted `?cb=r1`; `refactoredLoaded=true`). SHA-256 recorded in `snapshots/current/manifest.json`.
+- [X] T017 Compared refactored vs legacy by EXACT in-browser string equality (`===`) AND SHA-256, per language. **PASS = all four equal.** Result: lang 0/1/2/3 all `equal:true`, `firstDiff:-1`, hashes identical to the oracle. No revert needed.
+- [X] T018 Recorded the parity PASS in `snapshots/current/manifest.json` and `snapshots/MANIFEST.md` referencing SC-002.
 
 ## Phase 6: Live-site smoke test & polish
 
-- [ ] T019 [US1][US2] Serve the repo via `python -m http.server` and load the REAL `menu/index.html` (live sheet) in the headless browser: confirm "Loading..." is replaced, the **Food** tab shows by default and is highlighted, **Drink**/**Dessert** switch the visible tab, and there are zero console errors.
-- [ ] T020 Run `/speckit-analyze` to cross-check spec ⇄ plan ⇄ tasks ⇄ implementation consistency; resolve any flagged drift.
-- [ ] T021 Final commit of the refactor + current snapshots: `git commit -m "refactor(001): behavior-preserving menuBuilder (suffix lookup, kli helper, scoping, debug removal) — DOM parity proven"`.
+- [X] T019 [US1][US2] Loaded the REAL `menu/index.html` (live sheet) in headless Chromium with the refactored build (`refactoredLoaded=true` after cache refresh): "Loading..." replaced, **Food** shown by default & highlighted (`#d92332`), **Drink**/**Dessert** switch correctly via `setMenu`, zero console errors.
+- [X] T020 Run `/speckit-analyze` to cross-check spec ⇄ plan ⇄ tasks ⇄ implementation consistency; resolve any flagged drift.
+- [X] T021 Final commit of the refactor + current snapshots.
 
 ---
 

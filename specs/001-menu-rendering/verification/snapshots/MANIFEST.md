@@ -33,3 +33,21 @@ manifest. Not required for the proof.
 Render produced **zero console errors**. Multi-price composition confirmed (e.g. "Traditional $11",
 "Single $2 Double $3", "12oz $3 16oz $4"); images path-resolved; first instructions row skipped; default
 `setMenu(0)` applied (Food shown, others hidden).
+
+## Parity result (refactored vs legacy)
+
+| lang | legacy sha256 | refactored sha256 | exact `===` | result |
+|---|---|---|---|---|
+| 0 en  | `09b63ca2…4e593c` | `09b63ca2…4e593c` | yes | ✅ |
+| 1 es  | `3f7ba2ab…e838dc0` | `3f7ba2ab…e838dc0` | yes | ✅ |
+| 2 ang | `cbc1bc5b…be57b6f` | `cbc1bc5b…be57b6f` | yes | ✅ |
+| 3 tlh | `188f342a…266f4d0` | `188f342a…266f4d0` | yes | ✅ |
+
+All four languages **byte-identical** (exact string equality + SHA-256 match), `firstDiff = -1`. **SC-002 PASS.**
+
+## Live-site smoke test (real `menu/index.html`, live sheet, refactored build)
+
+`refactoredLoaded = true` (kli + LANG_SUFFIX present). 3 tabs (Food/Drink/Dessert); "Loading..." removed;
+default Food shown (`display:block`, button `#d92332`), others hidden; `setMenu(1)`→Drink, `setMenu(2)`→Dessert
+switch correctly with highlight colors `#d92332`/`#2a438c`; **zero console errors**. US1/US2 confirmed in
+production path.

@@ -47,9 +47,17 @@
   <!-- 3. PapaParse, same version/source as menu/index.html. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js" crossorigin="anonymous"></script>
 
-  <!-- 4. The real builder under test (unmodified). Registers DOMContentLoaded -> init.
-          Absolute path (served from repo root) avoids relative-depth ambiguity. -->
-  <script src="/menuBuilder.js"></script>
+  <!-- 4. The real builder under test. Registers DOMContentLoaded -> init.
+          Injected via document.write (synchronous, preserves ordering before the inline
+          scripts below) with an optional ?cb= cache-buster so a re-render after editing
+          menuBuilder.js always fetches the current file rather than a cached copy. -->
+  <script>
+    (function () {
+      var cb = new URLSearchParams(window.location.search).get('cb') || '';
+      var src = '/menuBuilder.js' + (cb ? ('?cb=' + encodeURIComponent(cb)) : '');
+      document.write('<scr' + 'ipt src="' + src + '"><\/scr' + 'ipt>');
+    })();
+  </script>
 
   <!-- 5. Redirect the builder at the LOCAL fixture and signal render completion.
           Runs synchronously after the builder is parsed but BEFORE DOMContentLoaded fires,
