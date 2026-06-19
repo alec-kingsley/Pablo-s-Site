@@ -1,0 +1,11 @@
+{
+  "description": "Legacy menuBuilder.js render oracle. SHA-256 over normalized #loadMenu innerHTML, per language, against verification/fixtures/menu_live.csv. Captured BEFORE any refactor via a real headless Chromium (Claude Preview MCP). Authoritative equality check is an exact in-browser string comparison (localStorage); these hashes are the durable record.",
+  "fixture": "verification/fixtures/menu_live.csv",
+  "capturedFrom": "legacy (unmodified) menuBuilder.js",
+  "languages": {
+    "0": { "name": "en",  "length": 9723, "sha256": "09b63ca212b5ddd935ced5d71da942cedb7181a0e5c705a7da0b4bf1104e593c" },
+    "1": { "name": "es",  "length": 9198, "sha256": "3f7ba2ab5991a517134614574951395c3b28a6590149692707bbc09b7e838dc0" },
+    "2": { "name": "ang", "length": 8045, "sha256": "cbc1bc5b6b90692dc0e0e666676090bd68525bf4f95070ee724be39c1be57b6f" },
+    "3": { "name": "tlh", "length": 3141, "sha256": "188f342a7c78fb2e8f73324d61783ffe74340a2f452e09ab04d2b05fc266f4d0" }
+  }
+}

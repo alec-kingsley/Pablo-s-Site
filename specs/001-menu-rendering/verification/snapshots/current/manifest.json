@@ -1,0 +1,12 @@
+{
+  "description": "Refactored menuBuilder.js render, same harness/fixture/engine as the legacy oracle. Each language compared to legacy by EXACT in-browser string equality (===) AND SHA-256. All four identical => behavior preserved (Spec SC-002).",
+  "capturedFrom": "refactored menuBuilder.js (suffix lookup, kli() helper, scoped vars, debug removal)",
+  "cacheBust": "harness loaded /menuBuilder.js?cb=r1; refactoredLoaded=true (kli + LANG_SUFFIX present)",
+  "result": "PASS",
+  "languages": {
+    "0": { "name": "en",  "length": 9723, "sha256": "09b63ca212b5ddd935ced5d71da942cedb7181a0e5c705a7da0b4bf1104e593c", "equalToLegacy": true },
+    "1": { "name": "es",  "length": 9198, "sha256": "3f7ba2ab5991a517134614574951395c3b28a6590149692707bbc09b7e838dc0", "equalToLegacy": true },
+    "2": { "name": "ang", "length": 8045, "sha256": "cbc1bc5b6b90692dc0e0e666676090bd68525bf4f95070ee724be39c1be57b6f", "equalToLegacy": true },
+    "3": { "name": "tlh", "length": 3141, "sha256": "188f342a7c78fb2e8f73324d61783ffe74340a2f452e09ab04d2b05fc266f4d0", "equalToLegacy": true }
+  }
+}
