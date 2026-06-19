@@ -117,6 +117,12 @@ image, hidden, multi-price) and confirm the rendered menu reflects each edit on 
   column.
 - **Re-removal of the loading indicator**: The loading indicator removal occurs each time a menu tab is created;
   removals after the first have no additional effect.
+- **`note` sentinel currently unexercised**: The live data exercises `menu`, `image`, priced items, and the
+  colon multi-price syntax, but contains no `note` rows. The note-rendering branch is supported by the code and
+  documented here (FR-007); it is simply not used by the current menu content.
+- **Klingon multi-price size labels may be blank**: Continuation rows are detected on the English name column,
+  but the displayed size label is read from the active language's name column. When a continuation row has an
+  empty Klingon name, the Klingon-language price composes with a blank size label (current behavior).
 
 ## Requirements *(mandatory)*
 
@@ -156,10 +162,13 @@ image, hidden, multi-price) and confirm the rendered menu reflects each edit on 
 
 ### Key Entities *(include if feature involves data)*
 
-- **Source row**: One row of the published spreadsheet. Key columns: `price` (numeric value, empty, or one of the
-  sentinels `menu`/`note`/`image`); per-language name columns (`name_en`, `name_es`, `name_ang`, `name_tlh`);
-  per-language item-description columns (`nameDesc_*`); per-language category columns (`cat_*`); per-language
-  category-description columns (`catDesc_*`); `hidden` (`yes` to omit the row).
+- **Source row**: One row of the published spreadsheet. Key columns **consumed by the render**: `price` (numeric
+  value, empty, or one of the sentinels `menu`/`note`/`image`); per-language name columns (`name_en`, `name_es`,
+  `name_ang`, `name_tlh`); per-language item-description columns (`nameDesc_*`); per-language category columns
+  (`cat_*`); per-language category-description columns (`catDesc_*`); `hidden` (`yes` to omit the row).
+  Columns **present in the sheet but NOT consumed** by the on-site menu render: `price_ghdd` (Grubhub/Doordash
+  price, used for third-party listings, not shown on the site). The reserved first data row carries
+  human-readable column instructions (e.g. `"Put ""yes"" to hide from menu"`) and is skipped (FR-002).
 - **Menu tab**: A selectable top-level grouping (e.g. Food, Drink, Dessert) created by a `price = menu` row;
   contains categories, items, notes, and images. Exactly one is shown at a time.
 - **Category**: A titled, described grouping within a menu tab; subsequent items attach to the most recent
