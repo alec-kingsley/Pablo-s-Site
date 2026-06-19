@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+  Dev-only harness for the homepage hours/open-status routine (daySelect + untilClose in script.js).
+  Stubs Date to a fixed, non-seasonal instant (so birthday()/halloween() never fire), provides the minimal
+  homepage DOM the routine touches, loads the REAL script.js, and exposes probe(lang) to run daySelect()
+  under try/catch and report the observable result. Params: ?y&mo&d&h  (mo is 0-indexed; cb busts JS cache).
+-->
+<html>
+<head><meta charset="utf-8"><title>hours/open-status harness</title></head>
+<body id="home">
+  <!-- script.js runs easterEgg() at top level, which needs #navIcon. -->
+  <img id="navIcon" src="data:," alt="">
+  <div id="hours">
+    <h2>Hours (<mark id="isOpen">Closed</mark>)</h2>
+    <h3 id="sun-wed">Sunday-Wednesday: 11am-8pm</h3>
+    <h3 id="thur-sat">Thursday-Saturday: 11am-9pm</h3>
+  </div>
+
+  <!-- 1. Freeze Date BEFORE script.js loads, from query params. -->
+  <script>
+    var RealDate = Date;
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      var Y = parseInt(p.get('y'), 10), MO = parseInt(p.get('mo'), 10),
+          D = parseInt(p.get('d'), 10), H = p.get('h') != null ? parseInt(p.get('h'), 10) : 12;
+      var fixedMs = new RealDate(Y, MO, D, H, 0, 0).getTime();
+      function FakeDate() { return new RealDate(fixedMs); }
+      FakeDate.now = function () { return fixedMs; };
+      window.Date = FakeDate;
+    })();
+  </script>
+
+  <!-- 2. The real script under test (cache-bustable via ?cb=). -->
+  <script>
+    (function () {
+      var cb = new URLSearchParams(window.location.search).get('cb') || '';
+      document.write('<scr' + 'ipt src="/script.js' + (cb ? ('?cb=' + encodeURIComponent(cb)) : '') + '"><\/scr' + 'ipt>');
+    })();
+  </script>
+
+  <!-- 3. Probe: reset DOM, set language, run daySelect() under try/catch, report observable result. -->
+  <script>
+    window.probe = function (n, y, mo, d, h) {
+      // Optional date override: re-stub Date for this call (lets one page load sweep the matrix).
+      if (y !== undefined) {
+        var ms = new RealDate(y, mo, d, (h !== undefined ? h : 12), 0, 0).getTime();
+        window.Date = function () { return new RealDate(ms); };
+        window.Date.now = function () { return ms; };
+      }
+      // reset observable state
+      document.getElementById('isOpen').innerHTML = 'Closed';
+      document.getElementById('sun-wed').style.textDecoration = '';
+      document.getElementById('thur-sat').style.textDecoration = '';
+      lang = n;
+      var threw = false, err = '';
+      try { daySelect(); } catch (e) { threw = true; err = String(e); }
+      var sw = document.getElementById('sun-wed').style.textDecoration;
+      var ts = document.getElementById('thur-sat').style.textDecoration;
+      return {
+        day: new Date().getDay(),
+        hour: new Date().getHours(),
+        lang: n,
+        underlined: (sw === 'underline' ? 'sun-wed' : (ts === 'underline' ? 'thur-sat' : 'none')),
+        isOpenText: document.getElementById('isOpen').innerHTML,
+        threw: threw,
+        err: err
+      };
+    };
+  </script>
+</body>
+</html>
