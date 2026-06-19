@@ -25,9 +25,12 @@ jQuery 3.2.1 (present on page, not required by the menu render path); shared glo
 **Storage**: External Google Sheets published CSV export (read-only at page load). A frozen copy is vendored
 under the feature's fixtures for deterministic verification only — production keeps using the live URL.
 
-**Testing**: Deterministic DOM-snapshot parity harness — Python `http.server` for static serving + a headless
-browser (Claude Preview MCP, Chromium) to render and serialize the DOM. No unit-test framework is introduced
-(consistent with the zero-build constitution); the harness is plain HTML + JS + a diff step.
+**Testing**: Deterministic DOM-parity harness — Python `http.server` for static serving + a headless browser
+(Claude Preview MCP, Chromium) to render and serialize the DOM. The harness uses a **verbatim** copy of
+`script.js`'s `setMenu` (so its DOM mutations match production) and needs no `pathFix` (the builder's `addImg`
+contains its own absolute-path logic). Equality is checked by **exact in-browser string comparison**
+(`localStorage`) **and** SHA-256 per language — both must match the legacy oracle. No unit-test framework is
+introduced (consistent with the zero-build constitution).
 
 **Target Platform**: Modern evergreen browsers; served as static files from GitHub Pages and Replit import.
 
@@ -86,10 +89,12 @@ specs/001-menu-rendering/verification/      # Dev-only parity harness (not linke
 ├── fixtures/
 │   └── menu_live.csv           # Frozen copy of the live CSV for deterministic runs
 ├── harness.html                # Loads PapaParse + menuBuilder under test against the fixture; serializes DOM
-├── capture.js                  # Headless-browser driver: render lang 0..3, write snapshots
+├── capture.md                  # Documented headless-browser (Claude Preview MCP) capture procedure
 ├── snapshots/
-│   ├── legacy/lang-{0..3}.html # Golden oracle captured from legacy menuBuilder.js BEFORE any edit
-│   └── current/lang-{0..3}.html# Captured from the refactored build for diffing
+│   ├── legacy/manifest.json    # Golden oracle: SHA-256 + length per lang, captured BEFORE any edit
+│   ├── current/manifest.json   # Refactored build hashes; equalToLegacy per lang
+│   ├── MANIFEST.md             # Human-readable oracle + parity + smoke-test record
+│   └── decode_and_verify.py    # Optional helper to decode base64 snapshots and hash-check
 └── README.md                   # Pointer to quickstart.md
 ```
 
@@ -105,8 +110,9 @@ dev-only). `menu/index.html`, `script.js`, and styling are **not** modified.
 2. Build `harness.html`: includes PapaParse + a tiny `setMenu`/`pathFix`-equivalent shim (or the real
    `script.js`), parses the **local fixture** (no network), runs the builder, and exposes a function that
    returns the serialized, normalized innerHTML of the menu container.
-3. With the **unmodified legacy `menuBuilder.js`**, render for `lang` 0/1/2/3 and save
-   `snapshots/legacy/lang-N.html`. This is the immutable oracle.
+3. With the **unmodified legacy `menuBuilder.js`**, render for `lang` 0/1/2/3, store each serialization in
+   `localStorage['legacy_lang_N']`, and record SHA-256+length in `snapshots/legacy/manifest.json`. This is the
+   immutable oracle.
 
 ### Phase B — Behavior-preserving refactor (only the four safe changes)
 1. **Language-suffix lookup**: replace the four repeated `if (lang==0/1/2/3)` blocks (in `showInfo` and in the
@@ -123,13 +129,15 @@ first-row skip (`row` starts at 1), hidden/empty skip, multi-price composition, 
 `setMenu(0)` default all remain exactly as-is.
 
 ### Phase C — Prove equivalence
-1. Render the refactored build for `lang` 0/1/2/3 → `snapshots/current/lang-N.html`.
-2. Diff `current` vs `legacy` per language. **Empty diff is the pass condition** (SC-002).
+1. Render the refactored build for `lang` 0/1/2/3 (cache-busted so the new file loads) → record in
+   `snapshots/current/manifest.json`.
+2. Compare `current` vs `legacy` per language by **exact in-browser string equality** (`===`, reporting the
+   first differing index) **and** SHA-256. **All four equal is the pass condition** (SC-002).
 3. Also load the real `menu/index.html` against the live sheet in the headless browser as a final smoke check
-   (default Food tab shown, tabs switch, no console errors).
+   (refactored build confirmed loaded, default Food tab shown, tabs switch, no console errors).
 
-If any diff is non-empty, the refactor is wrong — revert the offending change and re-derive equivalence. The
-oracle is never edited to match the refactor.
+If any comparison is non-equal, the refactor is wrong — revert the offending change and re-derive equivalence.
+The oracle is never edited to match the refactor.
 
 ## Complexity Tracking
 
