@@ -32,7 +32,7 @@ function daySelect() {
   if (day >= 0 && day <= 3) {
     document.getElementById("sun-wed").style.textDecoration = "underline";
   } else {
-    document.getElementById("thurs-sat").style.textDecoration = "underline";
+    document.getElementById("thur-sat").style.textDecoration = "underline";
   }
   untilClose();
 }
@@ -40,7 +40,6 @@ function untilClose() {
   var d = new Date();
   var day = d.getDay();
   let hr = d.getHours();
-  let min = d.getMinutes();
 
   var isOpen = false;
 
