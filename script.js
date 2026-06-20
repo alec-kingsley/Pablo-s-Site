@@ -76,6 +76,9 @@ function birthday() {
   topItems.appendChild(splashText);
   if (lang == 0) splashText.innerHTML = "Wish our boss, Pablo Taura, a happy birthday today!";
   else if (lang == 1) splashText.innerHTML = "Deséale a nuestro jefe, Pablo Taura, un felíz cumpleaños!";
+  // OE birthday splash — drafted by Claude, flag for owner/translator (Alec) review (triage I1)
+  // Gloss: Wýsc(imp.) | úrum hláforde (our boss, dat.) | glædne gebyrddæg (a happy birthday, acc.) | tódæg (today)
+  else if (lang == 2) splashText.innerHTML = "Wýsc úrum hláforde, Pablo Taura, glædne gebyrddæg tódæg!";
   else if (lang == 3) splashText.innerHTML = "pinma'daq qoslij dativjaj yijaz!"
   var mainImg = document.getElementById("mainImg");
   mainImg.src = pathFix("/images/birthday.webp");

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+  Dev-only harness for the birthday easter egg (script.js birthday() + bday.js confetti).
+  Stubs Date to Jan 17 (the trigger), provides the DOM birthday()/daySelect touch, loads the real
+  script.js, and exposes probe(lang) -> { splashText, splashClass, canvas, mainImgSrc } by calling
+  birthday() directly for the given language. ?cb= busts the script cache.
+-->
+<html>
+<head><meta charset="utf-8"><title>birthday harness</title></head>
+<body id="home">
+  <img id="navIcon" src="data:," alt="">
+  <div id="topItems"></div>
+  <img id="mainImg" src="data:," alt="">
+  <div id="sun-wed"></div><div id="thur-sat"></div><mark id="isOpen">Closed</mark>
+
+  <script>
+    // Freeze Date to Pablo's birthday: Jan 17 2026, 15:00 (month 0, date 17).
+    var RealDate = Date;
+    (function(){ var ms = new RealDate(2026, 0, 17, 15, 0, 0).getTime();
+      function F(){ return new RealDate(ms); } F.now = function(){ return ms; }; window.Date = F; })();
+  </script>
+  <script>
+    function setMenu(){}            // shim (slideshow tab switch, unused here)
+  </script>
+  <script>
+    (function(){ var cb = new URLSearchParams(location.search).get('cb')||'';
+      document.write('<scr'+'ipt src="/script.js'+(cb?('?cb='+encodeURIComponent(cb)):'')+'"><\/scr'+'ipt>'); })();
+  </script>
+  <script>
+    window.probe = function(n){
+      var ti = document.getElementById('topItems'); ti.innerHTML = '';      // reset splash
+      var old = document.getElementById('canvas'); if (old) old.remove();
+      document.getElementById('mainImg').src = 'data:,';
+      lang = n;
+      var threw=false, err='';
+      try { birthday(); } catch(e){ threw=true; err=String(e); }
+      var b = document.getElementById('birthday');
+      return {
+        lang: n,
+        splashText: b ? b.innerHTML : null,
+        splashEmpty: !b || b.innerHTML.trim()==='',
+        splashClass: b ? b.className : null,
+        canvas: !!document.getElementById('canvas'),
+        mainImgSrc: (document.getElementById('mainImg').src||'').split('/').pop(),
+        threw: threw, err: err
+      };
+    };
+  </script>
+</body>
+</html>
