@@ -19,7 +19,7 @@ function Confetti () {
   this.rotation = Math.random()*360;
 
   const size = Math.random()*(w/60);
-  if (size < 15) this.size = 15;
+  this.size = size < 15 ? 15 : size; // was: only set when <15, leaving this.size undefined (NaN speed) on wide viewports
 
   const colors = ['#2a438c', '#d92332', '#f2f2f2'];
   this.color = colors[Math.floor(colors.length * Math.random())];
