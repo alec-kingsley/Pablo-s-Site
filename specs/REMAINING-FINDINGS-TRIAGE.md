@@ -41,7 +41,20 @@ Safe interim: add an **English fallback** so nothing shows blank/"undefined"; fl
 | I4 | events | Klingon not handled (falls through to Old-English; no `_tlh` columns) — tied to D2 |
 | I5 | about-us (ES) / lang-variants | double-click splash + Halloween splash texts are English-only on localized pages |
 
+## Owner decisions (2026-06-19)
+
+- **D1 mail routing** → **Keep the split, document it.** Old-English/Klingon submissions continue to the dev
+  endpoint by design; no code change — make the intent explicit in the spec/comment.
+- **D2 events page** → **Leave it dead.** Do NOT wire eventsBuilder. Spec `/events` as intentionally not-live;
+  D3 (404 translate link) and I4 (Klingon events) documented as deferred, not fixed.
+- **D3/C i18n** → **English fallback now + flag.** Missing Old-English/Klingon strings fall back to English so
+  nothing is blank/"undefined"; real OE/Klingon translations flagged as owner TODOs.
+- **D4 halloween.js** → **Remove the dead code.** Drop the `appendChild` of halloween.js + the stray
+  console.log/unused path vars; delete the dead `halloween.js`; keep the working pumpkin-logo swap. Flag the
+  now-unreferenced 28 MB `images/HalloweenBackground.png` for separate deletion.
+- **D5 hours off-by-one** → preserved (already documented in spec 002); unchanged.
+
 ## Status
 
 Already done & merged to sdd: 001 menu, 002 hours, 003 slideshow, 004 nav-bootstrap, 005 easter-eggs,
-006 pathFix. This triage covers the remaining 9 subsystems' confirmed defects.
+006 pathFix. This triage + decisions drive the remaining subsystem branches (007+).
