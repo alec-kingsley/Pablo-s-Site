@@ -88,19 +88,11 @@ function birthday() {
 
 //Halloween
 function halloween() {
-  let path = window.location.pathname;
-  let page = path.split('/').pop();
-
-  var body = document.getElementsByTagName("body")[0];
-  // Sets logo to pumpkin logo
+  // Swap both nav logos to the pumpkin logo — the only live Halloween effect.
+  // (The old halloween.js theming was entirely dead code: it only console.logged and defined
+  //  never-called functions. It has been removed; the appendChild + unused path/page/body vars too.)
   document.getElementById("navIcon").setAttribute("src", pathFix('/images/HalloweenLogo.png'));
-  document.getElementById("navIconMobile").setAttribute("src", pathFix('/images/HalloweenLogo.png'))
-
-  // Appends halloween.js to body
-  var js = document.createElement("script");
-  js.type = "text/javascript";
-  js.src = pathFix("/halloween.js");
-  body.appendChild(js);
+  document.getElementById("navIconMobile").setAttribute("src", pathFix('/images/HalloweenLogo.png'));
 }
 
 
