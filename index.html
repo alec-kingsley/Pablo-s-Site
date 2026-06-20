@@ -28,6 +28,7 @@ pabloshavanacafe.smartonlineorder.com
   <link href="./font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 	<link rel="shortcut icon" href="./images/icon.webp">
   <link rel="apple-touch-icon" href="./images/apple-touch-icon.webp">
+	<script src="components/navbar.js"></script>
 </head>
 
 <!-- left/right navs for either side of Pablo's logo -->
@@ -36,29 +37,7 @@ pabloshavanacafe.smartonlineorder.com
 	<div  id="home-background">
 	<div id="mobileBackground">
 	<div class="margin">
-		<div id="navbar">
-			<nav id="left">
-				<a href="#">Home</a>
-				<a href="./about_us/">About Us</a>
-			</nav>
-			<img src="images/icon.webp" id = "navIcon" alt="Logo for Pablo's Havana Cafe">
-				<nav id = "right">
-					<a href="menu" target="_self">Menu</a>
-          <a href="./es" class="transIcon"><img src="./images/EngToEsp.webp" alt="English to Spanish"></a>
-				</nav>
-			</div>
-			<div id="mobileBar">
-				<img src="./images/icon.webp" id = "navIconMobile" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
-				<a href="#" id="navtitle">Home</a>
-				<div id="mobileNav">
-					<a href="./menu/" class="dropdown">Menu</a>
-					<a href="./about_us/" class="dropdown">About Us</a>
-				</div>
-				<a href="javascript:void(0);" class="icon" onclick="switchDisp()" title="Mobile Nav">
-				<i class="fa fa-bars"></i>
-				</a>
-        <a href="./es" class="transIcon" class="dropdown"><img src="./images/EngToEsp.webp" alt="English to Spanish"></a>
-			</div>
+		<phc-navbar lang="0"></phc-navbar>
 
 			
 			<div id = "topItems">
