@@ -1,6 +1,6 @@
-function p(k){for(c=k.length,i=s=x=0;i<c;i++)for(e=i+s;e<c;e++){t=k.substring(i,e);l=t.length;p=1;for(a=0;a<l;a++)p=t[a]!=t[l-a-1]?0:p;if(p>0)x=i,s=e-i}return k.substring(x,x+s)}
+function p(k){let c=k.length,i,s=0,x=0,e,t,l,a,flag;for(i=0;i<c;i++)for(e=i+s;e<c;e++){t=k.substring(i,e);l=t.length;flag=1;for(a=0;a<l;a++)flag=t[a]!=t[l-a-1]?0:flag;if(flag>0){x=i;s=e-i;}}return k.substring(x,x+s)}
 
-// lang codes: 0 - English, 1 - Spanish, 2 - Old English
+// lang codes: 0 - English, 1 - Spanish, 2 - Old English, 3 - Klingon
 // code modified from https://blog.milanmaharjan.com.np/post/build-a-custom-contact-form-for-your-static-website/
 
 const ownerMail = "https://script.google.com/macros/s/AKfycbyifFTcghFDnCtLEU9TOd_3nkV3nfd1TwSO0YhWlC7rxs8-_o0-yELo9DPoZM1i_OXVBQ/exec";
@@ -28,18 +28,19 @@ function validate() {
       if (lang == 0) r += value;
       else if (lang == 1) r+= formNombres[idx];
       else if (lang == 2) r+= formNaman[idx];
+      else r += value; // lang 3 (Klingon): English field-name fallback (no Klingon labels yet — TODO: translate)
     }
   }
   if (r != "") {
     msg = [r+" must be filled out","Debe llenar "+r,r+" wesan gewriten scealt"];
-    popUpGen("Error",msg[lang]);
+    popUpGen("Error",msg[lang] || msg[0]);
     return false;
   }
   const email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   let f = document.forms["contactUs"]["Email"].value;
   if (!email.test(f)) {
     msg = ["Invalid e-mail address","Dirección de correo electrónico inválida", "Spearcǽrend nis riht"];
-    popUpGen("Error",msg[lang]);
+    popUpGen("Error",msg[lang] || msg[0]);
     return false;
   } 
   return true;
@@ -52,7 +53,9 @@ $('.contact1-form').on('submit',function(e){
     const errorEng = "Something went wrong. Please try again";
     const errorEsp = "Había error. Por favor trate de nuevo";
     var mailUrl;
-    if (lang < 2) mailUrl = ownerMail; // change this to ownerMail when released
+    // Intentional routing (owner decision 2026-06-19): English (0) and Spanish (1) submissions go to the
+    // owner inbox; the joke-language pages Old English (2) and Klingon (3) route to the dev endpoint.
+    if (lang < 2) mailUrl = ownerMail;
     else mailUrl = devMail;
     $.ajax({
       url: mailUrl,
@@ -62,19 +65,19 @@ $('.contact1-form').on('submit',function(e){
       success: function(response) {
         if(response.result == "success") {
           msg = ["Thank you for contacting us.","Gracias por contactarnos."];
-          popUpGen(msg[lang],"");
+          popUpGen(msg[lang] || msg[0],"");
           return true;
         }
         else {
           msg = [errorEng,errorEsp];
-          popUpGen(msg[lang],"");
+          popUpGen(msg[lang] || msg[0],"");
           console.log(response.error);
         }
       },
       error: function(jqXHR, textStatus, errorThrown) {
         msg = [errorEng,errorEsp];
         console.log("jqXHR: "+jqXHR+"\ntextStatus: "+textStatus+"\nerrorThrown: "+errorThrown);
-        popUpGen(msg[lang],"");
+        popUpGen(msg[lang] || msg[0],"");
       }
     })
   }

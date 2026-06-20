@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+  Dev-only harness for the Halloween decoration (script.js halloween()).
+  Provides the nav logos + hours DOM, loads the real script.js, and exposes probe() that calls
+  halloween() and reports the logo srcs and whether any halloween.js <script> was appended. ?cb= busts cache.
+-->
+<html>
+<head><meta charset="utf-8"><title>halloween harness</title></head>
+<body id="home">
+  <img id="navIcon" src="data:," alt="">
+  <img id="navIconMobile" src="data:," alt="">
+  <div id="sun-wed"></div><div id="thur-sat"></div><mark id="isOpen">Closed</mark>
+  <script>function setMenu(){}</script>
+  <script>
+    (function(){ var cb = new URLSearchParams(location.search).get('cb')||'';
+      document.write('<scr'+'ipt src="/script.js'+(cb?('?cb='+encodeURIComponent(cb)):'')+'"><\/scr'+'ipt>'); })();
+  </script>
+  <script>
+    window.probe = function(){
+      var before = document.querySelectorAll('script').length;
+      var threw=false, err='';
+      try { halloween(); } catch(e){ threw=true; err=String(e); }
+      var scripts = Array.prototype.slice.call(document.querySelectorAll('script'));
+      var halloweenJsAppended = scripts.some(function(s){ return (s.src||'').indexOf('halloween.js')>-1; });
+      return {
+        navIcon: (document.getElementById('navIcon').getAttribute('src')||'').split('/').pop(),
+        navIconMobile: (document.getElementById('navIconMobile').getAttribute('src')||'').split('/').pop(),
+        halloweenJsAppended: halloweenJsAppended,
+        scriptsBefore: before, scriptsAfter: scripts.length,
+        threw: threw, err: err
+      };
+    };
+  </script>
+</body>
+</html>

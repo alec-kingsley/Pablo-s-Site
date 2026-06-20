@@ -32,7 +32,7 @@ function daySelect() {
   if (day >= 0 && day <= 3) {
     document.getElementById("sun-wed").style.textDecoration = "underline";
   } else {
-    document.getElementById("thurs-sat").style.textDecoration = "underline";
+    document.getElementById("thur-sat").style.textDecoration = "underline";
   }
   untilClose();
 }
@@ -40,7 +40,6 @@ function untilClose() {
   var d = new Date();
   var day = d.getDay();
   let hr = d.getHours();
-  let min = d.getMinutes();
 
   var isOpen = false;
 
@@ -77,6 +76,9 @@ function birthday() {
   topItems.appendChild(splashText);
   if (lang == 0) splashText.innerHTML = "Wish our boss, Pablo Taura, a happy birthday today!";
   else if (lang == 1) splashText.innerHTML = "Deséale a nuestro jefe, Pablo Taura, un felíz cumpleaños!";
+  // OE birthday splash — drafted by Claude, flag for owner/translator (Alec) review (triage I1)
+  // Gloss: Wýsc(imp.) | úrum hláforde (our boss, dat.) | glædne gebyrddæg (a happy birthday, acc.) | tódæg (today)
+  else if (lang == 2) splashText.innerHTML = "Wýsc úrum hláforde, Pablo Taura, glædne gebyrddæg tódæg!";
   else if (lang == 3) splashText.innerHTML = "pinma'daq qoslij dativjaj yijaz!"
   var mainImg = document.getElementById("mainImg");
   mainImg.src = pathFix("/images/birthday.webp");
@@ -86,19 +88,11 @@ function birthday() {
 
 //Halloween
 function halloween() {
-  let path = window.location.pathname;
-  let page = path.split('/').pop();
-
-  var body = document.getElementsByTagName("body")[0];
-  // Sets logo to pumpkin logo
+  // Swap both nav logos to the pumpkin logo — the only live Halloween effect.
+  // (The old halloween.js theming was entirely dead code: it only console.logged and defined
+  //  never-called functions. It has been removed; the appendChild + unused path/page/body vars too.)
   document.getElementById("navIcon").setAttribute("src", pathFix('/images/HalloweenLogo.png'));
-  document.getElementById("navIconMobile").setAttribute("src", pathFix('/images/HalloweenLogo.png'))
-
-  // Appends halloween.js to body
-  var js = document.createElement("script");
-  js.type = "text/javascript";
-  js.src = pathFix("/halloween.js");
-  body.appendChild(js);
+  document.getElementById("navIconMobile").setAttribute("src", pathFix('/images/HalloweenLogo.png'));
 }
 
 
@@ -201,7 +195,7 @@ function randomSplash() {
   let splashText = ["Visit us February 18th at 6:00 PM!", "Cure your boredom with pabloshavanacafe.com/clicker !", "Try pabloshavanacafe.com/ang ! Anglo-Saxon approved", "Try pabloshavanacafe.com/tlh ! Klingon approved", "Since December 2018", "Be careful not to inhale the restaurant-grade chemispray", "Born in Cuba, raised in Jersey", "Billions and billions served! Wait no that's not right", "Bring a friend!", "Vaca Frita sounds so much better in English", "Add a description about this category", "Trouble with windmills? Try pabloshavanacafe.com/csv-analyzer !"];
 
   let halloween = ["We may never be rid of the ghost of Domino's", "There is perhaps nothing spookier than the prospect of Pablo finding this", "If you're looking for a real scare this month, check out the code!", "Come to our restaurant for a special haunted house event! This month only!"];
-  if (today.getMonth() == 8)
+  if (today.getMonth() == 9) // October — align Halloween splash texts with the October decorations (was 8 = September)
     splashText = splashText.concat(halloween);
 
   let retText = [];

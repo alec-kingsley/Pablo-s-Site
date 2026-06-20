@@ -165,12 +165,11 @@ function setOwned(idx,value) {
 	
 }
 function loadAcc(accIdx) {
-	let canLoad = true;
+	// Only load when not already logged in (accName == "User" means logged out, per line ~90).
+	// Non-destructive guard: previously this deleted the password from EVERY account on first
+	// login, corrupting the in-memory account data and blocking all later logins.
+	let canLoad = accName == "User";
 	accPassword = data[accIdx].password;
-	data.forEach(account => {
-		if (account.password == undefined) canLoad = false;
-		else delete account.password;
-	});
 	if (canLoad) {
 		setOwned(0,parseInt(data[accIdx].Employee));
 		setOwned(1,parseInt(data[accIdx].Manager));
@@ -280,7 +279,7 @@ function createAccAttempt() {
 	else if (loginFormInput[1].value == "")
 		loginErr.innerHTML = "Error: No password input";
 	else {
-		let availableName = loginFormInput[0] != "User";
+		let availableName = loginFormInput[0].value != "User";
 		data.forEach(player => {
 			if (player.name == loginFormInput[0].value) availableName = false;
 		});
@@ -305,11 +304,13 @@ function createAccAttempt() {
 }
 function sortPlayers() {
 	for (i = 0; i < data.length - 1; i++) {
-		let max = 0;
-		let maxIdx = 0;
+		let max = -Infinity;
+		let maxIdx = i;
 		for (j = i; j < data.length; j++) {
-			if (parseInt(data[j].cubanoCt) > max) {
-				max = parseInt(data[j].cubanoCt);
+			let v = Number(data[j].cubanoCt);
+			if (isNaN(v)) v = 0;
+			if (v > max) {
+				max = v;
 				maxIdx = j;
 			}
 		}

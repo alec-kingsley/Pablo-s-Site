@@ -11,34 +11,26 @@ function init() {
 
 window.addEventListener('DOMContentLoaded', init);
 
+// Language column suffix for the active language: 0=en, 1=es, 2=ang, 3=tlh.
+const LANG_SUFFIX = ['_en', '_es', '_ang', '_tlh'];
+
+// Returns base, or "base kli" when the active language is Klingon (lang 3).
+function kli(base) {
+  return lang == 3 ? base + " kli" : base;
+}
+
 function showInfo(results) {
-  let price = Name = nameDesc = cat = catDesc = "";
+  let price = "";
+  let Name = "", nameDesc = "", cat = "", catDesc = "";
   var data = results.data
-  console.log(data);
+  const suffix = LANG_SUFFIX[lang];
   let row = 1;
   while (row < data.length) {
     price = data[row].price;
-    if (lang == 0) {
-      Name = data[row].name_en;
-      nameDesc = data[row].nameDesc_en;
-      cat = data[row].cat_en;
-      catDesc = data[row].catDesc_en;
-    } else if (lang == 1) {
-      Name = data[row].name_es;
-      nameDesc = data[row].nameDesc_es;
-      cat = data[row].cat_es;
-      catDesc = data[row].catDesc_es;
-    } else if (lang == 2) {
-      Name = data[row].name_ang;
-      nameDesc = data[row].nameDesc_ang;
-      cat = data[row].cat_ang;
-      catDesc = data[row].catDesc_ang;
-    } else if (lang == 3) {
-      Name = data[row].name_tlh;
-      nameDesc = data[row].nameDesc_tlh;
-      cat = data[row].cat_tlh;
-      catDesc = data[row].catDesc_tlh;
-    }
+    Name = data[row]['name' + suffix];
+    nameDesc = data[row]['nameDesc' + suffix];
+    cat = data[row]['cat' + suffix];
+    catDesc = data[row]['catDesc' + suffix];
     if (data[row].hidden == "yes" || (Name == "" && cat == "")) {
       row++;
       continue;
@@ -63,10 +55,7 @@ function showInfo(results) {
       let priceName = "";
       while(row < data.length-1 && data[row+1].name_en.charAt(0) == ':') {
         row++;
-        if (lang == 0) priceName = data[row].name_en;
-        else if (lang == 1) priceName = data[row].name_es;
-        else if (lang == 2) priceName = data[row].name_ang;
-        else if (lang == 3) priceName = data[row].name_tlh;
+        priceName = data[row]['name' + suffix];
         price += " " + priceName.substr(1) + " " + data[row].price;
       }
       price = price.substr(1);
@@ -85,8 +74,7 @@ function menuCreate(name) { // food, drink, dessert
   button.setAttribute("type","button");
   button.setAttribute("onclick","setMenu("+menuCt+")");
   menuCt++;
-  button.setAttribute("class","menuName");
-  if (lang == 3) button.setAttribute("class","menuName kli");
+  button.setAttribute("class", kli("menuName"));
   button.innerHTML = name;
 
   document.getElementById("menuButtons").appendChild(li);
@@ -99,12 +87,10 @@ function catCreate(name,desc) { // add category name with description to latest 
   var titleHolder = document.createElement("div");
   titleHolder.setAttribute("class","titleHolder");
   var menuTitle = document.createElement("div");
-  menuTitle.setAttribute("class","menuTitle");
-  if (lang == 3) menuTitle.setAttribute("class","menuTitle kli");
+  menuTitle.setAttribute("class", kli("menuTitle"));
   menuTitle.innerHTML = name;
   var menuDesc = document.createElement("div");
-  menuDesc.setAttribute("class","menuDesc");
-  if (lang == 3) menuDesc.setAttribute("class","menuDesc kli");
+  menuDesc.setAttribute("class", kli("menuDesc"));
   menuDesc.innerHTML = desc;
   var menuItems = document.createElement("div");
   menuItems.setAttribute("class","menuItems");
@@ -119,12 +105,10 @@ function catCreate(name,desc) { // add category name with description to latest 
 }
 function addNote(name,desc) { // add a note between categories
   var noteTitle = document.createElement("div");
-  noteTitle.setAttribute("class","noteTitle");
-  if (lang == 3) noteTitle.setAttribute("class","noteTitle kli");
+  noteTitle.setAttribute("class", kli("noteTitle"));
   noteTitle.innerHTML = name;
   var noteDesc = document.createElement("div");
-  noteDesc.setAttribute("class","noteDesc");
-  if (lang == 3) noteDesc.setAttribute("class","noteDesc kli");
+  noteDesc.setAttribute("class", kli("noteDesc"));
   noteDesc.innerHTML = desc;
 
   var menuDivs = document.getElementsByClassName("category");
@@ -136,16 +120,13 @@ function itemCreate(name,desc,price) { // add item name with description and pri
   var itemHolder = document.createElement("div");
   itemHolder.setAttribute("class","itemHolder");
   var menuItem = document.createElement("div");
-  menuItem.setAttribute("class","menuItem");
-  if (lang == 3) menuItem.setAttribute("class","menuItem kli");
+  menuItem.setAttribute("class", kli("menuItem"));
   menuItem.innerHTML = name;
   var itemDesc = document.createElement("div");
-  itemDesc.setAttribute("class","itemDesc");
-  if (lang == 3) itemDesc.setAttribute("class","itemDesc kli");
+  itemDesc.setAttribute("class", kli("itemDesc"));
   itemDesc.innerHTML = desc;
   var priceDiv = document.createElement("div");
-  priceDiv.setAttribute("class","price");
-  if (lang == 3) priceDiv.setAttribute("class","price kli");
+  priceDiv.setAttribute("class", kli("price"));
   priceDiv.innerHTML = price;
 
   var catDivs = document.getElementsByClassName("menuItems");
