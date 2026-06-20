@@ -103,10 +103,12 @@ function submitForm() {
         return true;
       }
       else {
+        close.innerHTML = "Try again"; // restore so the user isn't stuck on "Processing..." and can retry
         console.log(response.error);
       }
     },
     error: function() {
+      close.innerHTML = "Try again"; // restore so the user isn't stuck on "Processing..." and can retry
       console.log("Error");
     }
   })
