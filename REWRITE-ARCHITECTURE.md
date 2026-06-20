@@ -85,7 +85,31 @@ Verified in headless Chromium against the captured oracle:
   hazard. **Zero console errors.** Screenshot confirms the nav is visually identical.
 
 Conclusion: the thesis holds. A zero-build light-DOM custom element collapses the duplicated nav to one source
-while preserving the spec'd DOM + all behavior with no build step. **Next slice:** fill `NAV[1..3]` (es/ang/tlh)
-and wire the other three homepages (mechanical), proving the cross-language dedup + closing the drift; then
-`<phc-footer>` and the menu builder as an ES module.
+while preserving the spec'd DOM + all behavior with no build step.
+
+## Cross-language nav drift found (evidence for the dedup — survey of all 4 homepages' nav)
+
+Surveying the four homepages confirmed the duplication has already DRIFTED into inconsistencies/bugs — exactly
+what one source of truth fixes. Each needs an explicit keep-or-fix decision during conversion (not a silent
+byte-copy of bugs):
+- **Desktop logo `onclick`**: en NO, es YES, ang NO, tlh YES — inconsistent (does the desktop logo toggle the
+  mobile nav or not?).
+- **Klingon desktop translate link is buggy**: `id="trtansIcon"` (typo) + `class="dropdown"` instead of
+  `class="transIcon"` → mis-styled / not the intended translate-icon.
+- **Spanish mobile translate path**: `../../` while its own desktop link uses `../` — one is wrong.
+- **Hamburger title (`aria`/tooltip)**: es localized it ("navegación móvil"); ang + tlh left it English
+  ("Mobile Nav") — missing translations.
+- **`kli` font classes** correctly present on tlh links (must be preserved).
+
+Implication: converting the navbar across all four pages is NOT a mechanical copy — it requires per-item
+keep-vs-normalize decisions (fixing the typo'd Klingon link is an obvious yes; standardizing the logo onclick is
+an owner call). This is why the full-site conversion should run as a deliberate, reviewable effort (a parallel
+workflow with each page's drift surfaced), rather than a blind transform.
+
+## Remaining conversion scope (the "entire site")
+Components: `<phc-navbar>` (en done) → es/ang/tlh + `<phc-footer>`, `<phc-order-popup>`, `<phc-contact-form>`.
+Builders → ES modules (`menu`, `events`, `survey`) with local-vendored CSV (fix the CDN PapaParse). Drop jQuery
+page-by-page under spec 008/012 parity. Wire all 17 pages. Per-page parity gate (extend the 001 harness). This
+is a ~15-20-agent parallel job across phases (components → page wiring → builder modules → parity) — best run as
+a workflow with the drift decisions reviewed.
 
