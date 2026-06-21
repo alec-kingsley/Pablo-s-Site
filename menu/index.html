@@ -22,33 +22,12 @@
       <link href="../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
       <link rel="shortcut icon" href="../images/icon.webp">
       <link rel="apple-touch-icon" href="../images/apple-touch-icon.webp">
+      <script src="/strings.js"></script>
+      <script src="/components/navbar.js"></script>
    </head>
    <body id="menu">
       <div class="margin" id="loadMenu">
-         <div id="navbar">
-            <nav id = "left">
-               <a href="../">Home</a>
-               <a href="../about_us/">About Us</a>
-            </nav>
-            <img src="../images/icon.webp" id = "navIcon" alt="Logo for Pablo's Havana Cafe">
-            <nav id = "right">
-               <a href="#" target="_self">Menu</a>
-               <!--<a href="../events/">Events</a>-->
-               <a href="../es/menu" class="transIcon"><img src="../images/EngToEsp.webp" alt="English to Spanish"></a>
-            </nav>
-         </div>
-			<div id="mobileBar">
-        <img src="../images/icon.webp" id = "navIconMobile" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
-				<a href="#" id="navtitle">Menu</a>
-				<div id="mobileNav">
-					<a href="../" class="dropdown">Home</a>
-					<a href="../about_us/" class="dropdown">About Us</a>
-				</div>
-				<a href="javascript:void(0);" class="icon" onclick="switchDisp()" title="Mobile Nav">
-				<i class="fa fa-bars"></i>
-				</a>
-        <a href="../es/menu" class="transIcon" class="dropdown"><img src="../images/EngToEsp.webp" alt="English to Spanish"></a>
-			</div>
+         <phc-navbar lang="0" page="menu"></phc-navbar>
          <div id="topItems">
             <div id="buttons">
                <ul id="menuButtons"></ul>

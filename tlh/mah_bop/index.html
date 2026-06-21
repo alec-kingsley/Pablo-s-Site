@@ -22,33 +22,13 @@
       <link href="../../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
       <link rel="shortcut icon" href="../../images/icon.webp">
       <link rel="apple-touch-icon" href="../../images/apple-touch-icon.webp">
+      <script src="/strings.js"></script>
+      <script src="/components/navbar.js"></script>
   </head>
 
   <body id="about_us">
     <div class="margin">
-      <div id="navbar">
-        <nav id = "left">
-          <a class="kli" href="../">juh</a>
-          <a class="kli" href="#">mah bop</a>
-        </nav>
-        <img src="../../images/icon.webp" id = "navIcon" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
-        <nav id = "right">
-          <a class="kli" href="../hidjolev" target="_self">hidjolev</a>
-          <a class="kli" href="../../about_us/" class="transIcon"><img src="../../images/DiviHol.webp" alt="English"></a>
-        </nav>
-      </div>
-			<div id="mobileBar">
-        <img src="../../images/icon.webp" id = "navIconMobile" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
-				<a href="#" id="navtitle" class="kli">mah bop</a>
-				<div id="mobileNav">
-					<a href="../" class="dropdown kli">juh</a>
-					<a href="../hidjolev/" class="dropdown kli">hidjolev</a>
-				</div>
-				<a href="javascript:void(0);" class="icon" onclick="switchDisp()" title="Mobile Nav">
-				<i class="fa fa-bars"></i>
-				</a>
-        <a href="../../about_us/" class="transIcon" class="dropdown"><img src="../../images/DiviHol.webp" alt="English"></a>
-			</div>
+      <phc-navbar lang="3" page="about"></phc-navbar>
 
       <ul id="descBoxes">
         <li class="descBox aboutTxt">

@@ -22,33 +22,12 @@
       <link href="../../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
       <link rel="shortcut icon" href="../../images/icon.webp">
       <link rel="apple-touch-icon" href="../../images/apple-touch-icon.webp">
+      <script src="/strings.js"></script>
+      <script src="/components/navbar.js"></script>
    </head>
    <body onload="lang = 1" id="menu">
       <div class="margin" id="loadMenu">
-         <div id="navbar">
-            <nav id = "left">
-               <a href="../">Inicio</a>
-               <a href="../quienes_somos/">Quienes Somos</a>
-            </nav>
-            <img src="../../images/icon.webp" id = "navIcon" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
-            <nav id = "right">
-               <a href="#" target="_self">Menú</a>
-               <!--<a href="../events/">Events</a>-->
-               <a href="../../menu" class="transIcon"><img src="../../images/EspToEng.webp" alt="Español a ingles"></a>
-            </nav>
-         </div>
-			<div id="mobileBar">
-        <img src="../../images/icon.webp" id = "navIconMobile" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
-				<a href="#" id="navtitle">Menú</a>
-				<div id="mobileNav">
-					<a href="../" class="dropdown">Inicio</a>
-					<a href="../quienes_somos" class="dropdown">Quienes Somos</a>
-				</div>
-				<a href="javascript:void(0);" class="icon" onclick="switchDisp()" title="Navegación móvil">
-				<i class="fa fa-bars"></i>
-				</a>
-        <a href="../../menu" class="transIcon" class="dropdown"><img src="../../images/EspToEng.webp" alt="Español a ingles"></a>
-			</div>
+         <phc-navbar lang="1" page="menu"></phc-navbar>
          <div id="topItems">
             <div id="buttons">
                <ul id="menuButtons"></ul>

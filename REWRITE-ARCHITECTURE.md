@@ -113,3 +113,30 @@ page-by-page under spec 008/012 parity. Wire all 17 pages. Per-page parity gate 
 is a ~15-20-agent parallel job across phases (components → page wiring → builder modules → parity) — best run as
 a workflow with the drift decisions reviewed.
 
+
+## Nav conversion — PHASE DONE (14-agent workflow + browser parity gate)
+
+`<phc-navbar lang="N" page="KEY">` (components/navbar.js, ~14.5 KB) now renders the nav for **13 pages**
+(4 homepages + English menu/about/events + 6 localized subpages) from one source: `CONFIG[page][lang]` for
+paths/structure + `strings.js` for visible text (the i18n graft). `index.html` (lang 0 / home) is **byte-pinned**
+via `render0Home()` and verified byte-identical (sha `402afc84...`). `survey/` and iframe-only `order/` have no
+nav and were skipped. `COMPONENTS.md` documents it for maintainers.
+
+**Drift fixed (9 — 6 documented + 3 newly found):** tlh typo'd translate link (`trtansIcon`->`transIcon`);
+tlh `mah_bop` double-class translate link; es mobile translate path `../../`->`../`; ang/`fodaliste` broken
+`../sobre_nosotros`->`../ymb_us/`; es/`quienes_somos` empty logo `alt`; hamburger titles localized for ang/tlh;
+standardized desktop-logo `onclick`; dropped invalid duplicate `class="dropdown"` on mobile translate links.
+
+**Owner-review items (4):** the standardized desktop-logo `onclick`; the newly-coined ang/tlh hamburger titles
+in `strings.js` (placeholder translations — replace as desired); the **preserved-but-broken** tlh-homepage
+`../../` translate path (left as-is, outside the authorized fix scope — recommend fixing); the broken-link repoints.
+
+**Browser parity gate (main loop, not the agents) caught a real bug the agent self-checks missed:** 11 of 12
+wirers added `navbar.js` but forgot `strings.js`, so those pages rendered raw i18n keys ("home"/"aboutUs")
+instead of translations. Fixed by inserting `/strings.js` before `/components/navbar.js` on all 11. Re-verified
+in-browser: ang -> "Heofod/Ymb Us/Fódalíste"; tlh -> Klingon + `kli` classes + fixed translate link; English
+menu + ang/`fodaliste` subpage correct; English homepage byte-parity intact; zero console errors across the
+sample. Lesson: the per-page parity gate must stay a main-loop step.
+
+**Next phases:** `<phc-footer>` / `<phc-order-popup>` / `<phc-contact-form>` components; builders -> ES modules
+with locally-vendored CSV (drop cdnjs PapaParse); drop jQuery page-by-page under spec 008/012 parity.

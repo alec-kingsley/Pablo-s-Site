@@ -23,6 +23,8 @@ pabloshavanacafe.smartonlineorder.com
   <link href="../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 	<link rel="shortcut icon" href="../images/icon.webp">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.webp">
+	<script src="/strings.js"></script>
+	<script src="/components/navbar.js"></script>
 </head>
 
 <!-- left/right navs for either side of Pablo's logo -->
@@ -30,30 +32,7 @@ pabloshavanacafe.smartonlineorder.com
 <body onload="openFunc(3);" id="home">
 	<div id="mobileBackground">
 	<div class="margin">
-		<div id="navbar">
-			<nav id="left">
-				<a href="#" class="kli">juh</a>
-				<a href="./mah_bop/" class="kli">mah bop</a>
-			</nav>
-			<img src="../images/icon.webp" id = "navIcon" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
-				<nav id = "right">
-					<a href="./hidjolev" target="_self" class="kli">hidjolev</a>
-					<!--<a href="./events/">Events</a>-->
-          <a href="../../" id="trtansIcon" class="dropdown"><img src="../../images/DiviHol.webp" alt="English"></a>
-				</nav>
-			</div>
-			<div id="mobileBar">
-        <img src="../images/icon.webp" id = "navIconMobile" onclick="switchDisp()" alt="Logo for Pablo's Havana Cafe">
-				<a href="#" id="navtitle" class="kli">juh</a>
-				<div id="mobileNav">
-					<a href="./hidjolev/" class="dropdown kli">hidjolev</a>
-					<a href="./mah_bop/" class="dropdown kli">mah bop</a>
-				</div>
-				<a href="javascript:void(0);" class="icon" onclick="switchDisp()" title="Mobile Nav">
-				<i class="fa fa-bars"></i>
-				</a>
-        <a href="../../" class="transIcon" class="dropdown"><img src="../../images/DiviHol.webp" alt="English"></a>
-			</div>
+		<phc-navbar lang="3"></phc-navbar>
 
 			
 			<div id = "topItems">
