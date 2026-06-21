@@ -162,3 +162,24 @@ tlh homepage, and menu.
 **Remaining:** vendor PapaParse locally (still cdnjs on the builder pages — Principle I); optional `<phc-footer>`/
 `<phc-order-popup>`/`<phc-contact-form>` components; builder ES-module conversion (entangled with the global
 lang/setMenu coupling — needs a core module + DOMContentLoaded bootstrap gate).
+
+## Vendor PapaParse — PHASE DONE (done inline; trivial swap + rigorous parity gate)
+
+The cdnjs PapaParse (the last live Principle I "zero-build / vendored deps" violation) is now served locally.
+`clicker/papa-parse.js` was already **PapaParse v5.1.0 — the exact CDN version** — so it was copied to
+`/vendor/papaparse.min.js` (zero version/parse risk) and the 4 builder pages (menu, es/menu, ang/fodaliste,
+tlh/hidjolev) + the specs/001 harness now load `/vendor/papaparse.min.js` instead of cdnjs.
+
+Not run as a workflow: swapping 4 identical `<script>` URLs + copying one in-repo file is a trivial mechanical
+edit (the ultracode "don't over-spawn" exception). The value was the verification, run from the main loop.
+
+**Verified:** the 001 byte-parity gate passes with the vendored Papa — all four languages hash-identical to the
+oracle (`09b63ca2 / 3f7ba2ab / cbc1bc5b / 188f342a`) against the frozen fixture. The real menu page renders 3
+tabs against the LIVE sheet with the local Papa, jQuery gone, zero console errors. Constitution Principle I is
+now fully satisfied on this branch (no CDN deps).
+
+## Rewrite spike status
+Done on `spike/rewrite`: nav→`<phc-navbar>` (13 pages, drift fixed), i18n `strings.js`, jQuery removed sitewide,
+PapaParse vendored. Remaining (optional): `<phc-footer>`/`<phc-order-popup>`/`<phc-contact-form>` components;
+builder ES-module conversion (needs a core module + DOMContentLoaded bootstrap gate to keep the 143 global
+inline handlers working).
