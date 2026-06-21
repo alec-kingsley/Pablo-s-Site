@@ -211,7 +211,7 @@ function randomSplash() {
   * @param title - the title of popup
   */
 function popUpGen(title, desc) {
-  if ($('#popUp').length == 1) popUp.remove();
+  if (document.getElementById('popUp')) popUp.remove();
 
   body = document.getElementsByTagName("body")[0];
   popUp = document.createElement("div");

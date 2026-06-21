@@ -45,11 +45,14 @@ function validate() {
   } 
   return true;
 }
-$('.contact1-form').on('submit',function(e){
+var contactForm = document.querySelector('.contact1-form');
+// Guard: jQuery's $('.contact1-form').on(...) no-oped when the form was absent (404/privacy/survey
+// also load form.js). querySelector(...).addEventListener would throw on null — so guard it.
+if (contactForm) contactForm.addEventListener('submit',function(e){
   e.preventDefault();
   if (validate()) {
-    var serializedForm = $(".contact1-form").serialize();
-    $('.contact1-form')[0].reset();
+    var serializedForm = new URLSearchParams(new FormData(contactForm)).toString();
+    contactForm.reset();
     const errorEng = "Something went wrong. Please try again";
     const errorEsp = "Había error. Por favor trate de nuevo";
     var mailUrl;
@@ -57,12 +60,13 @@ $('.contact1-form').on('submit',function(e){
     // owner inbox; the joke-language pages Old English (2) and Klingon (3) route to the dev endpoint.
     if (lang < 2) mailUrl = ownerMail;
     else mailUrl = devMail;
-    $.ajax({
-      url: mailUrl,
+    fetch(mailUrl, {
       method: "POST",
-      dataType: "json",
-      data: serializedForm,
-      success: function(response) {
+      body: serializedForm,
+      headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" }
+    })
+      .then(function(r){ return r.json(); })
+      .then(function(response) {
         if(response.result == "success") {
           msg = ["Thank you for contacting us.","Gracias por contactarnos."];
           popUpGen(msg[lang] || msg[0],"");
@@ -73,12 +77,11 @@ $('.contact1-form').on('submit',function(e){
           popUpGen(msg[lang] || msg[0],"");
           console.log(response.error);
         }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
+      })
+      .catch(function(errorThrown) {
         msg = [errorEng,errorEsp];
-        console.log("jqXHR: "+jqXHR+"\ntextStatus: "+textStatus+"\nerrorThrown: "+errorThrown);
+        console.log("errorThrown: "+errorThrown);
         popUpGen(msg[lang] || msg[0],"");
-      }
-    })
+      });
   }
 });

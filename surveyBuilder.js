@@ -1,5 +1,5 @@
 function popUpGen(title, desc) {
-  if($('#popUp').length == 1) popUp.remove();
+  if(document.getElementById('popUp')) popUp.remove();
   body = document.getElementsByTagName("body")[0];
   popUp = document.createElement("div");
   popUp.id = "popUp";
@@ -89,15 +89,21 @@ function parseForm() {
 }
 function submitForm() {
   close.innerHTML = "Processing...";
-  surveyData = $.param(respDict) + "&" + $(".surveyBoxes").serialize();
+  let surveyBoxesParams = new URLSearchParams();
+  let surveyBoxes = document.getElementsByClassName("surveyBoxes");
+  for (let i = 0; i < surveyBoxes.length; i++) {
+    if (surveyBoxes[i].name) surveyBoxesParams.append(surveyBoxes[i].name, surveyBoxes[i].value);
+  }
+  surveyData = new URLSearchParams(respDict).toString() + "&" + surveyBoxesParams.toString();
   const docUrl = "https://script.google.com/macros/s/AKfycby64rcb8EK06JUAhQOje6jAi8QPshhitPRGF-wU5SnvENDCNAHVaewzvnBgxMUv0LcI/exec"; //fix this link
-    
-  $.ajax({
-    url: docUrl,
+
+  fetch(docUrl, {
     method: "POST",
-    dataType: "json",
-    data: surveyData,
-    success: function(response) {
+    body: surveyData,
+    headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" }
+  })
+    .then(function(r){ return r.json(); })
+    .then(function(response) {
       if(response.result == "success") {
         parent.location = "../";
         return true;
@@ -106,12 +112,11 @@ function submitForm() {
         close.innerHTML = "Try again"; // restore so the user isn't stuck on "Processing..." and can retry
         console.log(response.error);
       }
-    },
-    error: function() {
+    })
+    .catch(function() {
       close.innerHTML = "Try again"; // restore so the user isn't stuck on "Processing..." and can retry
       console.log("Error");
-    }
-  })
+    });
 }
 
 surveySubmit = document.getElementById("surveySubmit");

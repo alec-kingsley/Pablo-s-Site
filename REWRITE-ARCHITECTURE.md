@@ -140,3 +140,25 @@ sample. Lesson: the per-page parity gate must stay a main-loop step.
 
 **Next phases:** `<phc-footer>` / `<phc-order-popup>` / `<phc-contact-form>` components; builders -> ES modules
 with locally-vendored CSV (drop cdnjs PapaParse); drop jQuery page-by-page under spec 008/012 parity.
+
+## Drop jQuery — PHASE DONE (17-agent workflow + browser gate)
+
+jQuery (jquery-3.2.1.js, ~86 KB) is removed from the **entire main site**. The architect found all 8 use sites
+(form.js x4, surveyBuilder.js x3, script.js popUpGen x1 — confirmed none inline in HTML; `clicker/` keeps its own
+vendored copy, untouched) and rewrote them to vanilla: `addEventListener`; `fetch(...,{body:new URLSearchParams(
+new FormData(form))}).then(r=>r.json())` (same endpoint/method/url-encoded body as `$.ajax`/`.serialize()`);
+`document.getElementById('popUp')` for `$('#popUp').length`. Then 16 pages had their dead jquery `<script>` include
+stripped.
+
+**Browser gate (main loop) caught a real regression:** `$('.contact1-form').on('submit',…)` no-oped when the form
+was absent, but the rewritten `querySelector('.contact1-form').addEventListener(…)` throws on `null` — and
+`survey/`, `404.html`, `privacy.html` load form.js without that form. Added an `if (contactForm)` guard.
+
+**Re-verified in-browser:** `$`/`jQuery` undefined everywhere; survey rating popup + `submitForm` fetch + "Try
+again" restore (spec 012); Klingon contact form validation + i18n fallback + success popup via stubbed fetch
+(spec 008); menu renders (3 tabs); nav/slideshow/hours/easter-egg intact; **zero console errors** across survey,
+tlh homepage, and menu.
+
+**Remaining:** vendor PapaParse locally (still cdnjs on the builder pages — Principle I); optional `<phc-footer>`/
+`<phc-order-popup>`/`<phc-contact-form>` components; builder ES-module conversion (entangled with the global
+lang/setMenu coupling — needs a core module + DOMContentLoaded bootstrap gate).
