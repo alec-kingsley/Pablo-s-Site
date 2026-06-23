@@ -44,6 +44,10 @@
     }
   </script>
 
+  <!-- 2b. core.js (window.PHC: pathFix/kli/LANG_SUFFIX). Loaded after the lang global and before
+       the builder, mirroring production where core.js precedes menuBuilder.js. -->
+  <script src="/core.js"></script>
+
   <!-- 3. PapaParse, same version/source as menu/index.html. -->
   <script src="/vendor/papaparse.min.js" crossorigin="anonymous"></script>
 

@@ -22,6 +22,8 @@
   <script>
     function setMenu(){}            // shim (slideshow tab switch, unused here)
   </script>
+  <!-- core.js (window.PHC) — script.js's pathFix now delegates to PHC.pathFix; load it before script.js. -->
+  <script src="/core.js"></script>
   <script>
     (function(){ var cb = new URLSearchParams(location.search).get('cb')||'';
       document.write('<scr'+'ipt src="/script.js'+(cb?('?cb='+encodeURIComponent(cb)):'')+'"><\/scr'+'ipt>'); })();

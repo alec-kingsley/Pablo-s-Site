@@ -30,6 +30,10 @@
     })();
   </script>
 
+  <!-- core.js (window.PHC) — script.js's pathFix delegates to PHC.pathFix; load it first (a Jan-17 or
+       month-9 date override invokes birthday()/halloween() -> pathFix -> PHC). -->
+  <script src="/core.js"></script>
+
   <!-- 2. The real script under test (cache-bustable via ?cb=). -->
   <script>
     (function () {

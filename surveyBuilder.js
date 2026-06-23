@@ -1,27 +1,8 @@
-function popUpGen(title, desc) {
-  if(document.getElementById('popUp')) popUp.remove();
-  body = document.getElementsByTagName("body")[0];
-  popUp = document.createElement("div");
-  popUp.id = "popUp";
-
-  popUpTitle = document.createElement("div");
-  popUpTitle.innerHTML = title;
-  popUpTitle.id = "popUpTitle";
-
-  popUpDesc = document.createElement("div");
-  popUpDesc.innerHTML = desc;
-  popUpDesc.id = "popUpDesc";
-
-  close = document.createElement("button");
-  close.setAttribute("onClick","popUp.remove()");
-  close.innerHTML = "Close";
-
-  popUp.appendChild(popUpTitle);
-  popUp.appendChild(popUpDesc);
-  popUp.appendChild(close);
-  
-  body.appendChild(popUp);
-}
+// popUpGen lives once in script.js (the canonical copy). This file used to carry a byte-identical
+// duplicate; it was deleted. script.js loads AFTER surveyBuilder.js on survey/index.html, and both
+// share the same implicit globals (popUp, popUpTitle, popUpDesc, close, body), so parseForm/submitForm
+// here keep calling the script.js popUpGen and reading the `close`/`respDict` it sets. Do NOT
+// re-declare those names with var/let here — they MUST stay implicit globals across that boundary.
 
 function setResp(q,resp) {
   let qResps = document.getElementsByClassName("resps")[q].getElementsByClassName("resp");

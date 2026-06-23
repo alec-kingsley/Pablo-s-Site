@@ -11,19 +11,14 @@ function init() {
 
 window.addEventListener('DOMContentLoaded', init);
 
-// Language column suffix for the active language: 0=en, 1=es, 2=ang, 3=tlh.
-const LANG_SUFFIX = ['_en', '_es', '_ang', '_tlh'];
-
-// Returns base, or "base kli" when the active language is Klingon (lang 3).
-function kli(base) {
-  return lang == 3 ? base + " kli" : base;
-}
+// LANG_SUFFIX and kli() now live once in core.js as PHC.LANG_SUFFIX / PHC.kli(base, lang).
+// core.js MUST be loaded before menuBuilder.js on every menu page.
 
 function showInfo(results) {
   let price = "";
   let Name = "", nameDesc = "", cat = "", catDesc = "";
   var data = results.data
-  const suffix = LANG_SUFFIX[lang];
+  const suffix = PHC.LANG_SUFFIX[lang];
   let row = 1;
   while (row < data.length) {
     price = data[row].price;
@@ -74,7 +69,7 @@ function menuCreate(name) { // food, drink, dessert
   button.setAttribute("type","button");
   button.setAttribute("onclick","setMenu("+menuCt+")");
   menuCt++;
-  button.setAttribute("class", kli("menuName"));
+  button.setAttribute("class", PHC.kli("menuName", lang));
   button.innerHTML = name;
 
   document.getElementById("menuButtons").appendChild(li);
@@ -87,10 +82,10 @@ function catCreate(name,desc) { // add category name with description to latest 
   var titleHolder = document.createElement("div");
   titleHolder.setAttribute("class","titleHolder");
   var menuTitle = document.createElement("div");
-  menuTitle.setAttribute("class", kli("menuTitle"));
+  menuTitle.setAttribute("class", PHC.kli("menuTitle", lang));
   menuTitle.innerHTML = name;
   var menuDesc = document.createElement("div");
-  menuDesc.setAttribute("class", kli("menuDesc"));
+  menuDesc.setAttribute("class", PHC.kli("menuDesc", lang));
   menuDesc.innerHTML = desc;
   var menuItems = document.createElement("div");
   menuItems.setAttribute("class","menuItems");
@@ -105,10 +100,10 @@ function catCreate(name,desc) { // add category name with description to latest 
 }
 function addNote(name,desc) { // add a note between categories
   var noteTitle = document.createElement("div");
-  noteTitle.setAttribute("class", kli("noteTitle"));
+  noteTitle.setAttribute("class", PHC.kli("noteTitle", lang));
   noteTitle.innerHTML = name;
   var noteDesc = document.createElement("div");
-  noteDesc.setAttribute("class", kli("noteDesc"));
+  noteDesc.setAttribute("class", PHC.kli("noteDesc", lang));
   noteDesc.innerHTML = desc;
 
   var menuDivs = document.getElementsByClassName("category");
@@ -120,13 +115,13 @@ function itemCreate(name,desc,price) { // add item name with description and pri
   var itemHolder = document.createElement("div");
   itemHolder.setAttribute("class","itemHolder");
   var menuItem = document.createElement("div");
-  menuItem.setAttribute("class", kli("menuItem"));
+  menuItem.setAttribute("class", PHC.kli("menuItem", lang));
   menuItem.innerHTML = name;
   var itemDesc = document.createElement("div");
-  itemDesc.setAttribute("class", kli("itemDesc"));
+  itemDesc.setAttribute("class", PHC.kli("itemDesc", lang));
   itemDesc.innerHTML = desc;
   var priceDiv = document.createElement("div");
-  priceDiv.setAttribute("class", kli("price"));
+  priceDiv.setAttribute("class", PHC.kli("price", lang));
   priceDiv.innerHTML = price;
 
   var catDivs = document.getElementsByClassName("menuItems");
@@ -138,10 +133,7 @@ function itemCreate(name,desc,price) { // add item name with description and pri
   itemHolder.appendChild(priceDiv);
 }
 function addImg(link,desc) {
-  if (link.charAt(0) == "/") {
-    const homeDist = window.location.pathname.split("/").length;
-    for (let i = 1; i < homeDist; i++) link = "/.." + link;
-  }
+  link = PHC.pathFix(link, window.location.pathname);
 
   var itemHolder = document.createElement("div");
   itemHolder.setAttribute("class","itemHolder photo");

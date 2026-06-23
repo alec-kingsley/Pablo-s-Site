@@ -255,10 +255,47 @@ script is the right fit. The GTM **`<noscript>` iframe stays inline** on each pa
 `gtag` defined; both `googletagmanager.com/gtm.js` and `/gtag/js` requested; `<noscript>` present; zero console
 errors. `order/` confirmed unchanged (no include, Clover iframe intact).
 
+## Builder dedup — PHASE DONE (judge-panel design + surgical refactor + jsc/browser gates + adversarial review)
+
+The builder modernization was scoped by a 4-approach × 3-judge design panel. **Full ES-module conversion was
+rejected** (it scored 2/2/2 with confirmed fatal flaws): ES modules are strict-mode, but `surveyBuilder.js`
+runs on *implicit globals* (`close`, `respDict`, `popUp`…), so a module breaks `submitForm`; and a missing
+`type="module"` silently renders nothing — a footgun for non-expert maintainers. ES modules fundamentally fight
+this site's 143 inline `on*=` handlers (which only resolve **global** functions). The panel's 4/4/4 winner — a
+**classic, NOT module** `core.js` exposing a frozen `window.PHC` of PURE no-DOM logic — was shipped:
+
+- **`core.js`** (new, classic-on-purpose): `PHC.pathFix(link, pathname)`, `PHC.LANG_SUFFIX`, `PHC.kli(base, lang)`.
+  Declares nothing global but the frozen `PHC`; never reads/declares `lang` (passed as a param); no DOM, no
+  side effects at load (so `script.js`'s synchronous `easterEgg()` timing is untouched). **Do NOT add `export`.**
+- `script.js` `pathFix` → one-line delegate to `PHC.pathFix`; `menuBuilder.js` deletes its local `LANG_SUFFIX`
+  + `kli` and calls `PHC.*` (8 `kli` sites + `addImg`); `surveyBuilder.js` **deletes its duplicate `popUpGen`**
+  (falls through to `script.js`'s canonical copy — they share the same implicit globals, and `script.js` loads
+  after `surveyBuilder` on `survey/`). `lang` stays a classic global; **no ES modules**; `eventsBuilder.js`
+  stays dead (untouched). Wins: `pathFix` 3→1, `kli`/`LANG_SUFFIX` centralized, `popUpGen` 2→1.
+- `<script src="/core.js">` inserted before the first PHC consumer (`script.js`/`menuBuilder.js`) on all 16
+  pages that load them + the specs/001 harness.
+
+**Gates (main loop):** the specs/001 frozen-fixture harness re-rendered all 4 menu langs — **byte-identical**
+hashes vs. the pre-refactor baseline (en/es/ang/tlh, tlh's 34 kli classes intact); 11/11 `PHC` jsc unit tests;
+live survey submit (`setResp` + `popUpGen` fallthrough + close→`submitForm`, incl. the low/mid/high branches);
+homepage `pathFix` delegate + hours + easterEgg; live Klingon menu (`setMenu` tabs + kli); 404 — **zero console
+errors** everywhere.
+
+**Adversarial review (6-angle workflow) caught a real miss the gates didn't:** the **dev-only** birthday (010),
+halloween (011) — and latently hours (002) — verification harnesses load `script.js` but not `core.js`, so their
+`pathFix`→`PHC` calls threw `ReferenceError`. Fixed by adding `<script src="/core.js">` to all three; re-verified
+the 010/011 probes run (splash/logo swap) and 001 still byte-matches. (Production was sound — all site findings
+were dismissed as false alarms against the gates.) Also hardened: `PHC.LANG_SUFFIX` deep-frozen.
+
+**Conventions / owner-decisions:** `core.js` MUST load before `script.js`/`menuBuilder.js` on any page (a missing
+tag throws `PHC is not defined`) — enforced by a header comment, not tooling. `core.js` is **classic on purpose**
+(a maintainer who adds `export` breaks every `PHC.*` read). `404.html` keeps a pre-existing standalone inline
+`pathFix` (runs at parse time before any external script, so it can't use `PHC`) — left as-is.
+
 ## Rewrite spike status
 Done on `spike/rewrite`: nav→`<phc-navbar>` (13 pages, drift fixed), i18n `strings.js`, jQuery removed sitewide,
 PapaParse vendored, **`<phc-footer>` + `<phc-contact-form>` (4 homepages) + `<phc-order-popup>` (8 pages,
-home/menu variants), `/analytics.js` dedup (16 pages)**. Remaining (optional): builder ES-module conversion
-(`menuBuilder`/`eventsBuilder`/`surveyBuilder` → ES modules; needs a `core.js` + DOMContentLoaded bootstrap gate
-to keep the 143 global inline `on*` handlers + the synchronous `easterEgg()` working). The `order/index.html`
-analytics coverage gap remains an owner-decision.
+home/menu variants), `/analytics.js` dedup (16 pages), `core.js`/`window.PHC` builder dedup**. The structural
+rewrite is essentially complete. Remaining are deliberate non-goals: ES-module conversion (rejected — fights the
+inline-handler model), `eventsBuilder`/events page (owner: leave dead), and the `order/index.html` analytics
+coverage gap (owner-decision). A visual redesign, if wanted, is a separate effort on top of this.

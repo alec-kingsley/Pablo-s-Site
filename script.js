@@ -1,9 +1,7 @@
+// pathFix stays a global (birthday/halloween call it); the path-rewrite logic now lives once in
+// core.js as PHC.pathFix. core.js MUST be loaded before script.js on every page.
 function pathFix(link) {
-  if (link.charAt(0) == "/") {
-    const homeDist = window.location.pathname.split("/").length;
-    for (let i = 1; i < homeDist; i++) link = "/.." + link;
-  } else console.log("Error: Link must start with /");
-  return link;
+  return PHC.pathFix(link, window.location.pathname);
 }
 
 

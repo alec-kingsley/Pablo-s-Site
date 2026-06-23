@@ -11,6 +11,8 @@
   <img id="navIconMobile" src="data:," alt="">
   <div id="sun-wed"></div><div id="thur-sat"></div><mark id="isOpen">Closed</mark>
   <script>function setMenu(){}</script>
+  <!-- core.js (window.PHC) — script.js's pathFix now delegates to PHC.pathFix; load it before script.js. -->
+  <script src="/core.js"></script>
   <script>
     (function(){ var cb = new URLSearchParams(location.search).get('cb')||'';
       document.write('<scr'+'ipt src="/script.js'+(cb?('?cb='+encodeURIComponent(cb)):'')+'"><\/scr'+'ipt>'); })();
