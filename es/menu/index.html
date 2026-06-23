@@ -24,6 +24,7 @@
       <link rel="apple-touch-icon" href="../../images/apple-touch-icon.webp">
       <script src="/strings.js"></script>
       <script src="/components/navbar.js"></script>
+      <script src="/components/order-popup.js"></script>
    </head>
    <body onload="lang = 1" id="menu">
       <div class="margin" id="loadMenu">
@@ -32,15 +33,7 @@
             <div id="buttons">
                <ul id="menuButtons"></ul>
             </div>
-            <div id="orderOnline">
-              <button id="orderButton" onclick="buttonPopupGen()">Comprar Online</button>
-              <div id="buttonPopup" style="display:none;">
-                <ul>
-                  <!--li><a href="https://www.clover.com/online-ordering/PABLOS-HAVANA-CAFE">Powell</a></li-->
-                  <li><a href="https://www.clover.com/online-ordering/pablos-havana-cafe-dublin">Dublin</a></li>
-                </ul>
-              </div>
-          </div>
+            <phc-order-popup lang="1" variant="menu"></phc-order-popup>
          </div>
         <div id="loading">Esperando...</div>
       </div>

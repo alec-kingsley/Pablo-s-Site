@@ -25,6 +25,9 @@ pabloshavanacafe.smartonlineorder.com
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.webp">
 	<script src="/strings.js"></script>
 	<script src="/components/navbar.js"></script>
+	<script src="/components/order-popup.js"></script>
+	<script src="/components/footer.js"></script>
+	<script src="/components/contact-form.js"></script>
 </head>
 
 <!-- left/right navs for either side of Pablo's logo -->
@@ -44,15 +47,7 @@ pabloshavanacafe.smartonlineorder.com
 
 				<div id="welcome">
 					<h1>Wilcuma Tó<br>Pablo's Havana Café</h1>
-          <div id="orderOnline">
-              <button id="orderButton" onclick="buttonPopupGen()">Beodan On Líne</button>
-              <div id="buttonPopup" style="display:none;">
-                <ul>
-                  <li><a href="https://www.doordash.com/store/pablo%E2%80%99s-havana-cafe-(longshore-st)-dublin-34357171">Dublin North Market</a></li>
-                  <li><a href="https://www.ubereats.com/store/pablos-havana-cafe-grandview/5SzPQJBcWTyxb8djoavyGA">Litte Grand Market</a></li>
-                </ul>
-              </div>
-          </div>
+          <phc-order-popup lang="2" variant="home"></phc-order-popup>
 					<h2>Cúbanisce Fóda Macod on Hám
 					<br>(614) 389 4302 <br>
 					Little Grand Market <br>
@@ -112,39 +107,9 @@ pabloshavanacafe.smartonlineorder.com
 	
 	<div class="margin">
 		<div class="footer"></div>
-      <div id="hours">
-				<h1>Hwíla (<mark id="isOpen">Clýsde</mark>)</h1>
-				<h3 id="sun-wed">Sunnandæg-Wodnesdæg: 11-20</h3>
-        <h3 id="thur-sat">þursdæg-Sæternesdæg: 11-21</h3>
+      <phc-footer lang="2"></phc-footer>
 
-				<div id="mediaLinks">
-          <a href="https://www.facebook.com/pabloshavanacafe/"><img src="../images/FacebookLogo.webp" alt="Facebook"></a>
-          <a href="https://www.instagram.com/pabloshavanacafe/" ><img src="../images/InstagramLogo.webp" alt="Instagram"></a>
-				</div>
-			</div>
-
-			<div id="form">
-				<div>Sprec Wiþ Us</div>
-        
-				<form name="contactUs" class="contact1-form" autocomplete="on" onsubmit="false">
-
-					<input type="text" name="Name" id="name" class="text" placeholder="Náma...">
-
-					<input type="text" name="Email" id="email" class="text" placeholder="Spearcǽrend...">
-
-					<input type="text" name="Subject" id="subject" class="text" placeholder="Ymb...">
-
-					<textarea name="Message" class="question" placeholder="Gewrit..."></textarea>
-
-					<br>
-          
-          <button class="submit" type="submit">
-            Sendan
-          </button>
-				</form>
-			
-        
-			</div>
+			<phc-contact-form lang="2"></phc-contact-form>
 	  </div>
 
 

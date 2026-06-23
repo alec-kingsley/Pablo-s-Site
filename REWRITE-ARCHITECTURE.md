@@ -178,8 +178,70 @@ oracle (`09b63ca2 / 3f7ba2ab / cbc1bc5b / 188f342a`) against the frozen fixture.
 tabs against the LIVE sheet with the local Papa, jQuery gone, zero console errors. Constitution Principle I is
 now fully satisfied on this branch (no CDN deps).
 
+## Footer + Contact-form — PHASE DONE (Phase 5; survey + build workflows + jsc & browser gates)
+
+Two new components — `<phc-footer lang="N">` (`components/footer.js`) and `<phc-contact-form lang="N">`
+(`components/contact-form.js`) — collapse the bottom-of-page chrome (`#hours` + `#isOpen` + day rows +
+`#mediaLinks`, and the `#form` contact block) that was hand-duplicated across the **4 homepages** (only the
+homepages carry it; inner pages don't). Visible text moved to 10 new `strings.js` rows (`hoursLabel`,
+`statusClosed`, `sunWed`, `thurSat`, `contactHeading`, `phName`/`phEmail`/`phSubject`/`phMessage`, `sendButton`).
+`lang="0"` (English homepage, which does **not** load `strings.js`) renders via a byte-literal that never reads
+`window.PHC_STRINGS`; `lang 1/2/3` render from the table with per-lang config (heading `h2` en/es vs `h1`
+ang/tlh; `kli` on tlh heading + day rows + all form controls; `./` vs `../` image prefix). `COMPONENTS.md` updated.
+
+**Order-popup DEFERRED, analytics SKIPPED (from the survey workflow):** `<phc-order-popup>` is nav-region (not
+footer) and needs a `variant=home|menu` attribute (home = DoorDash + UberEats, menu = Clover) — its own later
+slice. The generic `#popUp` modal is already JS-generated in `script.js` (nothing to extract). The 16-page
+GTM/GA tail is a poor custom-element fit (innerHTML-injected `<script>` never executes) — a future `/analytics.js`
+snippet dedup, not a component.
+
+**The "Closed not localized" finding was a FALSE alarm — corrected, no `script.js` change.** `untilClose()` runs
+once at `onload` and only overrides `#isOpen` when **open**; there is no runtime flip. Each homepage already
+hardcodes its localized closed word as the static default (`Closed`/`Cerrado`/`Clýsde`/`sokmohta'`). So no
+`langClosed` array was added (that would be a behavior change for a non-bug); instead the component **emits the
+correct per-language closed default**, preserving today's behavior. (Emitting English for all langs would have
+*introduced* the bug the survey feared.)
+
+**Gates (main loop, not the agents):** (1) a JavaScriptCore harness executed the real component files and rendered
+all 8 (4 langs × 2 components), diffed against the committed originals (`git show HEAD`) with
+whitespace-insignificant normalization — all PASS, plus a `PHC_STRINGS`-undefined render of `lang 0` with zero
+throws. (2) Live in-browser on all 4 homepages: `script.js` set `#isOpen` to the open word
+(`Open`/`Abierto`/`Openede`/`poSmoHta'`) — proving synchronous upgrade before `script.js` runs — `daySelect()`
+underlined the active day, `document.forms['contactUs']` + `.contact1-form` resolve, tlh `kli` present (3 hours +
+6 form), correct image prefixes, **zero console errors** on every page.
+
+**Owner-review items (Phase 5):** newly-surfaced `strings.js` values are byte-exact copies of the existing
+per-page markup (not newly coined), so nothing needs translation review here — but these earlier-flagged intent
+calls remain open and were intentionally NOT changed: hours heading tag drift (`h2` en/es vs `h1` ang/tlh, kept
+per-lang); Freepik attribution `<p>` present only on EN (left in-page, outside the component); social `alt` text
+kept brand-literal English; tlh placeholders kept without the trailing `...`. The deferred `Litte Grand Market`
+typo lives in the order-popup slice.
+
+## Order-popup — PHASE DONE (Phase 5 cont.; build workflow + jsc & browser gates)
+
+`<phc-order-popup lang="N" variant="home|menu">` (`components/order-popup.js`) collapses the `#orderOnline`
+block (the `#orderButton` + its `#buttonPopup` link list) hand-duplicated across **8 pages** (4 homepages +
+4 menu pages). The popup's link list drifts by **page family, not language** — so a second `variant`
+attribute carries it: `home` = DoorDash + UberEats (delivery), `menu` = the single Clover storefront. The
+button **label** is per-language (new `strings.js` `orderLabel` row; `kli` on the tlh button); the
+marketplace link labels are proper nouns, not translated. `lang="0"` uses byte-literal `render0Home()` /
+`render0Menu()` (so `index.html`, no `strings.js`, still works). `buttonPopupGen()` (global in `script.js`)
+is untouched. `order/index.html` (iframe-only) is out of scope — it has no popup block.
+
+**Owner-review (preserved byte-exact, decide later):** the `Litte Grand Market` typo (all 4 homepages — now
+a one-line fix in the component); the dead commented-out Clover `Powell` `<li>` in the menu variant was
+**dropped** (inactive HTML comment; behavior unchanged).
+
+**Gates (main loop):** the JavaScriptCore harness rendered all 8 (4 langs × 2 variants), diffed against the
+committed originals (`git show HEAD`) with whitespace- and HTML-comment-insensitive normalization — all PASS,
+plus a `PHC_STRINGS`-undefined render of both lang-0 variants with zero throws. Live in-browser on home (en
+literal, es generic), menu (lang-0 literal), and the Klingon menu page: `buttonPopupGen()` toggles the popup
+none→block→none, correct label/links/`kli` per page, **zero console errors**, and **no regression** to the
+nav/footer/contact-form components despite the new `<head>` include. 9/9 adversarial agent verdicts PASS.
+
 ## Rewrite spike status
 Done on `spike/rewrite`: nav→`<phc-navbar>` (13 pages, drift fixed), i18n `strings.js`, jQuery removed sitewide,
-PapaParse vendored. Remaining (optional): `<phc-footer>`/`<phc-order-popup>`/`<phc-contact-form>` components;
-builder ES-module conversion (needs a core module + DOMContentLoaded bootstrap gate to keep the 143 global
-inline handlers working).
+PapaParse vendored, **`<phc-footer>` + `<phc-contact-form>` (4 homepages) + `<phc-order-popup>` (8 pages,
+home/menu variants)**. Remaining (optional): `/analytics.js` snippet dedup (16 pages; fixes the
+`privacy.html` `</script>>` stray `>`); builder ES-module conversion (needs a core module + DOMContentLoaded
+bootstrap gate to keep the 143 global inline handlers working).

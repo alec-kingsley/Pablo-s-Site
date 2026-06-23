@@ -21,7 +21,21 @@
 
     // Hamburger toggle tooltip/title. es localized it in legacy markup ("navegación móvil");
     // ang + tlh were left untranslated ("Mobile Nav") — FIXED here (drift item #4).
-    mobileToggleTitle: ["Mobile Nav", "Navegación móvil", "Færende Webloca", "ngeHwI' De'wI'"]
+    mobileToggleTitle: ["Mobile Nav", "Navegación móvil", "Færende Webloca", "ngeHwI' De'wI'"],
+
+    /* ===== Phase 5: footer (hours) + contact form ===== */
+    // statusClosed copies the closed-state words already hardcoded per homepage, byte-exact.
+    hoursLabel:     ["Hours",                        "Horas",                          "Hwíla",                            "rep"],
+    statusClosed:   ["Closed",                       "Cerrado",                        "Clýsde",                           "sokmohta'"],
+    sunWed:         ["Sunday-Wednesday: 11am-8pm",   "Domingo-Miércoles: 11-20",       "Sunnandæg-Wodnesdæg: 11-20",       "jaj wa'-ghItlhjaj: 11-20"],
+    thurSat:        ["Thursday-Saturday: 11am-9pm",  "Jueves-Sábado: 11-21",           "þursdæg-Sæternesdæg: 11-21",       "loghjaj-ghInjaj: 11-21"],
+    contactHeading: ["Contact Us",                   "Contáctenos",                    "Sprec Wiþ Us",                     "goja'"],
+    phName:         ["Name...",                      "Nombre/Apellido...",             "Náma...",                          "poflij"],
+    phEmail:        ["E-Mail...",                    "Correo Electrónico...",          "Spearcǽrend...",                   "jabbi'id poflij"],
+    phSubject:      ["Subject...",                   "Tema...",                        "Ymb...",                           "meq"],
+    phMessage:      ["Message...",                   "Mensaje...",                     "Gewrit...",                        "kin"],
+    sendButton:     ["Send",                         "Enviar",                         "Sendan",                           "feh"],
+    orderLabel:     ["Order Online",                 "Comprar Online",                 "Beodan On Líne",                   "'internetdaq vun"]
   };
 
   // alt text for the language-switch (translate) icon, keyed by lang. The translate icon on a

@@ -29,6 +29,9 @@ pabloshavanacafe.smartonlineorder.com
 	<link rel="shortcut icon" href="./images/icon.webp">
   <link rel="apple-touch-icon" href="./images/apple-touch-icon.webp">
 	<script src="components/navbar.js"></script>
+	<script src="components/order-popup.js"></script>
+	<script src="components/footer.js"></script>
+	<script src="components/contact-form.js"></script>
 </head>
 
 <!-- left/right navs for either side of Pablo's logo -->
@@ -50,15 +53,7 @@ pabloshavanacafe.smartonlineorder.com
 
 				<div id="welcome">
 					<h1>Welcome To<br>Pablo's Havana Café</h1>
-            <div id="orderOnline">
-              <button id="orderButton" onclick="buttonPopupGen()">Order Online</button>
-              <div id="buttonPopup" style="display:none;">
-                <ul>
-                  <li><a href="https://www.doordash.com/store/pablo%E2%80%99s-havana-cafe-(longshore-st)-dublin-34357171">Dublin North Market</a></li>
-                  <li><a href="https://www.ubereats.com/store/pablos-havana-cafe-grandview/5SzPQJBcWTyxb8djoavyGA">Litte Grand Market</a></li>
-                </ul>
-              </div>
-          </div>
+            <phc-order-popup lang="0" variant="home"></phc-order-popup>
 					<!--a href="https://www.clover.com/online-ordering/PABLOS-HAVANA-CAFE" id="orderButton">Order Online</a-->
 					<h2>Homemade Cuban Cuisine
 					<br>(614) 389 4302 <br>
@@ -122,39 +117,9 @@ pabloshavanacafe.smartonlineorder.com
 	
 	<div class="margin">
 		<div class="footer"></div>
-			<div id="hours">
-				<h2>Hours (<mark id="isOpen">Closed</mark>)</h2>
-				<h3 id="sun-wed">Sunday-Wednesday: 11am-8pm</h3>
-        <h3 id="thur-sat">Thursday-Saturday: 11am-9pm</h3>
+			<phc-footer lang="0"></phc-footer>
 
-				<div id="mediaLinks">
-          <a href="https://www.facebook.com/pabloshavanacafe/"><img src="./images/FacebookLogo.webp" alt="Facebook"></a>
-          <a href="https://www.instagram.com/pabloshavanacafe/" ><img src="./images/InstagramLogo.webp" alt="Instagram"></a>
-				</div>
-			</div>
-
-			<div id="form">
-				<div>Contact Us</div>
-        
-				<form name="contactUs" class="contact1-form" autocomplete="on" onsubmit="false">
-
-					<input type="text" name="Name" id="name" class="text" placeholder="Name...">
-
-					<input type="text" name="Email" id="email" class="text" placeholder="E-Mail...">
-
-					<input type="text" name="Subject" id="subject" class="text" placeholder="Subject...">
-
-					<textarea name="Message" class="question" placeholder="Message..."></textarea>
-
-					<br>
-          
-          <button class="submit" type="submit">
-            Send
-          </button>
-				</form>
-			
-        
-			</div>
+			<phc-contact-form lang="0"></phc-contact-form>
 	  </div>
 
 	<p style="font-size: 1px">Image by <a href="https://www.freepik.com/free-photo/halloween-wallpaper-with-evil-pumpkins_19055593.htm">Freepik</a></p>
