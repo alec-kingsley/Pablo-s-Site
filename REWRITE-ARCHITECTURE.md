@@ -239,9 +239,26 @@ literal, es generic), menu (lang-0 literal), and the Klingon menu page: `buttonP
 none→block→none, correct label/links/`kli` per page, **zero console errors**, and **no regression** to the
 nav/footer/contact-form components despite the new `<head>` include. 9/9 adversarial agent verdicts PASS.
 
+## Analytics dedup — PHASE DONE (snippet, not a component; done inline + browser gate)
+
+The Google Tag Manager + GA4 (gtag.js) block — hand-duplicated across **16 pages** (the biggest remaining
+duplication) — is externalized into a classic **`/analytics.js`** loaded via one `<script src="/analytics.js">`
+per page, replacing the ~15 inline lines (GTM IIFE + the GA `gtag.js` loader + the `dataLayer`/`gtag` config).
+A custom element was the WRONG primitive here (innerHTML-injected `<script>` never executes); a classic external
+script is the right fit. The GTM **`<noscript>` iframe stays inline** on each page (it must run with JS disabled).
+`order/index.html` (iframe-only) had no analytics and is left as-is (a coverage gap, owner-decision). The
+`privacy.html` `</script>>` stray `>` typo lived inside the replaced block and is fixed for free. Net −224 lines.
+
+**Browser gate (main loop):** loaded `index.html` (root) and `tlh/mah_bop/` (depth-3, proving the root-absolute
+`/analytics.js` resolves at any depth): `dataLayer` contains `gtm.js, js, config, gtm.dom, gtm.load` — the
+`gtm.dom`/`gtm.load` events are pushed by the GTM container itself, proving `gtm.js` actually loaded and fired;
+`gtag` defined; both `googletagmanager.com/gtm.js` and `/gtag/js` requested; `<noscript>` present; zero console
+errors. `order/` confirmed unchanged (no include, Clover iframe intact).
+
 ## Rewrite spike status
 Done on `spike/rewrite`: nav→`<phc-navbar>` (13 pages, drift fixed), i18n `strings.js`, jQuery removed sitewide,
 PapaParse vendored, **`<phc-footer>` + `<phc-contact-form>` (4 homepages) + `<phc-order-popup>` (8 pages,
-home/menu variants)**. Remaining (optional): `/analytics.js` snippet dedup (16 pages; fixes the
-`privacy.html` `</script>>` stray `>`); builder ES-module conversion (needs a core module + DOMContentLoaded
-bootstrap gate to keep the 143 global inline handlers working).
+home/menu variants), `/analytics.js` dedup (16 pages)**. Remaining (optional): builder ES-module conversion
+(`menuBuilder`/`eventsBuilder`/`surveyBuilder` → ES modules; needs a `core.js` + DOMContentLoaded bootstrap gate
+to keep the 143 global inline `on*` handlers + the synchronous `easterEgg()` working). The `order/index.html`
+analytics coverage gap remains an owner-decision.
