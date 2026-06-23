@@ -28,9 +28,9 @@
  * (menu/index.html does load it, but a literal is still safe and keeps both lang-0 paths uniform).
  * Only lang 1/2/3 read strings.js (guarded). See render0Home() / render0Menu().
  *
- * NOTE: the home-variant "Litte Grand Market" string is an owner-flagged typo (NOT "Little") and is
- * reproduced byte-exact on purpose. The legacy menu markup also carried a dead, commented-out Clover
- * "Powell" <li> — that is HTML-comment dead code and is intentionally dropped here.
+ * NOTE: the home-variant UberEats label was "Litte Grand Market" in the legacy markup (a typo); this
+ * component corrects it to "Little Grand Market" in one place for all 4 homepages. The legacy menu markup
+ * also carried a dead, commented-out Clover "Powell" <li> — HTML-comment dead code, intentionally dropped.
  */
 (function (root) {
   var STR = (root.PHC_STRINGS && root.PHC_STRINGS.S) || {};
@@ -50,7 +50,7 @@
   var LINKS = {
     home: [
       { href: "https://www.doordash.com/store/pablo%E2%80%99s-havana-cafe-(longshore-st)-dublin-34357171", label: "Dublin North Market" },
-      { href: "https://www.ubereats.com/store/pablos-havana-cafe-grandview/5SzPQJBcWTyxb8djoavyGA", label: "Litte Grand Market" }
+      { href: "https://www.ubereats.com/store/pablos-havana-cafe-grandview/5SzPQJBcWTyxb8djoavyGA", label: "Little Grand Market" }
     ],
     menu: [
       { href: "https://www.clover.com/online-ordering/pablos-havana-cafe-dublin", label: "Dublin" }
@@ -74,7 +74,7 @@
         '<div id="buttonPopup" style="display:none;">' +
           '<ul>' +
             '<li><a href="https://www.doordash.com/store/pablo%E2%80%99s-havana-cafe-(longshore-st)-dublin-34357171">Dublin North Market</a></li>' +
-            '<li><a href="https://www.ubereats.com/store/pablos-havana-cafe-grandview/5SzPQJBcWTyxb8djoavyGA">Litte Grand Market</a></li>' +
+            '<li><a href="https://www.ubereats.com/store/pablos-havana-cafe-grandview/5SzPQJBcWTyxb8djoavyGA">Little Grand Market</a></li>' +
           '</ul>' +
         '</div>' +
       '</div>';
